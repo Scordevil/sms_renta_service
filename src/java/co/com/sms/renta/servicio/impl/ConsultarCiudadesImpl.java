@@ -24,6 +24,7 @@ import javax.ws.rs.Produces;
 @Path("/consultarCiudades")
 public class ConsultarCiudadesImpl {
     
+    
     @GET
     @Produces({"application/json", "application/xml"})
     public List<Ciudad_TO> consultarCiudades()throws Exception{
