@@ -21,5 +21,7 @@ public interface UsuarioDAO {
     public List<Usuario_TO> consultarProveedores()throws Exception;
     
     public List<Usuario_TO> consultarClientes()throws Exception;
+
+    public List<Usuario_TO> consultarAdministradores()throws Exception;
     
 }
