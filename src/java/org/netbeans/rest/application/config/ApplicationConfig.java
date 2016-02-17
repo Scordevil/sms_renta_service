@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(co.com.sms.renta.servicio.impl.ConsultarAdministradoresImpl.class);
+        resources.add(co.com.sms.renta.servicio.impl.ConsultarCiudadesImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarClientesImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarEmpleadosImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarProveedoresImpl.class);
