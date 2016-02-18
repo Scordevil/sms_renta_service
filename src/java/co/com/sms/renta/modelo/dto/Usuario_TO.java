@@ -145,6 +145,14 @@ public class Usuario_TO {
      */
     private String hojaVidaRuta;
 
+    /**
+     *
+     * Tabla Sin tabla
+     *
+     * Mensaje acceder a la cuenta
+     */
+    private String mensaje;
+
     public Usuario_TO() {
     }
 
@@ -186,8 +194,8 @@ public class Usuario_TO {
         this.hojaVida = hojaVida;
         this.hojaVidaRuta = hojaVidaRuta;
     }
-    
-       //consultarProveedores
+
+    //consultarProveedores
     public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
@@ -206,8 +214,16 @@ public class Usuario_TO {
         this.nombreRol = nombreRol;
 
     }
-    
-    
+
+    public Usuario_TO(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public Usuario_TO(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+     
 
 //    @XmlAttribute(name = "idUsuario")
     public int getIdUsuario() {
@@ -369,30 +385,39 @@ public class Usuario_TO {
     public void setHojaVidaRuta(String hojaVidaRuta) {
         this.hojaVidaRuta = hojaVidaRuta;
     }
-    
-    
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 61 * hash + this.idUsuario;
-        hash = 61 * hash + Objects.hashCode(this.nombre);
-        hash = 61 * hash + Objects.hashCode(this.CC);
-        hash = 61 * hash + Objects.hashCode(this.telefono);
-        hash = 61 * hash + Objects.hashCode(this.email);
-        hash = 61 * hash + Objects.hashCode(this.razonSocial);
-        hash = 61 * hash + Objects.hashCode(this.nit);
-        hash = 61 * hash + this.idCiudad;
-        hash = 61 * hash + Objects.hashCode(this.nombreCiudad);
-        hash = 61 * hash + Objects.hashCode(this.login);
-        hash = 61 * hash + Objects.hashCode(this.password);
-        hash = 61 * hash + Objects.hashCode(this.remember_token);
-        hash = 61 * hash + this.estadoUsuario;
-        hash = 61 * hash + Objects.hashCode(this.foto_nombre);
-        hash = 61 * hash + Objects.hashCode(this.foto_ruta);
-        hash = 61 * hash + this.rol;
-        hash = 61 * hash + Objects.hashCode(this.nombreRol);
-        hash = 61 * hash + Objects.hashCode(this.hojaVida);
+        hash = 23 * hash + this.idUsuario;
+        hash = 23 * hash + Objects.hashCode(this.nombre);
+        hash = 23 * hash + Objects.hashCode(this.CC);
+        hash = 23 * hash + Objects.hashCode(this.telefono);
+        hash = 23 * hash + Objects.hashCode(this.email);
+        hash = 23 * hash + Objects.hashCode(this.razonSocial);
+        hash = 23 * hash + Objects.hashCode(this.nit);
+        hash = 23 * hash + this.idCiudad;
+        hash = 23 * hash + Objects.hashCode(this.nombreCiudad);
+        hash = 23 * hash + Objects.hashCode(this.login);
+        hash = 23 * hash + Objects.hashCode(this.password);
+        hash = 23 * hash + Objects.hashCode(this.remember_token);
+        hash = 23 * hash + this.estadoUsuario;
+        hash = 23 * hash + Objects.hashCode(this.foto_nombre);
+        hash = 23 * hash + Objects.hashCode(this.foto_ruta);
+        hash = 23 * hash + this.rol;
+        hash = 23 * hash + Objects.hashCode(this.nombreRol);
+        hash = 23 * hash + Objects.hashCode(this.hojaVida);
+        hash = 23 * hash + this.idHojaVida;
+        hash = 23 * hash + Objects.hashCode(this.hojaVidaRuta);
+        hash = 23 * hash + Objects.hashCode(this.mensaje);
         return hash;
     }
 
@@ -459,12 +484,21 @@ public class Usuario_TO {
         if (!Objects.equals(this.hojaVida, other.hojaVida)) {
             return false;
         }
+        if (this.idHojaVida != other.idHojaVida) {
+            return false;
+        }
+        if (!Objects.equals(this.hojaVidaRuta, other.hojaVidaRuta)) {
+            return false;
+        }
+        if (!Objects.equals(this.mensaje, other.mensaje)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", nombreCiudad=" + nombreCiudad + ", login=" + login + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", hojaVida=" + hojaVida + '}';
+        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", nombreCiudad=" + nombreCiudad + ", login=" + login + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
     }
 
 }
