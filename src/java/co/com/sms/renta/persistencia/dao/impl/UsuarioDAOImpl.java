@@ -286,13 +286,13 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             if (user.getEstadoUsuario() == 1) {//Evalua el estado de la cuenta de usuario, si esta activa o inactiva
                 if (!user.getPassword().equalsIgnoreCase("") && !user.getLogin().equalsIgnoreCase("")) {
 //
-                        if (user.getLogin().equalsIgnoreCase(usuario.getLogin()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
+                    if (user.getLogin().equalsIgnoreCase(usuario.getLogin()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
 //
-                    user.setMensaje("Usuario correcto");
-                        } else {
+                        user.setMensaje("Usuario correcto");
+                    } else {
 
-                            user.setMensaje("Usuario o password incorrecto");
-                        }
+                        user.setMensaje("Usuario o password incorrecto");
+                    }
 //
                 } else {
                     user.setMensaje("Usuario no existe");
@@ -307,4 +307,47 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return user;
 
     }
+
+    /**
+     *
+     * METODOS PARA REGISTRAR USUARIOS
+     *
+     * @return @throws Exception
+     */
+    @Override
+    public void registrarClientes(Usuario_TO usuario) throws Exception {
+
+        Statement st = ConexionSQL.conexion();
+        List<Usuario_TO> usuarios = new ArrayList<>();
+
+        try {
+
+            registrarTodosClientes(usuario);
+
+        } catch (Exception e) {
+
+            throw e;
+
+        }
+
+    }
+
+    private void registrarTodosClientes(Usuario_TO usuario)
+            throws SQLException {
+
+        // // //Seleccionar todos los registros
+        String sql = "INSERT INTO `sms_usuario`(`Usuario_nombre`, `Usuario_CC`, "
+                + "`Usuario_telefono`, `Usuario_email`, `Usuario_razonSocial`, "
+                + "`Usuario_nit`, `Usuario_ciudad`, `Usuario_login`, `Usuario_password`, "
+                + "`Usuario_remember_token`, `Usuario_EstadoUsuario`, `Usuario_foto_nombre`, "
+                + "`Usuario_foto_ruta`, `Usuario_Rol`)"
+                + " VALUES ('Johan' , "
+                + "'1026276136', '2041556' , 'johanncanon@gmail.com' ,  'desarrollo web , '123135-51' "
+                + ",1 , 'johanncanon' , '123456' , '123456' ,2 , 'hasd/sdf&as/es/fa', "
+                + " 'lihsdf/kdsbg/lkajbt/cs' ,2)";
+
+        st.executeQuery(sql);
+
+    }
+
 }

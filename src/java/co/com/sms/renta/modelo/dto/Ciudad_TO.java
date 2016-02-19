@@ -54,6 +54,11 @@ public class Ciudad_TO {
         this.ciudadNombre = ciudadNombre;
         this.nombrePais = nombrePais;
     }
+
+    public Ciudad_TO(int idCiudad) {
+        this.idCiudad = idCiudad;
+    }
+    
     
     
 
