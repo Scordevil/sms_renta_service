@@ -6,15 +6,17 @@
 package co.com.sms.renta.servicio;
 
 import co.com.sms.renta.modelo.dto.Usuario_TO;
-import co.com.sms.renta.persistencia.dao.UsuarioDAO;
-import java.util.List;
+import javax.ws.rs.QueryParam;
 
 /**
  *
  * @author SISTEMAS
  */
 public interface RegistrarCliente {
-    
-    public void registrarClientes(Usuario_TO usuario) throws Exception;
-    
+
+    public void registrarClientes(int idUsuario, String nombre, String cc, String telefono,
+            String email, String razonSocial, String nit, String nombreCiudad,String login, 
+            String password,String remember_token,String foto_nombre,String foto_ruta, 
+            int rol, String nombreRol, String mensaje) throws Exception;
+
 }
