@@ -290,18 +290,21 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 //
                         user.setMensaje("Usuario correcto");
                     } else {
-
+                        user = new Usuario_TO();
                         user.setMensaje("Usuario o password incorrecto");
                     }
 //
                 } else {
+                    user = new Usuario_TO();
                     user.setMensaje("Usuario no existe");
                 }
             } else {
+                user = new Usuario_TO();
                 user.setMensaje("Usuario inactivo");
             }
 
         } else {
+            user = new Usuario_TO();
             user.setMensaje("Usuario no existe");
         }
         return user;
