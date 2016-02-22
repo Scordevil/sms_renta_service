@@ -194,6 +194,24 @@ public class Usuario_TO {
         this.hojaVida = hojaVida;
         this.hojaVidaRuta = hojaVidaRuta;
     }
+    
+    //RegistrarClientes
+    public Usuario_TO( String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, int rol) {        
+        this.nombre = nombre;
+        this.CC = CC;
+        this.telefono = telefono;
+        this.email = email;
+        this.razonSocial = razonSocial;
+        this.nit = nit;
+        this.idCiudad = idCiudad;
+        this.login = login;
+        this.password = password;
+        this.remember_token = remember_token;
+        this.estadoUsuario = estadoUsuario;
+        this.foto_nombre = foto_nombre;
+        this.foto_ruta = foto_ruta;
+        this.rol = rol;
+    }
 
     //consultarProveedores
     public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol) {

@@ -321,7 +321,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     public void registrarClientes(Usuario_TO usuario) throws Exception {
 
         Statement st = ConexionSQL.conexion();
-        List<Usuario_TO> usuarios = new ArrayList<>();
 
         try {
 
@@ -344,10 +343,60 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "`Usuario_nit`, `Usuario_ciudad`, `Usuario_login`, `Usuario_password`, "
                 + "`Usuario_remember_token`, `Usuario_EstadoUsuario`, `Usuario_foto_nombre`, "
                 + "`Usuario_foto_ruta`, `Usuario_Rol`)"
-                + " VALUES ('Johan' , "
-                + "'1026276136', '2041556' , 'johanncanon@gmail.com' ,  'desarrollo web , '123135-51' "
-                + ",1 , 'johanncanon' , '123456' , '123456' ,2 , 'hasd/sdf&as/es/fa', "
-                + " 'lihsdf/kdsbg/lkajbt/cs' ,2)";
+                + " VALUES ("+usuario.getNombre()+" , "
+                + usuario.getCC()+ " , " 
+                + usuario.getTelefono()+ " ,"
+                + usuario.getEmail()+  ", "
+                + usuario.getRazonSocial()+ " , "
+                + usuario.getNit()+ " , "
+                + usuario.getIdCiudad()+  " , "
+                + usuario.getLogin()+ " , "
+                + usuario.getPassword()+ " , "
+                + usuario.getRemember_token()+ ", "
+                + usuario.getEstadoUsuario() +" , "
+                + usuario.getFoto_nombre()+ ", "
+                + usuario.getFoto_ruta()+" ,"
+                + usuario.getRol()+ ")";
+        
+        
+
+        st.executeQuery(sql);
+
+    }
+    
+    /**
+     *
+     * @return @throws Exception
+     */
+    @Override
+    public void editarPerilCliente(Usuario_TO usuario) throws Exception {
+
+        Statement st = ConexionSQL.conexion();
+        
+        try {
+
+            editarTodosClientes(usuario);
+
+        } catch (Exception e) {
+
+            throw e;
+
+        }
+
+    }
+
+    private void editarTodosClientes(Usuario_TO usuario)
+            throws SQLException {
+
+        // // //Seleccionar todos los registros
+        String sql = "UPDATE `sms_usuario` SET `idUsuario`=[value-1],"
+                + "`Usuario_nombre`=[value-2],`Usuario_CC`=[value-3],"
+                + "`Usuario_telefono`=[value-4],`Usuario_email`=[value-5],"
+                + "`Usuario_razonSocial`=[value-6],`Usuario_nit`=[value-7],"
+                + "`Usuario_ciudad`=[value-8],`Usuario_login`=[value-9],"
+                + "`Usuario_password`=[value-10],`Usuario_remember_token`=[value-11],"
+                + "`Usuario_EstadoUsuario`=[value-12],`Usuario_foto_nombre`=[value-13],"
+                + "`Usuario_foto_ruta`=[value-14],`Usuario_Rol`=[value-15] WHERE 1";
 
         st.executeQuery(sql);
 
