@@ -286,25 +286,23 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             if (user.getEstadoUsuario() == 1) {//Evalua el estado de la cuenta de usuario, si esta activa o inactiva
                 if (!user.getPassword().equalsIgnoreCase("") && !user.getLogin().equalsIgnoreCase("")) {
 //
-                    if (user.getLogin().equalsIgnoreCase(usuario.getLogin()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
+                    if (user.getLogin().equalsIgnoreCase(usuario.getLogin()) && user.getPassword().equalsIgnoreCase
+(usuario.getPassword())) {
 //
                         user.setMensaje("Usuario correcto");
                     } else {
-                        user = new Usuario_TO();
+
                         user.setMensaje("Usuario o password incorrecto");
                     }
 //
                 } else {
-                    user = new Usuario_TO();
                     user.setMensaje("Usuario no existe");
                 }
             } else {
-                user = new Usuario_TO();
                 user.setMensaje("Usuario inactivo");
             }
 
         } else {
-            user = new Usuario_TO();
             user.setMensaje("Usuario no existe");
         }
         return user;
