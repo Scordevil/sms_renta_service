@@ -6,17 +6,16 @@
 package co.com.sms.renta.servicio;
 
 import co.com.sms.renta.modelo.dto.Usuario_TO;
-import javax.ws.rs.QueryParam;
 
 /**
  *
  * @author SISTEMAS
  */
-public interface RegistrarCliente  {
-
-    public Usuario_TO registrarClientes(String nombre, String cc, String telefono,
+public interface EditarCliente {
+    
+    public Usuario_TO editarClinte (String nombre, String cc, String telefono,
             String email, String razonSocial, String nit, int idCiudad,String login, 
             String password,String remember_token,int estadoUsuario ,String foto_nombre,String foto_ruta, 
-            int rol) throws Exception;
-
+            int rol, int idUsuario) throws Exception;
+    
 }

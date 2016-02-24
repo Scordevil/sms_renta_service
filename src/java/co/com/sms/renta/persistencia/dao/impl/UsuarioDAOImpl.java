@@ -9,13 +9,11 @@ import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.config.Config;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.UsuarioDAO;
-import static java.lang.System.console;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -286,23 +284,25 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             if (user.getEstadoUsuario() == 1) {//Evalua el estado de la cuenta de usuario, si esta activa o inactiva
                 if (!user.getPassword().equalsIgnoreCase("") && !user.getLogin().equalsIgnoreCase("")) {
 //
-                    if (user.getLogin().equalsIgnoreCase(usuario.getLogin()) && user.getPassword().equalsIgnoreCase
-(usuario.getPassword())) {
+                    if (user.getLogin().equalsIgnoreCase(usuario.getLogin()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
 //
                         user.setMensaje("Usuario correcto");
                     } else {
-
+                        user = new Usuario_TO();
                         user.setMensaje("Usuario o password incorrecto");
                     }
 //
                 } else {
+                    user = new Usuario_TO();
                     user.setMensaje("Usuario no existe");
                 }
             } else {
+                user = new Usuario_TO();
                 user.setMensaje("Usuario inactivo");
             }
 
         } else {
+            user = new Usuario_TO();
             user.setMensaje("Usuario no existe");
         }
         return user;
@@ -316,13 +316,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
      * @return @throws Exception
      */
     @Override
-    public void registrarClientes(Usuario_TO usuario) throws Exception {
+    public Usuario_TO registrarClientes(Usuario_TO usuario) throws Exception {
 
         Statement st = ConexionSQL.conexion();
+        Usuario_TO user = new Usuario_TO();
 
         try {
 
-            registrarTodosClientes(usuario);
+            user = registrarTodosClientes(usuario);
 
         } catch (Exception e) {
 
@@ -330,44 +331,47 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         }
 
+        return user;
+
     }
 
-    private void registrarTodosClientes(Usuario_TO usuario)
+    private Usuario_TO registrarTodosClientes(Usuario_TO usuario)
             throws SQLException {
 
-        // // //Seleccionar todos los registros
-        String sql = "INSERT INTO `sms_usuario`(`Usuario_nombre`, `Usuario_CC`, "
-                + "`Usuario_telefono`, `Usuario_email`, `Usuario_razonSocial`, "
-                + "`Usuario_nit`, `Usuario_ciudad`, `Usuario_login`, `Usuario_password`, "
-                + "`Usuario_remember_token`, `Usuario_EstadoUsuario`, `Usuario_foto_nombre`, "
-                + "`Usuario_foto_ruta`, `Usuario_Rol`)"
-                + " VALUES ("+usuario.getNombre()+" , "
-                + usuario.getCC()+ " , " 
-                + usuario.getTelefono()+ " ,"
-                + usuario.getEmail()+  ", "
-                + usuario.getRazonSocial()+ " , "
-                + usuario.getNit()+ " , "
-                + usuario.getIdCiudad()+  " , "
-                + usuario.getLogin()+ " , "
-                + usuario.getPassword()+ " , "
-                + usuario.getRemember_token()+ ", "
-                + usuario.getEstadoUsuario() +" , "
-                + usuario.getFoto_nombre()+ ", "
-                + usuario.getFoto_ruta()+" ,"
-                + usuario.getRol()+ ")";
-        
-        
+        Usuario_TO user = new Usuario_TO();
 
-        st.executeQuery(sql);
+        try {
+//
+            String sql = "INSERT INTO `smsrenta`.`sms_usuario` (`Usuario_nombre`, `Usuario_CC`, `Usuario_telefono`, `Usuario_email`, `Usuario_razonSocial`, `Usuario_nit`, `Usuario_ciudad`, `Usuario_login`, `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `Usuario_foto_nombre`, `Usuario_foto_ruta`, `Usuario_Rol`) VALUES ( '" 
+                    + usuario.getNombre() + "', '"+ usuario.getCC() +"', '" + usuario.getTelefono() + "', '" 
+                    + usuario.getEmail() + "', '" + usuario.getRazonSocial() + "', '" + usuario.getNit() 
+                    + "', '" + usuario.getIdCiudad() + "', '"  + usuario.getLogin() + "', '"  + usuario.getPassword() 
+                    + "', '"  + usuario.getRemember_token() + "', '"  + usuario.getEstadoUsuario() + "', '"  
+                    + usuario.getFoto_nombre() + "', '"  + usuario.getFoto_ruta() + "', '"  + usuario.getRol() + "'); ";
+            st.execute(sql);
+            
+            
+            // LLAMA AL MÉTODO
+
+            user.setMensaje("Usuario registrado correctamente");
+
+        } catch (Exception e) {
+            user = new Usuario_TO();
+            user.setMensaje("Usuario no registrado");
+            throw e;
+
+        }
+
+        return user;
 
     }
-    
+
     /**
      *
      * @return @throws Exception
      */
     @Override
-    public void editarPerilCliente(Usuario_TO usuario) throws Exception {
+    public void editarPerilCliente(Usuario_TO usuario ) throws Exception {
 
         Statement st = ConexionSQL.conexion();
         
@@ -383,20 +387,34 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     }
 
-    private void editarTodosClientes(Usuario_TO usuario)
-            throws SQLException {
+    private Usuario_TO editarTodosClientes(Usuario_TO usuario ) throws SQLException {
 
-        // // //Seleccionar todos los registros
-        String sql = "UPDATE `sms_usuario` SET `idUsuario`=[value-1],"
-                + "`Usuario_nombre`=[value-2],`Usuario_CC`=[value-3],"
-                + "`Usuario_telefono`=[value-4],`Usuario_email`=[value-5],"
-                + "`Usuario_razonSocial`=[value-6],`Usuario_nit`=[value-7],"
-                + "`Usuario_ciudad`=[value-8],`Usuario_login`=[value-9],"
-                + "`Usuario_password`=[value-10],`Usuario_remember_token`=[value-11],"
-                + "`Usuario_EstadoUsuario`=[value-12],`Usuario_foto_nombre`=[value-13],"
-                + "`Usuario_foto_ruta`=[value-14],`Usuario_Rol`=[value-15] WHERE 1";
+        Usuario_TO user = new Usuario_TO();
 
-        st.executeQuery(sql);
+        try {
+//
+            String sql = "UPDATE `sms_usuario`  SET `Usuario_nombre`='Prueba Edicion',`Usuario_CC`='123456' , `Usuario_telefono`=321654,"
+                    + "`Usuario_email`='johan@ikv.com',`Usuario_razonSocial`='kjd',`Usuario_nit`='3218-12',"
+                    + "`Usuario_ciudad`='1' ,`Usuario_login`='johan_Edicion' ,`Usuario_password`='123',"
+                    + "`Usuario_remember_token`='123',`Usuario_EstadoUsuario`='1' ,`Usuario_foto_nombre`='kibnd',"
+                    + "`Usuario_foto_ruta`='lkj',`Usuario_Rol`='2'  WHERE `idUsuario` = " + usuario.getIdUsuario() ;
+            
+           
+            st.executeUpdate(sql);
+            
+            
+            // LLAMA AL MÉTODO
+
+            user.setMensaje("Usuario registrado correctamente");
+
+        } catch (Exception e) {
+            user = new Usuario_TO();
+            user.setMensaje("Usuario no registrado");
+            throw e;
+
+        }
+
+        return user;
 
     }
 
