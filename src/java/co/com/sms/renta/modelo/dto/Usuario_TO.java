@@ -232,7 +232,29 @@ public class Usuario_TO {
 
 //     para diferenciar el contructor de registro de cliente con el de Edicion
 //     de perfil del Cliente se agrega el ID del usuario al final del constructor
-        
+        this.idUsuario = idUsuario;
+    }
+
+    //Editar Empleados Conductores
+    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol,  String hojaVida, String hojaVidaRuta, int idUsuario) {
+        this.nombre = nombre;
+        this.CC = CC;
+        this.telefono = telefono;
+        this.email = email;
+        this.razonSocial = razonSocial;
+        this.nit = nit;
+        this.nombreCiudad = nombreCiudad;
+        this.login = login;
+        this.password = password;
+        this.remember_token = remember_token;
+        this.estadoUsuario = estadoUsuario;
+        this.foto_nombre = foto_nombre;
+        this.foto_ruta = foto_ruta;
+        this.nombreRol = nombreRol;
+
+//        Diferencia del metodo de Consula de Empleados al dejar el ID Usuario de ultimo
+        this.hojaVida = hojaVida;
+        this.hojaVidaRuta = hojaVidaRuta;
         this.idUsuario = idUsuario;
     }
 

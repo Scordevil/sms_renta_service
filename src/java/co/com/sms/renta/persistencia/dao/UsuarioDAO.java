@@ -34,6 +34,8 @@ public interface UsuarioDAO {
 
     public Usuario_TO registrarClientes(Usuario_TO usuario) throws Exception;
     
-    public void editarPerilCliente(Usuario_TO usuario ) throws Exception;
+    public Usuario_TO editarPerilCliente(Usuario_TO usuario ) throws Exception;
+    
+    public Usuario_TO editarPerilConductor(Usuario_TO usuario ) throws Exception;
 
 }
