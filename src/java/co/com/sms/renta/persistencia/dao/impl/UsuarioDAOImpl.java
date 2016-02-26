@@ -457,8 +457,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
                     + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_login`='" + usuario.getLogin() + "' ,`Usuario_password`='" + usuario.getPassword() + "', "
                     + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
-                    + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' "
-                    + " `HojaVida_nombre`= '"+ usuario.getHojaVida() +"' , `HojaVida_ruta`= '"+ usuario.getHojaVidaRuta() +"  "
+                    + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' , "
+                    + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "'  "
                     + "  WHERE `idUsuario` = " + usuario.getIdUsuario() + " ;";
 
             st.executeUpdate(sql);
