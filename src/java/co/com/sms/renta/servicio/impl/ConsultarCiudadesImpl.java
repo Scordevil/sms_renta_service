@@ -26,7 +26,7 @@ public class ConsultarCiudadesImpl {
     
     
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<Ciudad_TO> consultarCiudades()throws Exception{
         
          List<Ciudad_TO> ciudades = new ArrayList<Ciudad_TO>();

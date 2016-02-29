@@ -23,12 +23,12 @@ import javax.ws.rs.QueryParam;
 public class ConsultarDatosSesionUsuarioImpl implements ConsultarDatosSesionUsuario {
 
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
 
     @Override
     public Usuario_TO consultarDatosSesionUsuario(@QueryParam("login") String login, @QueryParam("password") String password ) throws Exception {
         
-        Usuario_TO usuarioSesion = new Usuario_TO();
+        Usuario_TO usuarioSesion = new Usuario_TO(); 
         UsuarioDAOImpl user = new UsuarioDAOImpl();
         
         Usuario_TO usuario = new Usuario_TO(login, password);
