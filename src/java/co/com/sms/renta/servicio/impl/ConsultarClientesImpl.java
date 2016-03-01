@@ -22,7 +22,7 @@ import javax.ws.rs.Produces;
 @Path("/consultarClientes")
 public class ConsultarClientesImpl {
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<Usuario_TO> consultarClientes() throws Exception {
         
         List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
