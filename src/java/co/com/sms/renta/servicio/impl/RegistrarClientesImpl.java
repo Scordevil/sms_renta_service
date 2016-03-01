@@ -10,7 +10,6 @@ import co.com.sms.renta.persistencia.dao.impl.UsuarioDAOImpl;
 import co.com.sms.renta.servicio.RegistrarCliente;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -26,24 +25,14 @@ public class RegistrarClientesImpl implements RegistrarCliente {
     @GET
     @Produces({"application/xml", "application/json"})
     public Usuario_TO registrarClientes(@QueryParam("nombre") String nombre,
-            @QueryParam("cc") String cc,
-            @QueryParam("telefono") String telefono,
             @QueryParam("email") String email,
-            @QueryParam("razonSocial") String razonSocial,
-            @QueryParam("nit") String nit,
-            @QueryParam("idCiudad") int idCiudad,
             @QueryParam("login") String login,
             @QueryParam("password") String password,
-            @QueryParam("remember_token") String remember_token,
-            @QueryParam("estadoUsuario") int estadoUsuario,
-            @QueryParam("foto_nombre") String foto_nombre,
-            @QueryParam("foto_ruta") String foto_ruta,
-            @QueryParam("rol") int rol) throws Exception {
+            @QueryParam("remember_token") String remember_token) throws Exception {
 
         // instancia del Cliente con onstructor especifico para ingresar datos del cliente
-        Usuario_TO cliente = new Usuario_TO(nombre, cc, telefono, email,
-                razonSocial, nit, idCiudad, login, password, remember_token,
-                estadoUsuario, foto_nombre, foto_ruta, rol);
+        Usuario_TO cliente = new Usuario_TO(nombre, email,
+                 login, password, remember_token);
 
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
 

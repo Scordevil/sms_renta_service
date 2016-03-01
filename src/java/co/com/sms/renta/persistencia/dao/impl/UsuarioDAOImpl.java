@@ -343,12 +343,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         try {
 //
-            String sql = "INSERT INTO `smsrenta`.`sms_usuario` (`Usuario_nombre`, `Usuario_CC`, `Usuario_telefono`, `Usuario_email`, `Usuario_razonSocial`, `Usuario_nit`, `Usuario_ciudad`, `Usuario_login`, `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `Usuario_foto_nombre`, `Usuario_foto_ruta`, `Usuario_Rol`) VALUES ( '"
-                    + usuario.getNombre() + "', '" + usuario.getCC() + "', '" + usuario.getTelefono() + "', '"
-                    + usuario.getEmail() + "', '" + usuario.getRazonSocial() + "', '" + usuario.getNit()
-                    + "', '" + usuario.getIdCiudad() + "', '" + usuario.getLogin() + "', '" + usuario.getPassword()
-                    + "', '" + usuario.getRemember_token() + "', '" + usuario.getEstadoUsuario() + "', '"
-                    + usuario.getFoto_nombre() + "', '" + usuario.getFoto_ruta() + "', '" + usuario.getRol() + "'); ";
+            String sql = "INSERT INTO `smsrenta`.`sms_usuario` (`Usuario_nombre`,`Usuario_email`, `Usuario_login`, `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `Usuario_Rol`) VALUES ( '"
+                    + usuario.getNombre() + "', '"
+                    + usuario.getEmail() + "', '" 
+                    + usuario.getLogin() + "', '" + usuario.getPassword()
+                    + "', '" + usuario.getRemember_token() + "', 1 '"
+                    +  "'3); ";
             st.execute(sql);
 
             // LLAMA AL MÉTODO

@@ -174,6 +174,15 @@ public class Usuario_TO {
         this.rol = rol;
     }
 
+    public Usuario_TO(String nombre, String email, String login, String password, String remember_token) {
+        this.nombre = nombre;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.remember_token = remember_token;
+    }
+
+    
     //ConsultarEmpleados
     public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta) {
         this.idUsuario = idUsuario;
