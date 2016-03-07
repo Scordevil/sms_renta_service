@@ -27,9 +27,9 @@ public class Ciudad_TO {
 
     /**
      *
-     * Columna Ciudad_pais
+     * Columna IdTipoLugar
      */
-    private int idPais;
+    private int idTipoLugar;
 
     /**
      *
@@ -38,29 +38,21 @@ public class Ciudad_TO {
     private String ciudadNombre;
 
     /**
-     *
-     * tabla sms_pais
-     *
-     * Columna Pais_nombre
+
+     * Columna IdDepartamento
      */
-    private String nombrePais;
+    private int idDepartamento;
 
     public Ciudad_TO() {
     }
 
-    public Ciudad_TO(int idCiudad, int idPais, String ciudadNombre, String nombrePais) {
+    public Ciudad_TO(int idCiudad, int idTipoLugar, String ciudadNombre, int idDepartamento) {
         this.idCiudad = idCiudad;
-        this.idPais = idPais;
+        this.idTipoLugar = idTipoLugar;
         this.ciudadNombre = ciudadNombre;
-        this.nombrePais = nombrePais;
+        this.idDepartamento = idDepartamento;
     }
 
-    public Ciudad_TO(int idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-    
-    
-    
 
     public int getIdCiudad() {
         return idCiudad;
@@ -70,12 +62,12 @@ public class Ciudad_TO {
         this.idCiudad = idCiudad;
     }
 
-    public int getIdPais() {
-        return idPais;
+    public int getIdTipoLugar() {
+        return idTipoLugar;
     }
 
-    public void setIdPais(int idPais) {
-        this.idPais = idPais;
+    public void setIdTipoLugar(int idTipoLugar) {
+        this.idTipoLugar = idTipoLugar;
     }
 
     public String getCiudadNombre() {
@@ -86,51 +78,20 @@ public class Ciudad_TO {
         this.ciudadNombre = ciudadNombre;
     }
 
-    public String getNombrePais() {
-        return nombrePais;
+    public int getIdDepartamento() {
+        return idDepartamento;
     }
 
-    public void setNombrePais(String nombrePais) {
-        this.nombrePais = nombrePais;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.idCiudad;
-        hash = 97 * hash + this.idPais;
-        hash = 97 * hash + Objects.hashCode(this.ciudadNombre);
-        hash = 97 * hash + Objects.hashCode(this.nombrePais);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Ciudad_TO other = (Ciudad_TO) obj;
-        if (this.idCiudad != other.idCiudad) {
-            return false;
-        }
-        if (this.idPais != other.idPais) {
-            return false;
-        }
-        if (!Objects.equals(this.ciudadNombre, other.ciudadNombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombrePais, other.nombrePais)) {
-            return false;
-        }
-        return true;
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
     @Override
     public String toString() {
-        return "Ciudad_TO{" + "idCiudad=" + idCiudad + ", idPais=" + idPais + ", ciudadNombre=" + ciudadNombre + ", nombrePais=" + nombrePais + '}';
+        return "Ciudad_TO{" + "idCiudad=" + idCiudad + ", idTipoLugar=" + idTipoLugar + ", ciudadNombre=" + ciudadNombre + ", idDepartamento=" + idDepartamento + '}';
     }
     
+    
+
+ 
 }

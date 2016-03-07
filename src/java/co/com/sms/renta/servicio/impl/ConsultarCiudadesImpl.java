@@ -6,9 +6,7 @@
 package co.com.sms.renta.servicio.impl;
 
 import co.com.sms.renta.modelo.dto.Ciudad_TO;
-import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.impl.CiudadDAOImpl;
-import co.com.sms.renta.persistencia.dao.impl.UsuarioDAOImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;

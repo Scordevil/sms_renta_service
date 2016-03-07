@@ -50,9 +50,8 @@ public class CiudadDAOImpl implements CiudadDAO{
     private List<Ciudad_TO> consultarTodasCiudades() throws SQLException {
 
         // // //Seleccionar todos los registros
-        String sql = "SELECT c.idCiudad, p.idPais, c.Ciudad_nombre, p.Pais_nombre "
-                + "from sms_ciudad as c , sms_pais as p "
-                + "where c.Ciudad_pais = p.idPais ";
+        String sql = "SELECT idCiudad, idTipoLugar , Ciudad_nombre, idDepartamento "
+                + "from sms_ciudad";
                 
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
@@ -60,7 +59,7 @@ public class CiudadDAOImpl implements CiudadDAO{
         final List<Ciudad_TO> ciudades = new ArrayList<Ciudad_TO>();
         while (rs.next()) {
 
-            ciudades.add(new Ciudad_TO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+            ciudades.add(new Ciudad_TO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
 
         }
 

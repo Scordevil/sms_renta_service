@@ -32,9 +32,9 @@ public class ConsultarLugaresImpl implements ConsultarLugares{
         
         List<Lugar_TO> lugares = new ArrayList<Lugar_TO>();
         LugarDAOImpl lugar = new LugarDAOImpl();
-        Ciudad_TO ciudad = new Ciudad_TO(idCiudad);
+     //   Ciudad_TO ciudad = new Ciudad_TO(idCiudad);
         
-        lugares = lugar.consultarLugar(ciudad);
+      //  lugares = lugar.consultarLugar(ciudad);
         
         return lugares;
          
