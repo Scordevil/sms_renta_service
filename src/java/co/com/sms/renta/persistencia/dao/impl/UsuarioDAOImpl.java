@@ -340,6 +340,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throws SQLException {
 
         Usuario_TO user = new Usuario_TO();
+        
+        Config md5 = new Config();
+        
+        usuario.setPassword(md5.getMD5(usuario.getPassword()));
 
         try {
 //
