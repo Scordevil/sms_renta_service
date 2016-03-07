@@ -344,6 +344,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         Config md5 = new Config();
         
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
+        usuario.setRemember_token(md5.getMD5(usuario.getRemember_token()));
 
         try {
 //
