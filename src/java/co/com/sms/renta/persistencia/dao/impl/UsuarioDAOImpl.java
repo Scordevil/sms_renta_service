@@ -343,12 +343,13 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         try {
 //
-            String sql = "INSERT INTO `smsrenta`.`sms_usuario` (`Usuario_nombre`,`Usuario_email`, `Usuario_login`, `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `Usuario_Rol`) VALUES ( '"
+            String sql = "INSERT INTO `sms_usuario` (`Usuario_nombre`, `Usuario_email`, `idCiudad`,`Usuario_login`, `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `idRol`) VALUES ( '"
                     + usuario.getNombre() + "', '"
                     + usuario.getEmail() + "', '" 
+                    + usuario.getIdCiudad() + "', '" 
                     + usuario.getLogin() + "', '" + usuario.getPassword()
-                    + "', '" + usuario.getRemember_token() + "', 1 '"
-                    +  "'3); ";
+                    + "', '" + usuario.getRemember_token() + "','"+ 1 +"','"+ 3 +"');";
+                   
             st.execute(sql);
 
             // LLAMA AL MÉTODO

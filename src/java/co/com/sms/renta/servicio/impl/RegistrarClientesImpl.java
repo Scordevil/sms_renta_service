@@ -23,16 +23,20 @@ import javax.ws.rs.QueryParam;
 public class RegistrarClientesImpl implements RegistrarCliente {
 
     @GET
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json"})
+    
     public Usuario_TO registrarClientes(@QueryParam("nombre") String nombre,
             @QueryParam("email") String email,
+            @QueryParam("ciudad") int idCiudad,
             @QueryParam("login") String login,
             @QueryParam("password") String password,
-            @QueryParam("remember_token") String remember_token) throws Exception {
+            @QueryParam("remember_token") String remember_token,
+            @QueryParam("estadoUsuario") int estadoUsuario,
+            @QueryParam("rol") int rol) throws Exception {
 
         // instancia del Cliente con onstructor especifico para ingresar datos del cliente
-        Usuario_TO cliente = new Usuario_TO(nombre, email,
-                 login, password, remember_token);
+        Usuario_TO cliente = new Usuario_TO(nombre, email,idCiudad,
+                 login, password, remember_token, estadoUsuario, rol);
 
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
 

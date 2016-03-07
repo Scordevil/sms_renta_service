@@ -1,7 +1,6 @@
 package co.com.sms.renta.modelo.dto;
 
 import java.util.Objects;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -174,13 +173,20 @@ public class Usuario_TO {
         this.rol = rol;
     }
 
-    public Usuario_TO(String nombre, String email, String login, String password, String remember_token) {
+    public Usuario_TO(String nombre, String email, int idCiudad, String login, String password, String remember_token, int estadoUsuario, int rol) {
         this.nombre = nombre;
         this.email = email;
+        this.idCiudad = idCiudad;
         this.login = login;
         this.password = password;
         this.remember_token = remember_token;
+        this.estadoUsuario = estadoUsuario;
+        this.rol = rol;
     }
+
+
+
+
 
     
     //ConsultarEmpleados
