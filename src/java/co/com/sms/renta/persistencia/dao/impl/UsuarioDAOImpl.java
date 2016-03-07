@@ -267,7 +267,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "from sms_usuario as u , sms_rol as r, sms_ciudad as c "
                 + "where u.idRol = r.idRol and "
                 + "u.idCiudad = c.idCiudad and "
-                + "u.Usuario_login = 'administradorLogin' ";
+                + "u.Usuario_login = "+usuario.getLogin();
 
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
