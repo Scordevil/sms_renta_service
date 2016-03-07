@@ -257,7 +257,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         Usuario_TO user = new Usuario_TO();
 
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
-        System.out.print("password: " + usuario.getPassword());
 
         // // //Seleccionar todos los registros
         String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_CC,u.Usuario_telefono, u.Usuario_email, "
@@ -267,7 +266,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "from sms_usuario as u , sms_rol as r, sms_ciudad as c "
                 + "where u.idRol = r.idRol and "
                 + "u.idCiudad = c.idCiudad and "
-                + "u.Usuario_login = "+usuario.getLogin();
+                + "u.`Usuario_login` = '"+ usuario.getLogin() +"';";
 
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
