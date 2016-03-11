@@ -10,7 +10,6 @@ import co.com.sms.renta.persistencia.dao.impl.UsuarioDAOImpl;
 import co.com.sms.renta.servicio.EditarCliente;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -24,9 +23,9 @@ import javax.ws.rs.QueryParam;
 public class EditarClienteImpl implements EditarCliente{
 
     @GET
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json"})
     
-    public Usuario_TO editarClinte(@QueryParam("nombre") String nombre,
+    public Usuario_TO editarCliente(@QueryParam("nombre") String nombre,
             @QueryParam("cc") String cc,
             @QueryParam("telefono") String telefono,
             @QueryParam("email") String email,
@@ -36,20 +35,15 @@ public class EditarClienteImpl implements EditarCliente{
             @QueryParam("login") String login,
             @QueryParam("password") String password,
             @QueryParam("remember_token") String remember_token,
-            @QueryParam("estadoUsuario") int estadoUsuario,
-            @QueryParam("foto_nombre") String foto_nombre,
-            @QueryParam("foto_ruta") String foto_ruta,
-            @QueryParam("rol") int rol,
             @QueryParam("idUsuario") int idUsuario) throws Exception {
         
         Usuario_TO cliente = new Usuario_TO(nombre, cc, telefono, email,
-                razonSocial, nit, idCiudad, login, password, remember_token,
-                estadoUsuario, foto_nombre, foto_ruta, rol, idUsuario);
+                razonSocial, nit, idCiudad, login, password, remember_token, idUsuario);
 
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
         Usuario_TO user = new Usuario_TO();
         
-        user = usuario.editarPerilCliente(cliente);
+        user = usuario.editarPerfilCliente(cliente);
 
         return user;
     }

@@ -377,7 +377,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
      * @return @throws Exception
      */
     @Override
-    public Usuario_TO editarPerilCliente(Usuario_TO usuario) throws Exception {
+    public Usuario_TO editarPerfilCliente(Usuario_TO usuario) throws Exception {
 
         Statement st = ConexionSQL.conexion();
         Usuario_TO user = new Usuario_TO();
@@ -401,24 +401,22 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         try {
 //
             String sql = "UPDATE `sms_usuario`  "
-                    + "  inner join `sms_ciudad`  on sms_usuario.Usuario_ciudad = sms_ciudad.idCiudad  "
-                    + "  inner join `sms_rol` on sms_usuario.Usuario_Rol = sms_rol.idRol  "
-                    + "  inner join `sms_empleado` on sms_usuario.idUsuario = sms_empleado.empleado_idUsuario  "                   
+                    + "  inner join `sms_ciudad`  on sms_usuario.idCiudad = sms_ciudad.idCiudad  "
+                    + "  inner join `sms_rol` on sms_usuario.idRol = sms_rol.idRol  "              
                     + "SET `Usuario_nombre`='" + usuario.getNombre() + "',`Usuario_CC`='" + usuario.getCC() + "' , `Usuario_telefono`= '" + usuario.getTelefono() + "' , "
                     + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
-                    + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_login`='" + usuario.getLogin() + "' ,`Usuario_password`='" + usuario.getPassword() + "', "
-                    + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
-                    + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' "
-                    + "  WHERE `idUsuario` = " + usuario.getIdUsuario() + " ;";
+                    + " `sms_usuario`.`idCiudad`= " + usuario.getIdCiudad() + " ,`Usuario_login`='" + usuario.getLogin() + "' ,`Usuario_password`='" + usuario.getPassword() + "', "
+                    + " `Usuario_remember_token`='" + usuario.getRemember_token() + "'"
+                    + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
             
             st.executeUpdate(sql.toString());
 
             // LLAMA AL MÉTODO
-            user.setMensaje("Usuario registrado correctamente");
+            user.setMensaje("Usuario editado correctamente");
 
         } catch (Exception e) {
             user = new Usuario_TO();
-            user.setMensaje("Usuario no registrado");
+            user.setMensaje("Usuario no Editado");
             throw e;
 
         }

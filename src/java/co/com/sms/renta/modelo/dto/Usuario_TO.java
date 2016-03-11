@@ -229,7 +229,7 @@ public class Usuario_TO {
     }
 
     //Editar Clientes 
-    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, int rol, int idUsuario) {
+    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token, int idUsuario) {
         this.nombre = nombre;
         this.CC = CC;
         this.telefono = telefono;
@@ -240,10 +240,6 @@ public class Usuario_TO {
         this.login = login;
         this.password = password;
         this.remember_token = remember_token;
-        this.estadoUsuario = estadoUsuario;
-        this.foto_nombre = foto_nombre;
-        this.foto_ruta = foto_ruta;
-        this.rol = rol;
 
 //     para diferenciar el contructor de registro de cliente con el de Edicion
 //     de perfil del Cliente se agrega el ID del usuario al final del constructor
