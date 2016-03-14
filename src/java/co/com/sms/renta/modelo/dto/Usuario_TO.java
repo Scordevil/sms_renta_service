@@ -308,8 +308,8 @@ public class Usuario_TO {
         this.remember_token = remember_token;
     }
 
-    public Usuario_TO(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public Usuario_TO(String login, int val) {
+        this.login = login;
     }
 
     public Usuario_TO(String mensaje) {
