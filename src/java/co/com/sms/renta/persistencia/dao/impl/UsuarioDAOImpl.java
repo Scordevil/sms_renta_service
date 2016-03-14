@@ -7,7 +7,6 @@ package co.com.sms.renta.persistencia.dao.impl;
 
 import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.config.Config;
-import co.com.sms.renta.modelo.dto.Ciudad_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.UsuarioDAO;
 import java.sql.ResultSet;
@@ -126,7 +125,58 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         return usuarios;
     }
+    
+        /**
+     *
+     * @return @throws Exception
+     */
+    @Override
+    public Usuario_TO consultarCliente(Usuario_TO cliente) throws Exception {
 
+        Statement st = ConexionSQL.conexion();
+        Usuario_TO usuario = new Usuario_TO();
+
+        try {
+
+            usuario = consultaDeCliente(cliente);
+
+        } catch (Exception e) {
+
+            throw e;
+
+        }
+
+        return usuario;
+    }
+
+    private Usuario_TO consultaDeCliente(Usuario_TO cliente) throws SQLException {
+
+        // // //Seleccionar todos los registros
+        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_CC, u.Usuario_telefono, u.Usuario_email, "
+                + "u.Usuario_razonSocial, u.Usuario_nit,u.idCiudad, u.Usuario_login, u.Usuario_password, "
+                + "u.Usuario_remember_token "
+                + "from sms_usuario as u , sms_ciudad as c, sms_rol as r "
+                + "where r.idRol = u.idRol and "
+                + "u.idCiudad = c.idCiudad and "
+                + "u.idUsuario = "+cliente.getIdUsuario()
+                + " and r.Rol_nombre = 'Cliente'"
+                ;
+
+        ResultSet rs = st.executeQuery(sql);
+        // LLAMA AL MÉTODO
+
+        Usuario_TO usuario = new Usuario_TO();
+        
+        while (rs.next()) {
+            
+            
+           usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getInt(8), rs.getString(9),rs.getString(10),rs.getString(11));
+
+        }
+
+        return usuario;
+    }
+    
     /**
      *
      * @return @throws Exception

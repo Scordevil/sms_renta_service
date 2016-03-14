@@ -31,6 +31,8 @@ public interface UsuarioDAO {
      *
      */
     public List<Usuario_TO> consultarClientes() throws Exception;
+    
+     public Usuario_TO consultarCliente(Usuario_TO cliente) throws Exception;
 
     public Usuario_TO registrarClientes(Usuario_TO usuario) throws Exception;
     

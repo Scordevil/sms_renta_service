@@ -184,11 +184,16 @@ public class Usuario_TO {
         this.rol = rol;
     }
 
+    public Usuario_TO(String nombre, String email, int idCiudad, String login, String password, String remember_token) {
+        this.nombre = nombre;
+        this.email = email;
+        this.idCiudad = idCiudad;
+        this.login = login;
+        this.password = password;
+        this.remember_token = remember_token;
 
+    }
 
-
-
-    
     //ConsultarEmpleados
     public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta) {
         this.idUsuario = idUsuario;
@@ -247,7 +252,7 @@ public class Usuario_TO {
     }
 
     //Editar Empleados Conductores
-    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol,  String hojaVida, String hojaVidaRuta, int idUsuario) {
+    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta, int idUsuario) {
         this.nombre = nombre;
         this.CC = CC;
         this.telefono = telefono;
@@ -287,6 +292,24 @@ public class Usuario_TO {
         this.foto_ruta = foto_ruta;
         this.nombreRol = nombreRol;
 
+    }
+
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login,String password, String remember_token) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.CC = CC;
+        this.telefono = telefono;
+        this.email = email;
+        this.razonSocial = razonSocial;
+        this.nit = nit;
+        this.idCiudad = idCiudad;
+        this.login = login;
+        this.password = password;
+        this.remember_token = remember_token;
+    }
+
+    public Usuario_TO(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public Usuario_TO(String mensaje) {
