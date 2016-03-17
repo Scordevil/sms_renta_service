@@ -18,13 +18,13 @@ import java.util.List;
  *
  * @author VaioDevelopment
  */
-public class NacionalidadDAOImpl implements NacionalidadDAO{
-   
+public class NacionalidadDAOImpl implements NacionalidadDAO {
+
     private final Statement st = ConexionSQL.conexion();
 
     /**
      *
-     * 
+     *
      * @return @throws Exception
      */
     @Override
@@ -50,16 +50,18 @@ public class NacionalidadDAOImpl implements NacionalidadDAO{
 
         ResultSet rs = st.executeQuery(sql);
          // Llama al metodo
-        
+
         final List<Nacionalidad_TO> nacionalidades = new ArrayList<Nacionalidad_TO>();
-        
+
         while (rs.next()) {
-            
+
             nacionalidades.add(new Nacionalidad_TO(rs.getInt(1), rs.getString(2)));
-            
+
         }
-        
+
         return nacionalidades;
     }
+
+
 
 }

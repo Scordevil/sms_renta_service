@@ -1,6 +1,5 @@
 package co.com.sms.renta.modelo.dto;
 
-import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -76,12 +75,6 @@ public class Usuario_TO {
      * Columna nombre_ciudad
      */
     private String nombreCiudad;
-
-    /**
-     *
-     * Columna Usuario_login
-     */
-    private String login;
 
     /**
      *
@@ -168,7 +161,7 @@ public class Usuario_TO {
     public Usuario_TO() {
     }
 
-    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, int rol) {
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, int rol) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
@@ -177,7 +170,6 @@ public class Usuario_TO {
         this.razonSocial = razonSocial;
         this.nit = nit;
         this.idCiudad = idCiudad;
-        this.login = login;
         this.password = password;
         this.remember_token = remember_token;
         this.estadoUsuario = estadoUsuario;
@@ -224,7 +216,7 @@ public class Usuario_TO {
     }
 
     //ConsultarEmpleados
-    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta) {
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
@@ -233,7 +225,6 @@ public class Usuario_TO {
         this.razonSocial = razonSocial;
         this.nit = nit;
         this.nombreCiudad = nombreCiudad;
-        this.login = login;
         this.password = password;
         this.remember_token = remember_token;
         this.estadoUsuario = estadoUsuario;
@@ -244,33 +235,34 @@ public class Usuario_TO {
         this.hojaVidaRuta = hojaVidaRuta;
     }
 
-    //RegistrarClientes
-    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, int rol) {
+    //EditarClientes
+
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, int idCiudad, String pasaporte, String password, String remember_token, int estadoUsuario, int rol, int idNacionalidad) {
+        this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
         this.telefono = telefono;
         this.email = email;
-        this.razonSocial = razonSocial;
-        this.nit = nit;
         this.idCiudad = idCiudad;
-        this.login = login;
+        this.pasaporte = pasaporte;
         this.password = password;
         this.remember_token = remember_token;
         this.estadoUsuario = estadoUsuario;
-        this.foto_nombre = foto_nombre;
-        this.foto_ruta = foto_ruta;
         this.rol = rol;
+        this.idNacionalidad = idNacionalidad;
     }
 
+
     //Editar Clientes 
-    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono) {
+    public Usuario_TO(int idUsuario, String nombre, String CC, String pasaporte, String telefono) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
+        this.pasaporte = pasaporte;
         this.telefono = telefono;
     }
 
-    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token) {
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String password, String remember_token) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
@@ -279,7 +271,6 @@ public class Usuario_TO {
         this.razonSocial = razonSocial;
         this.nit = nit;
         this.idCiudad = idCiudad;
-        this.login = login;
         this.password = password;
         this.remember_token = remember_token;
     }
@@ -287,7 +278,7 @@ public class Usuario_TO {
     
 
     //Editar Empleados Conductores
-    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta, int idUsuario) {
+    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta, int idUsuario) {
         this.nombre = nombre;
         this.CC = CC;
         this.telefono = telefono;
@@ -295,7 +286,6 @@ public class Usuario_TO {
         this.razonSocial = razonSocial;
         this.nit = nit;
         this.nombreCiudad = nombreCiudad;
-        this.login = login;
         this.password = password;
         this.remember_token = remember_token;
         this.estadoUsuario = estadoUsuario;
@@ -310,7 +300,7 @@ public class Usuario_TO {
     }
 
     //consultarProveedores
-    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol) {
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
@@ -319,7 +309,6 @@ public class Usuario_TO {
         this.razonSocial = razonSocial;
         this.nit = nit;
         this.nombreCiudad = nombreCiudad;
-        this.login = login;
         this.password = password;
         this.remember_token = remember_token;
         this.estadoUsuario = estadoUsuario;
@@ -336,6 +325,11 @@ public class Usuario_TO {
     public Usuario_TO(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+    
+    public Usuario_TO(int idUsuario, int idNacionalidad){
+        this.idUsuario = idUsuario;
+        this.idNacionalidad = idNacionalidad;
     }
     
     
@@ -422,13 +416,6 @@ public class Usuario_TO {
         this.nombreCiudad = nombreCiudad;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public String getPassword() {
         return password;
@@ -528,7 +515,7 @@ public class Usuario_TO {
 
     @Override
     public String toString() {
-        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", login=" + login + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
+        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
     }
 
    

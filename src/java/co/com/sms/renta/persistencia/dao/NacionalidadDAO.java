@@ -16,4 +16,5 @@ public interface NacionalidadDAO {
     
     public List<Nacionalidad_TO> consultarNacionalidades()throws Exception;
     
+    
 }

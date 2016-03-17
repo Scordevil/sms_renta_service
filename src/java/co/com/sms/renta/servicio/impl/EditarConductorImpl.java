@@ -6,7 +6,6 @@
 package co.com.sms.renta.servicio.impl;
 
 import co.com.sms.renta.modelo.dto.Usuario_TO;
-import co.com.sms.renta.persistencia.dao.UsuarioDAO;
 import co.com.sms.renta.persistencia.dao.impl.UsuarioDAOImpl;
 import co.com.sms.renta.servicio.EditarConductor;
 import javax.ejb.Stateless;
@@ -45,10 +44,12 @@ public class EditarConductorImpl implements EditarConductor{
             @QueryParam("idUsuario") int idUsuario) throws Exception {
         
         
-       Usuario_TO conductores = new Usuario_TO(nombre, cc, telefono, email, 
-               razonSocial, nit, nombre, login, password, remember_token, 
-               estadoUsuario, foto_nombre, foto_ruta, nombre, hojaVida, 
-               hojaVida_ruta, idUsuario);
+//       Usuario_TO conductores = new Usuario_TO(nombre, cc, telefono, email, 
+//               razonSocial, nit, nombre, login, password, remember_token, 
+//               estadoUsuario, foto_nombre, foto_ruta, nombre, hojaVida, 
+//               hojaVida_ruta, idUsuario);
+       
+       Usuario_TO conductores = new Usuario_TO();
         
         UsuarioDAOImpl user = new UsuarioDAOImpl();
         

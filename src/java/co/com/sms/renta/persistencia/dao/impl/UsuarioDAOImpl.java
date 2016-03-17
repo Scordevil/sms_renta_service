@@ -7,6 +7,7 @@ package co.com.sms.renta.persistencia.dao.impl;
 
 import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.config.Config;
+import co.com.sms.renta.modelo.dto.Nacionalidad_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.UsuarioDAO;
 import java.sql.ResultSet;
@@ -65,11 +66,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
 
-            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
-                    rs.getString(15), rs.getString(16), rs.getString(17)));
-
+//            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+//                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+//                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
+//                    rs.getString(15), rs.getString(16), rs.getString(17)));
         }
 
         return usuarios;
@@ -116,11 +116,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
 
-            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
-                    rs.getString(15)));
-
+//            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+//                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+//                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
+//                    rs.getString(15)));
         }
 
         return usuarios;
@@ -152,14 +151,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     private Usuario_TO consultaDeCliente(Usuario_TO cliente) throws SQLException {
 
         // // //Seleccionar todos los registros
-        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_email,  "
+        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_CC, u.Usuario_telefono, u.Usuario_email,  "
                 + " u.idCiudad, u.Usuario_pasaporte, u.Usuario_password, "
-                + "u.Usuario_remember_token,u.idNacionalidad, u.Usuario_EstadoUsuario,  "
-                + "u.idRol  "
+                + "u.Usuario_remember_token, u.Usuario_EstadoUsuario, u.idRol , u.idNacionalidad  "
                 + "from sms_usuario as u  "
                 + "where "
-                + "u.`idUsuario` = '" + cliente.getIdUsuario()+ "';";
-
+                + "u.`idUsuario` = '" + cliente.getIdUsuario() + "';";
+        
+        
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
 
@@ -167,7 +166,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         while (rs.next()) {
 
-             usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
+            usuario = new Usuario_TO(rs.getInt(1), rs.getString(2),  rs.getString(3),  rs.getString(4),  rs.getString(5),  rs.getInt(6),  rs.getString(7),  rs.getString(8),  rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getInt(12));
 
         }
 
@@ -215,11 +214,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
 
-            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
-                    rs.getString(15)));
-
+//            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+//                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+//                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
+//                    rs.getString(15)));
         }
 
         return usuarios;
@@ -265,11 +263,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
 
-            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
-                    rs.getString(15)));
-
+//            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+//                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+//                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
+//                    rs.getString(15)));
         }
 
         return usuarios;
@@ -302,6 +299,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         Config md5 = new Config();
         Usuario_TO user = new Usuario_TO();
+        int registro = 0;
 
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
 
@@ -320,36 +318,48 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         while (rs.next()) {
             user = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
 
+            registro = registro + 1;
         }
 
         System.out.print(user + "------------------------------");
 
-        if (!user.getEmail().equals("")) {//valida si el usuario existe en la BD
+        if (registro > 0) {
 
-            if (user.getEstadoUsuario() == 1) {//Evalua el estado de la cuenta de usuario, si esta activa o inactiva
-                if (!user.getPassword().equalsIgnoreCase("") && !user.getEmail().equalsIgnoreCase("")) {
+            if (!user.getEmail().equals("")) {//valida si el usuario existe en la BD
+
+                if (user.getEstadoUsuario() == 1) {//Evalua el estado de la cuenta de usuario, si esta activa o inactiva
+                    if (!user.getPassword().equalsIgnoreCase("") && !user.getEmail().equalsIgnoreCase("")) {
+//              
+                        if (user.getEmail().equalsIgnoreCase(usuario.getEmail()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
 //
-                    if (user.getEmail().equalsIgnoreCase(usuario.getEmail()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
+                            user.setMensaje("Usuario correcto");
+                        } else {
+                            user = new Usuario_TO();
+                            user.setMensaje("Usuario o password incorrecto");
+                        }
 //
-                        user.setMensaje("Usuario correcto");
                     } else {
+
                         user = new Usuario_TO();
-                        user.setMensaje("Usuario o password incorrecto");
+                        user.setMensaje("Usuario no existe");
                     }
-//
                 } else {
+                    System.out.println("inactivo");
                     user = new Usuario_TO();
-                    user.setMensaje("Usuario no existe");
+                    user.setMensaje("Usuario inactivo");
                 }
+
             } else {
+
                 user = new Usuario_TO();
-                user.setMensaje("Usuario inactivo");
+                user.setMensaje("Usuario no existe");
             }
 
-        } else {
-            user = new Usuario_TO();
-            user.setMensaje("Usuario no existe");
-        }
+        }else {
+
+                user = new Usuario_TO();
+                user.setMensaje("Usuario no existe");
+            }
         return user;
 
     }
@@ -442,11 +452,13 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     private Usuario_TO editarDatosClientes(Usuario_TO usuario) throws SQLException {
 
         Usuario_TO user = new Usuario_TO();
+        
+        System.out.print("Gustavo----"+usuario.toString());
 
         try {
 //
             String sql = "UPDATE `sms_usuario`  "
-                    + "SET `Usuario_nombre`='" + usuario.getNombre() + "',`Usuario_CC`='" + usuario.getCC() + "' , `Usuario_telefono`= '" + usuario.getTelefono() + "' , "
+                    + "SET `Usuario_nombre`='" + usuario.getNombre() + "',`Usuario_CC`='" + usuario.getCC() + "' ,`Usuario_pasaporte`='" + usuario.getPasaporte() + "' , `Usuario_telefono`= '" + usuario.getTelefono() + "'  "
                     + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
 
             st.executeUpdate(sql.toString());
@@ -463,6 +475,50 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         return user;
 
+    }
+    
+        /**
+     *
+     *
+     * @return @throws Exception
+     */
+    @Override
+    public Usuario_TO editarNacionalidadCliente(Usuario_TO usuario) throws Exception {
+
+        Statement st = ConexionSQL.conexion();
+        Usuario_TO user = new Usuario_TO();
+
+        try {
+
+            user = editarLaNacionalidad(usuario);
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return user;
+    }
+    
+        private Usuario_TO editarLaNacionalidad(Usuario_TO usuario) throws SQLException {
+
+        try {
+//
+            String sql = "UPDATE `sms_usuario`  "
+                    + "SET `idNacionalidad`='" + usuario.getIdNacionalidad()+ "'  "
+                    + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
+
+            st.execute(sql);
+
+            // LLAMA AL MÉTODO
+            usuario.setMensaje("Usuario editado correctamente");
+
+        } catch (Exception e) {
+            usuario = new Usuario_TO();
+            usuario.setMensaje("Usuario no editado");
+            throw e;
+
+        }
+
+        return usuario;
     }
 
     /**
@@ -500,7 +556,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     + "     inner join `sms_hojavida` on sms_hojavida.idHojaVida = sms_empleado.empleado_hojaVida "
                     + " SET `Usuario_nombre`= '" + usuario.getNombre() + "' , "
                     + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
-                    + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_login`='" + usuario.getLogin() + "' ,`Usuario_password`='" + usuario.getPassword() + "', "
+                    + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_password`='" + usuario.getPassword() + "', "
                     + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
                     + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' , "
                     + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "'  "

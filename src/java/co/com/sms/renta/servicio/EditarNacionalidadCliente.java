@@ -9,13 +9,11 @@ import co.com.sms.renta.modelo.dto.Usuario_TO;
 
 /**
  *
- * @author SISTEMAS
+ * @author VaioDevelopment
  */
-public interface EditarCliente {
+public interface EditarNacionalidadCliente {
     
-    public Usuario_TO editarCliente (String nombre, String cc, String Pasaporte, String telefono,
-             int idUsuario) throws Exception;
-    
-
+            public Usuario_TO editarNacionalidadCliente (
+             int idUsuario,int idNacionalidad) throws Exception;
     
 }
