@@ -13,6 +13,6 @@ import co.com.sms.renta.modelo.dto.Usuario_TO;
  */
 public interface RegistrarCliente {
 
-    public Usuario_TO registrarClientes(String nombre, String email, int idCiudad, String login, String password, String remember_token, int estadoUsuario, int rol) throws Exception;
+    public Usuario_TO registrarClientes(String nombre, String email, int idCiudad,String usuario_pasaporte, String password, String remember_token,int idNacionalidad, int estadoUsuario, int rol) throws Exception;
 
 }

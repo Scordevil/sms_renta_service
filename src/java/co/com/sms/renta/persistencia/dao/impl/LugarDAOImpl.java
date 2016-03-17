@@ -25,6 +25,7 @@ public class LugarDAOImpl implements LugarDAO {
 
     /**
      *
+     * @param ciudad
      * @return @throws Exception
      */
     @Override

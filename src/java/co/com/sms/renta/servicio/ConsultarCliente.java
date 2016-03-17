@@ -12,6 +12,6 @@ import co.com.sms.renta.modelo.dto.Usuario_TO;
  * @author SISTEMAS
  */
 public interface ConsultarCliente {
-        public Usuario_TO consultarCliente( String login) throws Exception;
+        public Usuario_TO consultarCliente( int idUsuario) throws Exception;
 
 }

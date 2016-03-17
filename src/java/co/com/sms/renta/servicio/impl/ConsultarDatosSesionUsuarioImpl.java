@@ -26,12 +26,12 @@ public class ConsultarDatosSesionUsuarioImpl implements ConsultarDatosSesionUsua
     @Produces({"application/json"})
 
     @Override
-    public Usuario_TO consultarDatosSesionUsuario(@QueryParam("login") String login, @QueryParam("password") String password ) throws Exception {
+    public Usuario_TO consultarDatosSesionUsuario(@QueryParam("email") String email, @QueryParam("password") String password ) throws Exception {
         
         Usuario_TO usuarioSesion = new Usuario_TO(); 
         UsuarioDAOImpl user = new UsuarioDAOImpl();
         
-        Usuario_TO usuario = new Usuario_TO(login, password);
+        Usuario_TO usuario = new Usuario_TO(email, password);
 
         usuarioSesion = user.consultarDatosSesionUsuario(usuario);
 

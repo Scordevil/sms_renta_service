@@ -7,6 +7,7 @@ package co.com.sms.renta.servicio.impl;
 
 import co.com.sms.renta.modelo.dto.Ciudad_TO;
 import co.com.sms.renta.persistencia.dao.impl.CiudadDAOImpl;
+import co.com.sms.renta.servicio.ConsultarCiudades;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,11 +21,12 @@ import javax.ws.rs.Produces;
  */
 @Stateless
 @Path("/consultarCiudades")
-public class ConsultarCiudadesImpl {
+public class ConsultarCiudadesImpl implements ConsultarCiudades{
     
     
     @GET
     @Produces({"application/json"})
+    @Override
     public List<Ciudad_TO> consultarCiudades()throws Exception{
         
          List<Ciudad_TO> ciudades = new ArrayList<Ciudad_TO>();

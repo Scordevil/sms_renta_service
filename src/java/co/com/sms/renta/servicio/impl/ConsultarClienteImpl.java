@@ -23,10 +23,10 @@ public class ConsultarClienteImpl {
     
     @GET
     @Produces({"application/json"})
-    public Usuario_TO consultarCliente( @QueryParam("login") String login) throws Exception {
+    public Usuario_TO consultarCliente( @QueryParam("idUsuario") int idUsuario) throws Exception {
         
         Usuario_TO usuarioN = new Usuario_TO();
-        Usuario_TO cliente = new Usuario_TO(login,0);
+        Usuario_TO cliente = new Usuario_TO(idUsuario);
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
         
         usuarioN = usuario.consultarCliente(cliente);

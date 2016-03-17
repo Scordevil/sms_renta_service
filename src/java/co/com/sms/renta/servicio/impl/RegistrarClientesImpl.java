@@ -28,15 +28,16 @@ public class RegistrarClientesImpl implements RegistrarCliente {
     public Usuario_TO registrarClientes(@QueryParam("nombre") String nombre,
             @QueryParam("email") String email,
             @QueryParam("ciudad") int idCiudad,
-            @QueryParam("login") String login,
+            @QueryParam("pasaporte") String pasaporte,
             @QueryParam("password") String password,
             @QueryParam("remember_token") String remember_token,
+            @QueryParam("idNacionalidad") int idNacionalidad,
             @QueryParam("estadoUsuario") int estadoUsuario,
             @QueryParam("rol") int rol) throws Exception {
 
         // instancia del Cliente con onstructor especifico para ingresar datos del cliente
-        Usuario_TO cliente = new Usuario_TO(nombre, email,idCiudad,
-                 login, password, remember_token, estadoUsuario, rol);
+        Usuario_TO cliente = new Usuario_TO(nombre, email,idCiudad,pasaporte,
+                 password, remember_token,idNacionalidad, estadoUsuario, rol);
 
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
 

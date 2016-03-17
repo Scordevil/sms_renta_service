@@ -19,7 +19,7 @@ import javax.ws.rs.QueryParam;
  * @author SISTEMAS
  */
 @Stateless
-@Path("/editarClientes")
+@Path("/editarDatosClientes")
 public class EditarClienteImpl implements EditarCliente{
 
     @GET
@@ -28,22 +28,14 @@ public class EditarClienteImpl implements EditarCliente{
     public Usuario_TO editarCliente(@QueryParam("nombre") String nombre,
             @QueryParam("cc") String cc,
             @QueryParam("telefono") String telefono,
-            @QueryParam("email") String email,
-            @QueryParam("razonSocial") String razonSocial,
-            @QueryParam("nit") String nit,
-            @QueryParam("idCiudad") int idCiudad,
-            @QueryParam("login") String login,
-            @QueryParam("password") String password,
-            @QueryParam("remember_token") String remember_token,
             @QueryParam("idUsuario") int idUsuario) throws Exception {
         
-        Usuario_TO cliente = new Usuario_TO(nombre, cc, telefono, email,
-                razonSocial, nit, idCiudad, login, password, remember_token, idUsuario);
+        Usuario_TO cliente = new Usuario_TO(idUsuario,nombre, cc, telefono);
 
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
         Usuario_TO user = new Usuario_TO();
         
-        user = usuario.editarPerfilCliente(cliente);
+        user = usuario.editarDatosCliente(cliente);
 
         return user;
     }

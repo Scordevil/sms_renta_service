@@ -5,15 +5,16 @@
  */
 package co.com.sms.renta.servicio;
 
-import co.com.sms.renta.modelo.dto.Usuario_TO;
+import co.com.sms.renta.modelo.dto.Nacionalidad_TO;
+import java.util.List;
 
 /**
  *
- * @author SISTEMAS
+ * @author VaioDevelopment
  */
-public interface EditarCliente {
+public interface ConsultarNacionalidades {
     
-    public Usuario_TO editarCliente (String nombre, String cc, String telefono,
-             int idUsuario) throws Exception;
+     public List<Nacionalidad_TO> consultarNacionalidades()throws Exception;
+    
     
 }

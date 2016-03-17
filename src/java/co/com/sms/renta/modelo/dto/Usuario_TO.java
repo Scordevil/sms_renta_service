@@ -61,6 +61,13 @@ public class Usuario_TO {
      * Columna Usuario_ciudad
      */
     private int idCiudad;
+    
+        /**
+     *
+     * Columna Usuario_Pasaporte
+     */
+    private String pasaporte;
+    
 
     /**
      *
@@ -119,6 +126,12 @@ public class Usuario_TO {
      * Columna id_rol
      */
     private String nombreRol;
+    
+     /**
+     *
+     * Columna idNacionalidad
+     */
+    private int idNacionalidad;
 
     /**
      *
@@ -173,24 +186,40 @@ public class Usuario_TO {
         this.rol = rol;
     }
 
-    public Usuario_TO(String nombre, String email, int idCiudad, String login, String password, String remember_token, int estadoUsuario, int rol) {
+    public Usuario_TO(String nombre, String email, int idCiudad, String password, String remember_token, int estadoUsuario, int rol) {
         this.nombre = nombre;
         this.email = email;
         this.idCiudad = idCiudad;
-        this.login = login;
         this.password = password;
         this.remember_token = remember_token;
         this.estadoUsuario = estadoUsuario;
         this.rol = rol;
     }
+    
+      public Usuario_TO(int idUsuario,String nombre, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad,int estadoUsuario, int rol) {
+          this.idUsuario = idUsuario;
+          this.nombre = nombre;
+        this.email = email;
+        this.idCiudad = idCiudad;
+        this.pasaporte = pasaporte;
+        this.idNacionalidad = idNacionalidad;
+        this.password = password;
+        this.remember_token = remember_token;
+        this.estadoUsuario = estadoUsuario;
+        this.rol = rol;
 
-    public Usuario_TO(String nombre, String email, int idCiudad, String login, String password, String remember_token) {
+    }
+
+    public Usuario_TO(String nombre, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad,int estadoUsuario, int rol) {
         this.nombre = nombre;
         this.email = email;
         this.idCiudad = idCiudad;
-        this.login = login;
+        this.pasaporte = pasaporte;
+        this.idNacionalidad = idNacionalidad;
         this.password = password;
         this.remember_token = remember_token;
+        this.estadoUsuario = estadoUsuario;
+        this.rol = rol;
 
     }
 
@@ -234,7 +263,15 @@ public class Usuario_TO {
     }
 
     //Editar Clientes 
-    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token, int idUsuario) {
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.CC = CC;
+        this.telefono = telefono;
+    }
+
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login, String password, String remember_token) {
+        this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
         this.telefono = telefono;
@@ -245,11 +282,9 @@ public class Usuario_TO {
         this.login = login;
         this.password = password;
         this.remember_token = remember_token;
-
-//     para diferenciar el contructor de registro de cliente con el de Edicion
-//     de perfil del Cliente se agrega el ID del usuario al final del constructor
-        this.idUsuario = idUsuario;
     }
+    
+    
 
     //Editar Empleados Conductores
     public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String login, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta, int idUsuario) {
@@ -294,34 +329,19 @@ public class Usuario_TO {
 
     }
 
-    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, int idCiudad, String login,String password, String remember_token) {
+    public Usuario_TO(int idUsuario) {
         this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.CC = CC;
-        this.telefono = telefono;
+    }
+
+    public Usuario_TO(String email, String password) {
         this.email = email;
-        this.razonSocial = razonSocial;
-        this.nit = nit;
-        this.idCiudad = idCiudad;
-        this.login = login;
-        this.password = password;
-        this.remember_token = remember_token;
-    }
-
-    public Usuario_TO(String login, int val) {
-        this.login = login;
-    }
-
-    public Usuario_TO(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
-    public Usuario_TO(String login, String password) {
-        this.login = login;
         this.password = password;
     }
+    
+    
+    
+    
 
-//    @XmlAttribute(name = "idUsuario")
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -384,6 +404,14 @@ public class Usuario_TO {
 
     public void setIdCiudad(int idCiudad) {
         this.idCiudad = idCiudad;
+    }
+
+    public String getPasaporte() {
+        return pasaporte;
+    }
+
+    public void setPasaporte(String pasaporte) {
+        this.pasaporte = pasaporte;
     }
 
     public String getNombreCiudad() {
@@ -458,6 +486,14 @@ public class Usuario_TO {
         this.nombreRol = nombreRol;
     }
 
+    public int getIdNacionalidad() {
+        return idNacionalidad;
+    }
+
+    public void setIdNacionalidad(int idNacionalidad) {
+        this.idNacionalidad = idNacionalidad;
+    }
+
     public String getHojaVida() {
         return hojaVida;
     }
@@ -491,110 +527,10 @@ public class Usuario_TO {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + this.idUsuario;
-        hash = 23 * hash + Objects.hashCode(this.nombre);
-        hash = 23 * hash + Objects.hashCode(this.CC);
-        hash = 23 * hash + Objects.hashCode(this.telefono);
-        hash = 23 * hash + Objects.hashCode(this.email);
-        hash = 23 * hash + Objects.hashCode(this.razonSocial);
-        hash = 23 * hash + Objects.hashCode(this.nit);
-        hash = 23 * hash + this.idCiudad;
-        hash = 23 * hash + Objects.hashCode(this.nombreCiudad);
-        hash = 23 * hash + Objects.hashCode(this.login);
-        hash = 23 * hash + Objects.hashCode(this.password);
-        hash = 23 * hash + Objects.hashCode(this.remember_token);
-        hash = 23 * hash + this.estadoUsuario;
-        hash = 23 * hash + Objects.hashCode(this.foto_nombre);
-        hash = 23 * hash + Objects.hashCode(this.foto_ruta);
-        hash = 23 * hash + this.rol;
-        hash = 23 * hash + Objects.hashCode(this.nombreRol);
-        hash = 23 * hash + Objects.hashCode(this.hojaVida);
-        hash = 23 * hash + this.idHojaVida;
-        hash = 23 * hash + Objects.hashCode(this.hojaVidaRuta);
-        hash = 23 * hash + Objects.hashCode(this.mensaje);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario_TO other = (Usuario_TO) obj;
-        if (this.idUsuario != other.idUsuario) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.CC, other.CC)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefono, other.telefono)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.razonSocial, other.razonSocial)) {
-            return false;
-        }
-        if (!Objects.equals(this.nit, other.nit)) {
-            return false;
-        }
-        if (this.idCiudad != other.idCiudad) {
-            return false;
-        }
-        if (!Objects.equals(this.nombreCiudad, other.nombreCiudad)) {
-            return false;
-        }
-        if (!Objects.equals(this.login, other.login)) {
-            return false;
-        }
-        if (!Objects.equals(this.password, other.password)) {
-            return false;
-        }
-        if (!Objects.equals(this.remember_token, other.remember_token)) {
-            return false;
-        }
-        if (this.estadoUsuario != other.estadoUsuario) {
-            return false;
-        }
-        if (!Objects.equals(this.foto_nombre, other.foto_nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.foto_ruta, other.foto_ruta)) {
-            return false;
-        }
-        if (this.rol != other.rol) {
-            return false;
-        }
-        if (!Objects.equals(this.nombreRol, other.nombreRol)) {
-            return false;
-        }
-        if (!Objects.equals(this.hojaVida, other.hojaVida)) {
-            return false;
-        }
-        if (this.idHojaVida != other.idHojaVida) {
-            return false;
-        }
-        if (!Objects.equals(this.hojaVidaRuta, other.hojaVidaRuta)) {
-            return false;
-        }
-        if (!Objects.equals(this.mensaje, other.mensaje)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", nombreCiudad=" + nombreCiudad + ", login=" + login + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
+        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", login=" + login + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
     }
+
+   
 
 }

@@ -15,5 +15,5 @@ import co.com.sms.renta.modelo.dto.Usuario_TO;
  */
 public interface ConsultarDatosSesionUsuario {
     
-     public Usuario_TO consultarDatosSesionUsuario(String login, String password) throws Exception;
+     public Usuario_TO consultarDatosSesionUsuario(String email, String password) throws Exception;
 }

@@ -125,8 +125,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         return usuarios;
     }
-    
-        /**
+
+    /**
      *
      * @return @throws Exception
      */
@@ -152,30 +152,28 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     private Usuario_TO consultaDeCliente(Usuario_TO cliente) throws SQLException {
 
         // // //Seleccionar todos los registros
-        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_CC, u.Usuario_telefono, u.Usuario_email, "
-                + "u.Usuario_razonSocial, u.Usuario_nit,u.idCiudad, u.Usuario_login, u.Usuario_password, "
-                + "u.Usuario_remember_token "
-                + "from sms_usuario as u , sms_ciudad as c, sms_rol as r "
-                + "where r.idRol = u.idRol and "
-                + "u.idCiudad = c.idCiudad and "
-                + "u.Usuario_login = '"+ cliente.getLogin() +"'"
-                + " and r.Rol_nombre = 'Cliente'; " ;
+        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_email,  "
+                + " u.idCiudad, u.Usuario_pasaporte, u.Usuario_password, "
+                + "u.Usuario_remember_token,u.idNacionalidad, u.Usuario_EstadoUsuario,  "
+                + "u.idRol  "
+                + "from sms_usuario as u  "
+                + "where "
+                + "u.`idUsuario` = '" + cliente.getIdUsuario()+ "';";
 
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
 
         Usuario_TO usuario = new Usuario_TO();
-        
+
         while (rs.next()) {
-            
-            
-           usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getInt(8), rs.getString(9),rs.getString(10),rs.getString(11));
+
+             usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
 
         }
 
         return usuario;
     }
-    
+
     /**
      *
      * @return @throws Exception
@@ -308,32 +306,30 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
 
         // // //Seleccionar todos los registros
-        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_CC,u.Usuario_telefono, u.Usuario_email, "
-                + " u.Usuario_razonSocial,u.Usuario_nit,c.Ciudad_nombre,u.Usuario_login,u.Usuario_password, "
-                + "u.Usuario_remember_token,u.Usuario_EstadoUsuario,u.Usuario_foto_nombre,u.Usuario_foto_ruta, "
-                + "r.Rol_nombre  "
-                + "from sms_usuario as u , sms_rol as r, sms_ciudad as c "
-                + "where u.idRol = r.idRol and "
-                + "u.idCiudad = c.idCiudad and "
-                + "u.`Usuario_login` = '"+ usuario.getLogin() +"';";
+        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_email,  "
+                + " u.idCiudad, u.Usuario_pasaporte, u.Usuario_password, "
+                + "u.Usuario_remember_token,u.idNacionalidad, u.Usuario_EstadoUsuario,  "
+                + "u.idRol  "
+                + "from sms_usuario as u  "
+                + "where "
+                + "u.`Usuario_email` = '" + usuario.getEmail() + "';";
 
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
 
         while (rs.next()) {
-            user = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
-                    rs.getString(15));
+            user = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
 
         }
 
-        if (!user.getLogin().equals("")) {//valida si el usuario existe en la BD
+        System.out.print(user + "------------------------------");
+
+        if (!user.getEmail().equals("")) {//valida si el usuario existe en la BD
 
             if (user.getEstadoUsuario() == 1) {//Evalua el estado de la cuenta de usuario, si esta activa o inactiva
-                if (!user.getPassword().equalsIgnoreCase("") && !user.getLogin().equalsIgnoreCase("")) {
+                if (!user.getPassword().equalsIgnoreCase("") && !user.getEmail().equalsIgnoreCase("")) {
 //
-                    if (user.getLogin().equalsIgnoreCase(usuario.getLogin()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
+                    if (user.getEmail().equalsIgnoreCase(usuario.getEmail()) && user.getPassword().equalsIgnoreCase(usuario.getPassword())) {
 //
                         user.setMensaje("Usuario correcto");
                     } else {
@@ -388,23 +384,23 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throws SQLException {
 
         Usuario_TO user = new Usuario_TO();
-        
+
         Config md5 = new Config();
-        
+
         usuario.setRemember_token(md5.getMD5(usuario.getRemember_token()));
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
-        
-        
 
         try {
 //
-            String sql = "INSERT INTO `sms_usuario` (`Usuario_nombre`, `Usuario_email`, `idCiudad`,`Usuario_login`, `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `idRol`) VALUES ( '"
+            String sql = "INSERT INTO `sms_usuario` (`Usuario_nombre`, `Usuario_email`, `idCiudad`,`Usuario_pasaporte`,  `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `idRol`,`idNacionalidad`) VALUES ( '"
                     + usuario.getNombre() + "', '"
-                    + usuario.getEmail() + "', '" 
-                    + usuario.getIdCiudad() + "', '" 
-                    + usuario.getLogin() + "', '" + usuario.getPassword()
-                    + "', '" + usuario.getRemember_token() + "','"+ 1 +"','"+ 3 +"');";
-                   
+                    + usuario.getEmail() + "', "
+                    + usuario.getIdCiudad() + ", '"
+                    + usuario.getPasaporte() + "', '"
+                    + usuario.getPassword() + "',' "
+                    + usuario.getRemember_token() + "'," + 1 + "," + 3 + ",  "
+                    + usuario.getIdNacionalidad() + ");";
+
             st.execute(sql);
 
             // LLAMA AL MÉTODO
@@ -426,14 +422,14 @@ public class UsuarioDAOImpl implements UsuarioDAO {
      * @return @throws Exception
      */
     @Override
-    public Usuario_TO editarPerfilCliente(Usuario_TO usuario) throws Exception {
+    public Usuario_TO editarDatosCliente(Usuario_TO usuario) throws Exception {
 
         Statement st = ConexionSQL.conexion();
         Usuario_TO user = new Usuario_TO();
 
         try {
 
-            user = editarTodosClientes(usuario);
+            user = editarDatosClientes(usuario);
 
         } catch (Exception e) {
 
@@ -443,21 +439,16 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return user;
     }
 
-    private Usuario_TO editarTodosClientes(Usuario_TO usuario) throws SQLException {
+    private Usuario_TO editarDatosClientes(Usuario_TO usuario) throws SQLException {
 
         Usuario_TO user = new Usuario_TO();
 
         try {
 //
             String sql = "UPDATE `sms_usuario`  "
-                    + "  inner join `sms_ciudad`  on sms_usuario.idCiudad = sms_ciudad.idCiudad  "
-                    + "  inner join `sms_rol` on sms_usuario.idRol = sms_rol.idRol  "              
                     + "SET `Usuario_nombre`='" + usuario.getNombre() + "',`Usuario_CC`='" + usuario.getCC() + "' , `Usuario_telefono`= '" + usuario.getTelefono() + "' , "
-                    + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
-                    + " `sms_usuario`.`idCiudad`= " + usuario.getIdCiudad() + " ,`Usuario_login`='" + usuario.getLogin() + "' ,`Usuario_password`='" + usuario.getPassword() + "', "
-                    + " `Usuario_remember_token`='" + usuario.getRemember_token() + "'"
                     + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
-            
+
             st.executeUpdate(sql.toString());
 
             // LLAMA AL MÉTODO
@@ -507,7 +498,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     + "     inner join `sms_ciudad`  on sms_usuario.Usuario_ciudad = sms_ciudad.idCiudad  "
                     + "     inner join `sms_empleado` on sms_usuario.idUsuario = sms_empleado.empleado_idUsuario "
                     + "     inner join `sms_hojavida` on sms_hojavida.idHojaVida = sms_empleado.empleado_hojaVida "
-                    + " SET `Usuario_nombre`= '"+ usuario.getNombre() +"' , "
+                    + " SET `Usuario_nombre`= '" + usuario.getNombre() + "' , "
                     + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
                     + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_login`='" + usuario.getLogin() + "' ,`Usuario_password`='" + usuario.getPassword() + "', "
                     + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
