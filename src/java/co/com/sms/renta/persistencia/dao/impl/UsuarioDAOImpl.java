@@ -7,7 +7,6 @@ package co.com.sms.renta.persistencia.dao.impl;
 
 import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.config.Config;
-import co.com.sms.renta.modelo.dto.Nacionalidad_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.UsuarioDAO;
 import java.sql.ResultSet;
@@ -157,8 +156,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "from sms_usuario as u  "
                 + "where "
                 + "u.`idUsuario` = '" + cliente.getIdUsuario() + "';";
-        
-        
+
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
 
@@ -166,7 +164,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         while (rs.next()) {
 
-            usuario = new Usuario_TO(rs.getInt(1), rs.getString(2),  rs.getString(3),  rs.getString(4),  rs.getString(5),  rs.getInt(6),  rs.getString(7),  rs.getString(8),  rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getInt(12));
+            usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getInt(12));
 
         }
 
@@ -355,11 +353,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 user.setMensaje("Usuario no existe");
             }
 
-        }else {
+        } else {
 
-                user = new Usuario_TO();
-                user.setMensaje("Usuario no existe");
-            }
+            user = new Usuario_TO();
+            user.setMensaje("Usuario no existe");
+        }
         return user;
 
     }
@@ -452,8 +450,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     private Usuario_TO editarDatosClientes(Usuario_TO usuario) throws SQLException {
 
         Usuario_TO user = new Usuario_TO();
-        
-        System.out.print("Gustavo----"+usuario.toString());
+
+        System.out.print("Gustavo----" + usuario.toString());
 
         try {
 //
@@ -476,8 +474,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return user;
 
     }
-    
-        /**
+
+    /**
      *
      *
      * @return @throws Exception
@@ -497,13 +495,58 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         return user;
     }
-    
-        private Usuario_TO editarLaNacionalidad(Usuario_TO usuario) throws SQLException {
+
+    private Usuario_TO editarLaNacionalidad(Usuario_TO usuario) throws SQLException {
 
         try {
 //
             String sql = "UPDATE `sms_usuario`  "
-                    + "SET `idNacionalidad`='" + usuario.getIdNacionalidad()+ "'  "
+                    + "SET `idNacionalidad`='" + usuario.getIdNacionalidad() + "'  "
+                    + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
+
+            st.execute(sql);
+
+            // LLAMA AL MÉTODO
+            usuario.setMensaje("Usuario editado correctamente");
+
+        } catch (Exception e) {
+            usuario = new Usuario_TO();
+            usuario.setMensaje("Usuario no editado");
+            throw e;
+
+        }
+
+        return usuario;
+    }
+
+    /**
+     *
+     *
+     * @return @throws Exception
+     */
+    @Override
+    public Usuario_TO editarLocalidadCliente(Usuario_TO usuario) throws Exception {
+
+        Statement st = ConexionSQL.conexion();
+        Usuario_TO user = new Usuario_TO();
+
+        try {
+
+            user = editarLaLocalidad(usuario);
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return user;
+    }
+
+    private Usuario_TO editarLaLocalidad(Usuario_TO usuario) throws SQLException {
+
+        try {
+//
+
+            String sql = "UPDATE `sms_usuario`  "
+                    + "SET `idCiudad`='" + usuario.getIdCiudad() + "'  "
                     + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
 
             st.execute(sql);

@@ -7,7 +7,7 @@ package co.com.sms.renta.servicio.impl;
 
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.impl.UsuarioDAOImpl;
-import co.com.sms.renta.servicio.EditarCliente;
+import co.com.sms.renta.servicio.EditarLocalidadCliente;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,30 +19,24 @@ import javax.ws.rs.QueryParam;
  * @author SISTEMAS
  */
 @Stateless
-@Path("/editarDatosClientes")
-public class EditarClienteImpl implements EditarCliente{
-
+@Path("/editarLocalidadCliente")
+public class EditarLocalidadClienteImpl implements EditarLocalidadCliente {
+    
+    
     @GET
     @Produces({"application/json"})
-    
     @Override
-    public Usuario_TO editarCliente(@QueryParam("nombre") String nombre,
-            @QueryParam("cc") String cc,
-            @QueryParam("pasaporte") String pasaporte,
-            @QueryParam("telefono") String telefono,
-            @QueryParam("idUsuario") int idUsuario) throws Exception {
+    public Usuario_TO editarLocalidadCliente  (
+             @QueryParam("idUsuario") int idUsuario, @QueryParam("idCiudad") int idCiudad) throws Exception {
         
-        String prueba = pasaporte;
-        
-        Usuario_TO cliente = new Usuario_TO(idUsuario,nombre, cc, prueba, telefono);
+        Usuario_TO cliente = new Usuario_TO(idUsuario, idCiudad,"");
 
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
         Usuario_TO user = new Usuario_TO();
         
-        user = usuario.editarDatosCliente(cliente);
+        user = usuario.editarLocalidadCliente(cliente);
 
         return user;
     }
-         
     
 }

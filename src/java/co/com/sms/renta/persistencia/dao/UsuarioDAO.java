@@ -41,5 +41,7 @@ public interface UsuarioDAO {
     public Usuario_TO editarPerilConductor(Usuario_TO usuario ) throws Exception;
     
     public Usuario_TO editarNacionalidadCliente(Usuario_TO usuario)throws Exception;
+    
+    public Usuario_TO editarLocalidadCliente(Usuario_TO usuario)throws Exception;
 
 }

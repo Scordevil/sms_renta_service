@@ -332,6 +332,11 @@ public class Usuario_TO {
         this.idNacionalidad = idNacionalidad;
     }
     
+    public Usuario_TO(int idUsuario, int idCiudad, String val){
+        this.idUsuario = idUsuario;
+        this.idCiudad = idCiudad;
+    }
+    
     
     
     
