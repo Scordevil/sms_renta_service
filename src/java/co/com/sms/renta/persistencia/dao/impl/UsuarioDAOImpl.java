@@ -561,8 +561,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         return usuario;
     }
-    
-        /**
+
+    /**
      *
      * @return @throws Exception
      */
@@ -587,16 +587,16 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     private Usuario_TO editarPasswordClientes(Usuario_TO usuario) throws SQLException {
 
         Usuario_TO user = new Usuario_TO();
-        
+
         Config md5 = new Config();
 
         usuario.setRemember_token(md5.getMD5(usuario.getRemember_token()));
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
 
-           try {
+        try {
 //
             String sql = "UPDATE `sms_usuario`  "
-                    + "SET `Usuario_password`='" + usuario.getPassword()+ "',`Usuario_remember_token`='" + usuario.getRemember_token()+ "'  "
+                    + "SET `Usuario_password`='" + usuario.getPassword() + "',`Usuario_remember_token`='" + usuario.getRemember_token() + "'  "
                     + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
 
             st.executeUpdate(sql.toString());
@@ -653,7 +653,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_password`='" + usuario.getPassword() + "', "
                     + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
                     + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' , "
-                    + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "'  "
+                    + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "' , "
+                    + " `idEstado`= '" + usuario.getIdEstado() + "' , `idProveedor` = '" + usuario.getIdProveedor() + "'  "
                     + "  WHERE `idUsuario` = " + usuario.getIdUsuario() + " ;";
 
             st.executeUpdate(sql);
@@ -671,5 +672,42 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return user;
 
     }
+    
+    public Usuario_TO editarEstadoConductor(Usuario_TO usuario) throws Exception {
+
+        Usuario_TO user = new Usuario_TO();
+
+        try {
+            
+            String sql = "UPDATE `sms_usuario` "
+                    //                    + "     inner join `sms_rol` on sms_usuario.Usuario_Rol = sms_rol.idRol "
+                    //                    + "     inner join `sms_ciudad`  on sms_usuario.Usuario_ciudad = sms_ciudad.idCiudad  "
+                    //                    + "     inner join `sms_empleado` on sms_usuario.idUsuario = sms_empleado.empleado_idUsuario "
+                    //                    + "     inner join `sms_hojavida` on sms_hojavida.idHojaVida = sms_empleado.empleado_hojaVida "
+                    + " SET `idEstado`= '" + usuario.getIdEstado() + "' , "
+                    //                    + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
+                    //                    + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_password`='" + usuario.getPassword() + "', "
+                    //                    + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
+                    //                    + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' , "
+                    //                    + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "' , "
+                    //                    + " `idEstado`= '" + usuario.getIdEstado() + "' , `idProveedor` = '" + usuario.getIdProveedor() + "'  "
+                    + "  WHERE `idUsuario` = " + usuario.getIdUsuario() + " ;";
+
+            st.executeUpdate(sql);
+
+            // LLAMA AL MÉTODO
+            user.setMensaje("Usuario registrado correctamente");
+
+        } catch (Exception e) {
+
+            user = new Usuario_TO();
+            user.setMensaje("Usuario no registrado");
+            throw e;
+
+        }
+
+        return user;
+    } 
+    
 
 }

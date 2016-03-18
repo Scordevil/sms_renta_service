@@ -141,6 +141,22 @@ public class Usuario_TO {
      * Columna hojaVida
      */
     private int idHojaVida;
+    
+    /**
+     *
+     * Tabla Empleado
+     *
+     * Columna ESTADO
+     */
+    private int idEstado;
+    
+    /**
+     *
+     * Tabla PROVEEDOR
+     *
+     * Columna hojaVida
+     */
+    private int idProveedor;
 
     /**
      *
@@ -513,6 +529,23 @@ public class Usuario_TO {
         this.hojaVidaRuta = hojaVidaRuta;
     }
 
+    public int getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    public int getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+        
     public String getMensaje() {
         return mensaje;
     }
@@ -521,10 +554,16 @@ public class Usuario_TO {
         this.mensaje = mensaje;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
+//    }
+
     @Override
     public String toString() {
-        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
+        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", idEstado=" + idEstado + ", idProveedor=" + idProveedor + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
     }
+    
 
    
 

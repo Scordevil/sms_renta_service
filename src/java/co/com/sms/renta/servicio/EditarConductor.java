@@ -13,7 +13,7 @@ import co.com.sms.renta.modelo.dto.Usuario_TO;
  */
 public interface EditarConductor {
     
-    public Usuario_TO editarClinte (String nombre, String cc, String telefono,
+    public Usuario_TO editarConductor (String nombre, String cc, String telefono,
             String email, String razonSocial, String nit, int idCiudad, String login, 
             String password, String remember_token,int estadoUsuario , String foto_nombre, String foto_ruta, 
             int rol, String hojaVida, String hojaVida_ruta, int idUsuario) throws Exception;

@@ -25,7 +25,7 @@ public class EditarConductorImpl implements EditarConductor{
     @GET
     @Produces({"application/xml", "application/json"})
     
-    public Usuario_TO editarClinte(@QueryParam("nombre") String nombre,
+    public Usuario_TO editarConductor(@QueryParam("nombre") String nombre,
             @QueryParam("cc") String cc,
             @QueryParam("telefono") String telefono,
             @QueryParam("email") String email,

@@ -17,8 +17,6 @@ import java.util.List;
  */
 public interface UsuarioDAO {
 
-    public List<Usuario_TO> consultarEmpleados() throws Exception;
-
     public List<Usuario_TO> consultarProveedores() throws Exception;
 
     public List<Usuario_TO> consultarAdministradores() throws Exception;
@@ -31,19 +29,33 @@ public interface UsuarioDAO {
      *
      */
     public List<Usuario_TO> consultarClientes() throws Exception;
-    
-     public Usuario_TO consultarCliente(Usuario_TO cliente) throws Exception;
+
+    public Usuario_TO consultarCliente(Usuario_TO cliente) throws Exception;
 
     public Usuario_TO registrarClientes(Usuario_TO usuario) throws Exception;
-    
-    public Usuario_TO editarDatosCliente(Usuario_TO usuario ) throws Exception;
-    
-    public Usuario_TO editarPerilConductor(Usuario_TO usuario ) throws Exception;
-    
-    public Usuario_TO editarNacionalidadCliente(Usuario_TO usuario)throws Exception;
-    
-    public Usuario_TO editarLocalidadCliente(Usuario_TO usuario)throws Exception;
-    
-    public Usuario_TO editarPasswordCliente(Usuario_TO usuario)throws Exception;
 
+    public Usuario_TO editarDatosCliente(Usuario_TO usuario) throws Exception;
+
+    public Usuario_TO editarNacionalidadCliente(Usuario_TO usuario) throws Exception;
+
+    public Usuario_TO editarLocalidadCliente(Usuario_TO usuario) throws Exception;
+
+    public Usuario_TO editarPasswordCliente(Usuario_TO usuario) throws Exception;
+
+    /*
+     *
+     *Metodos del CRUD usuario CONDUCTOR
+     *
+     */
+    public Usuario_TO editarPerilConductor(Usuario_TO usuario) throws Exception;
+
+    public List<Usuario_TO> consultarEmpleados() throws Exception;
+
+    public Usuario_TO editarEstadoConductor(Usuario_TO usuario) throws Exception;
+
+    /*
+     *
+     *Metodos del CRUD usuario PROVEEDOR
+     *
+     */
 }
