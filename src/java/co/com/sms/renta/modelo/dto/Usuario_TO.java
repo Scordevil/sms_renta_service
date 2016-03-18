@@ -336,9 +336,12 @@ public class Usuario_TO {
         this.idUsuario = idUsuario;
         this.idCiudad = idCiudad;
     }
-    
-    
-    
+
+    public Usuario_TO(int idUsuario, String password, String remember_token) {
+        this.idUsuario = idUsuario;
+        this.password = password;
+        this.remember_token = remember_token;
+    }
     
 
     public int getIdUsuario() {

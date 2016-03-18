@@ -451,8 +451,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         Usuario_TO user = new Usuario_TO();
 
-        System.out.print("Gustavo----" + usuario.toString());
-
         try {
 //
             String sql = "UPDATE `sms_usuario`  "
@@ -562,6 +560,59 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
 
         return usuario;
+    }
+    
+        /**
+     *
+     * @return @throws Exception
+     */
+    @Override
+    public Usuario_TO editarPasswordCliente(Usuario_TO usuario) throws Exception {
+
+        Statement st = ConexionSQL.conexion();
+        Usuario_TO user = new Usuario_TO();
+
+        try {
+
+            user = editarPasswordClientes(usuario);
+
+        } catch (Exception e) {
+
+            throw e;
+
+        }
+        return user;
+    }
+
+    private Usuario_TO editarPasswordClientes(Usuario_TO usuario) throws SQLException {
+
+        Usuario_TO user = new Usuario_TO();
+        
+        Config md5 = new Config();
+
+        usuario.setRemember_token(md5.getMD5(usuario.getRemember_token()));
+        usuario.setPassword(md5.getMD5(usuario.getPassword()));
+
+           try {
+//
+            String sql = "UPDATE `sms_usuario`  "
+                    + "SET `Usuario_password`='" + usuario.getPassword()+ "',`Usuario_remember_token`='" + usuario.getRemember_token()+ "'  "
+                    + "  WHERE `sms_usuario`.`idUsuario` = " + usuario.getIdUsuario() + " ;";
+
+            st.executeUpdate(sql.toString());
+
+            // LLAMA AL MÉTODO
+            user.setMensaje("Usuario editado correctamente");
+
+        } catch (Exception e) {
+            user = new Usuario_TO();
+            user.setMensaje("Usuario no Editado");
+            throw e;
+
+        }
+
+        return user;
+
     }
 
     /**
