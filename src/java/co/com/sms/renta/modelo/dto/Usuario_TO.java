@@ -355,9 +355,16 @@ public class Usuario_TO {
     }
 
 //    CONSTRUCTOR PARA VALIDFAR EL EMAILS
-    public Usuario_TO( String email, int idUsuario) {
+    public Usuario_TO(String email, int idUsuario) {
         this.email = email;
         this.idUsuario = idUsuario;
+    }
+
+//    CONSTRUCTOR para envio de email de bienvenida a clientes
+    public Usuario_TO(String nombre, String email, String password) {
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
     }
 
     public Usuario_TO(int idUsuario, int idCiudad, String val) {
