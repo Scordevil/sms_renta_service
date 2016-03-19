@@ -95,25 +95,25 @@ public class Vehiculo_TO {
      * Columna Veh_foto2_nombre
      */
     String veh_foto2_nombre;
-    
+
     /**
      *
      * Columna Veh_foto2_ruta
      */
     String veh_foto2_ruta;
-    
+
     /**
      *
-     * Columna 	idColor
+     * Columna idColor
      */
     int idColor;
-    
+
     /**
      *
      * Columna idEstado
      */
     int idEstado;
-    
+
     /**
      *
      * Tabla Sin tabla
@@ -122,7 +122,6 @@ public class Vehiculo_TO {
      */
     private String mensaje;
 
-    
 //    CONTRUCTORES
     public Vehiculo_TO() {
     }
@@ -145,6 +144,12 @@ public class Vehiculo_TO {
         this.idColor = idColor;
         this.idEstado = idEstado;
         this.mensaje = mensaje;
+    }
+
+//    EDITAR ESTADO VEHICULO
+    public Vehiculo_TO(int idVehiculo, String val, int idEstado) {
+        this.idVehiculo = idVehiculo;
+        this.idEstado = idEstado;
     }
 
     public int getIdVehiculo() {
@@ -287,7 +292,5 @@ public class Vehiculo_TO {
     public String toString() {
         return "Vehiculo_TO{" + "idVehiculo=" + idVehiculo + ", vehi_Placa=" + vehi_Placa + ", vehi_Modelo=" + vehi_Modelo + ", idCategoria=" + idCategoria + ", idReferencia=" + idReferencia + ", veh_num_personas=" + veh_num_personas + ", veh_num_malGrande=" + veh_num_malGrande + ", veh_num_malPeque\u00f1a=" + veh_num_malPequeña + ", idCiudad=" + idCiudad + ", idProveedor=" + idProveedor + ", veh_foto_nombre=" + veh_foto_nombre + ", veh_foto_ruta=" + veh_foto_ruta + ", veh_foto2_nombre=" + veh_foto2_nombre + ", veh_foto2_ruta=" + veh_foto2_ruta + ", idColor=" + idColor + ", idEstado=" + idEstado + ", mensaje=" + mensaje + '}';
     }
-    
-    
 
 }

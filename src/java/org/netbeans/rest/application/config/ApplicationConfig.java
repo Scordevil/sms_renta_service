@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.sms.renta.servicio.impl.ConsultarClienteImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarClientesImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarDatosSesionUsuarioImpl.class);
+        resources.add(co.com.sms.renta.servicio.impl.ConsultarEmailImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarEmpleadosImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarLugaresImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarNacionalidadesImpl.class);
@@ -43,6 +44,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.sms.renta.servicio.impl.EditarClienteImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EditarConductorImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EditarEstadoConductorImpl.class);
+        resources.add(co.com.sms.renta.servicio.impl.EditarEstadoVehiculoImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EditarLocalidadClienteImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EditarNacionalidadClienteImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EditarPasswordClienteImpl.class);

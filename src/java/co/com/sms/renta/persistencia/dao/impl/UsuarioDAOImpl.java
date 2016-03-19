@@ -688,7 +688,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         try {
 
             String sql = "UPDATE `sms_usuario` "
-                     + "     inner join `sms_empleado` on sms_usuario.idUsuario  = sms_empleado.idUsuario "
+                    + "     inner join `sms_empleado` on sms_usuario.idUsuario  = sms_empleado.idUsuario "
                     + "  SET sms_empleado.idEstado = " + usuario.getIdEstado() + "  "
                     + "  WHERE sms_usuario.idUsuario = " + usuario.getIdUsuario() + " ;";
 
@@ -706,6 +706,70 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
 
         return user;
+    }
+
+    @Override
+    public Usuario_TO consulEmailUsuario(Usuario_TO usuario) throws Exception {
+
+        Statement st = ConexionSQL.conexion();
+        Usuario_TO user = new Usuario_TO();
+
+        try {
+
+            user = consultarEmailDeUsuario(usuario);
+
+        } catch (Exception e) {
+
+            throw e;
+
+        }
+
+        return user;
+    }
+
+    private Usuario_TO consultarEmailDeUsuario(Usuario_TO usuario) throws SQLException {
+
+        Usuario_TO user = new Usuario_TO();
+        int registro = 0;
+
+        // // //Seleccionar todos los registros
+        String sql = "SELECT u.Usuario_email , u.idUsuario  "
+                + "from sms_usuario as u  "
+                + "WHERE "
+                + "u.`idUsuario` = '" + usuario.getIdUsuario() + "' ; ";
+
+        ResultSet rs = st.executeQuery(sql);
+        // LLAMA AL MÉTODO
+
+        while (rs.next()) {
+            user = new Usuario_TO(rs.getString(1), rs.getInt(2));
+
+            registro = registro + 1;
+        }
+
+        System.out.print(user + "------------------------------");
+
+        if (registro > 0) {
+
+            if (!user.getEmail().equals("")) {//valida si el EMAIL existe en la BD
+                
+                user = new Usuario_TO();
+                user.setMensaje("Email SI existe");
+                
+
+            } else {
+
+                user = new Usuario_TO();
+                user.setMensaje("Email no existe");
+            }
+
+        } else {
+
+            user = new Usuario_TO();
+            user.setMensaje("Email no existe");
+        }
+        return user;
+
     }
 
 }

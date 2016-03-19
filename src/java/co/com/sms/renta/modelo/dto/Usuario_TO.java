@@ -347,11 +347,17 @@ public class Usuario_TO {
         this.idUsuario = idUsuario;
         this.idNacionalidad = idNacionalidad;
     }
-       
-//    CONSTRUCTOR PARA DITAR ESTADO DEL CNODUCTOR
+
+//    CONSTRUCTOR PARA DITAR ESTADO DEL CONDUCTOR
     public Usuario_TO(int idUsuario, String val, int idEstado) {
         this.idUsuario = idUsuario;
         this.idEstado = idEstado;
+    }
+
+//    CONSTRUCTOR PARA VALIDFAR EL EMAILS
+    public Usuario_TO( String email, int idUsuario) {
+        this.email = email;
+        this.idUsuario = idUsuario;
     }
 
     public Usuario_TO(int idUsuario, int idCiudad, String val) {

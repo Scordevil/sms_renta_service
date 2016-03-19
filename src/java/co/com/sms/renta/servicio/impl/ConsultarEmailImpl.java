@@ -7,7 +7,7 @@ package co.com.sms.renta.servicio.impl;
 
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.impl.UsuarioDAOImpl;
-import co.com.sms.renta.servicio.EditarCliente;
+import co.com.sms.renta.servicio.ConsultarEmail;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,29 +19,22 @@ import javax.ws.rs.QueryParam;
  * @author SISTEMAS
  */
 @Stateless
-@Path("/editarDatosClientes")
-public class EditarClienteImpl implements EditarCliente{
+@Path("/consultarEmail")
+public class ConsultarEmailImpl implements ConsultarEmail {
 
     @GET
     @Produces({"application/json"})
-    
-    public Usuario_TO editarCliente(@QueryParam("nombre") String nombre,
-            @QueryParam("cc") String cc,
-            @QueryParam("pasaporte") String pasaporte,
-            @QueryParam("telefono") String telefono,
+
+    public Usuario_TO consultarEmail(@QueryParam("email") String email,
             @QueryParam("idUsuario") int idUsuario) throws Exception {
-        
-        String prueba = pasaporte;
-        
-        Usuario_TO cliente = new Usuario_TO(idUsuario,nombre, cc, prueba, telefono);
 
-        UsuarioDAOImpl usuario = new UsuarioDAOImpl();
+        Usuario_TO consultaEmail = new Usuario_TO(email, idUsuario);
+        UsuarioDAOImpl DAO = new UsuarioDAOImpl();
         Usuario_TO user = new Usuario_TO();
-        
-        user = usuario.editarDatosCliente(cliente);
 
-        return user;
+        user = DAO.consulEmailUsuario(consultaEmail);
+
+        return user; 
     }
-         
-    
+
 }
