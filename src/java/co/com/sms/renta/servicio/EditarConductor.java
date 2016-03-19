@@ -12,10 +12,24 @@ import co.com.sms.renta.modelo.dto.Usuario_TO;
  * @author SISTEMAS
  */
 public interface EditarConductor {
-    
-    public Usuario_TO editarConductor (String nombre, String cc, String telefono,
-            String email, String razonSocial, String nit, int idCiudad, String login, 
-            String password, String remember_token,int estadoUsuario , String foto_nombre, String foto_ruta, 
-            int rol, String hojaVida, String hojaVida_ruta, int idUsuario) throws Exception;
-    
+
+    public Usuario_TO editarConductor(String nombre,
+            String cc,
+            String pasaporte,
+            String telefono,
+            String email,
+            int idCiudad,
+            String password,
+            String remember_token,
+            int estadoUsuario,
+            String foto_nombre,
+            String foto_ruta,
+            int rol,
+            int idNacionalidad ,
+            String hojaVida,
+            int idEstado,
+            int idProveedor,
+            String hojaVida_ruta,
+            int idUsuario) throws Exception;
+
 }

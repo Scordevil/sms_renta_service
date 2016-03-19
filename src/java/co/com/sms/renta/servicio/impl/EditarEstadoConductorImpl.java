@@ -20,18 +20,17 @@ import javax.ws.rs.QueryParam;
  */
 @Stateless
 @Path("/editarEstadoConductores")
-public class EditarEstadoConductorImpl implements EditarEstadoConductor{
-    
-//    (@QueryParam("idUsuario") int idUsuario) throws Exception )
+public class EditarEstadoConductorImpl implements EditarEstadoConductor {
+
     @GET
     @Produces({"application/xml", "application/json"})
- 
-    public Usuario_TO editarEstadoConductor(@QueryParam("idEstado") int idEstado ,
+
+    public Usuario_TO editarEstadoConductor(@QueryParam("idEstado") int idEstado,
             @QueryParam("idUsuario") int idUsuario) throws Exception {
-        
-        Usuario_TO conductorEstado = new Usuario_TO();
+
+        Usuario_TO conductorEstado = new Usuario_TO(idUsuario, "", idEstado);
         UsuarioDAOImpl user = new UsuarioDAOImpl();
         return user.editarEstadoConductor(conductorEstado);
     }
-    
+
 }

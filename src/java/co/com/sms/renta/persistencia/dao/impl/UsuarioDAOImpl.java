@@ -49,15 +49,15 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     private List<Usuario_TO> consultarTodosEmpleados() throws SQLException {
 
         // // //Seleccionar todos los registros
-        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_CC,u.Usuario_telefono, u.Usuario_email, "
-                + "u.Usuario_razonSocial,u.Usuario_nit,c.Ciudad_nombre,u.Usuario_login,u.Usuario_password, "
-                + "u.Usuario_remember_token,u.Usuario_EstadoUsuario,u.Usuario_foto_nombre,u.Usuario_foto_ruta, "
-                + "r.Rol_nombre , h.hojavida_nombre, h.hojavida_ruta "
+        String sql = "SELECT u.idUsuario, u.Usuario_nombre, u.Usuario_CC, u.Usuario_pasaporte , u.Usuario_telefono, u.Usuario_email, "
+                + " c.Ciudad_nombre, u.Usuario_password, u.Usuario_remember_token, u.Usuario_EstadoUsuario, "
+                + " u.Usuario_foto_nombre, u.Usuario_foto_ruta, r.Rol_nombre , "
+                + " u.idNacionalidad, h.hojavida_nombre,e.idEstado, e.idProveedor , h.hojavida_ruta  "
                 + "from sms_usuario as u , sms_rol as r, sms_ciudad as c, sms_empleado as e, sms_hojavida as h "
-                + "where u.usuario_rol = r.idRol and "
-                + "u.usuario_ciudad = c.idCiudad and "
-                + "u.idUsuario = e.empleado_idUsuario and "
-                + "h.idHojaVida = e.empleado_hojaVida";
+                + "where u.idRol = r.idRol and "
+                + " u.idCiudad = c.idCiudad and "
+                + " u.idUsuario = e.idUsuario and "
+                + " h.idHojaVida = e.idhojaVida";
 
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
@@ -65,10 +65,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
 
-//            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-//                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-//                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
-//                    rs.getString(15), rs.getString(16), rs.getString(17)));
+            usuarios.add(new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                    rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getInt(14),
+                    rs.getString(15), rs.getInt(16), rs.getInt(17), rs.getString(18)));
         }
 
         return usuarios;
@@ -642,20 +642,28 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         Usuario_TO user = new Usuario_TO();
 
         try {
-//
+
             String sql = "UPDATE `sms_usuario` "
-                    + "     inner join `sms_rol` on sms_usuario.Usuario_Rol = sms_rol.idRol "
-                    + "     inner join `sms_ciudad`  on sms_usuario.Usuario_ciudad = sms_ciudad.idCiudad  "
-                    + "     inner join `sms_empleado` on sms_usuario.idUsuario = sms_empleado.empleado_idUsuario "
-                    + "     inner join `sms_hojavida` on sms_hojavida.idHojaVida = sms_empleado.empleado_hojaVida "
+                    + "     inner join `sms_empleado` on sms_empleado.idUsuario = sms_usuario.idUsuario  "
+                    + "     inner join `sms_hojavida` on sms_hojavida.idHojaVida = sms_empleado.idhojaVida "
                     + " SET `Usuario_nombre`= '" + usuario.getNombre() + "' , "
-                    + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
-                    + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_password`='" + usuario.getPassword() + "', "
-                    + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
-                    + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' , "
-                    + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "' , "
-                    + " `idEstado`= '" + usuario.getIdEstado() + "' , `idProveedor` = '" + usuario.getIdProveedor() + "'  "
-                    + "  WHERE `idUsuario` = " + usuario.getIdUsuario() + " ;";
+                    + " `Usuario_CC`='" + usuario.getCC() + "' , "
+                    + " `Usuario_pasaporte`='" + usuario.getPasaporte() + "' , "
+                    + " `Usuario_telefono`='" + usuario.getTelefono() + "' , "
+                    + " `Usuario_email`= ' " + usuario.getEmail() + " ' , "
+                    + "  sms_usuario.idCiudad = " + usuario.getIdCiudad() + " , "
+                    + " `Usuario_password`='" + usuario.getPassword() + "' , "
+                    + " `Usuario_remember_token`='" + usuario.getRemember_token() + "' , "
+                    + " `Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " , "
+                    + " `Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
+                    + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "' , "
+                    + "  sms_usuario.idRol =" + usuario.getRol() + " , "
+                    + " `idNacionalidad`=" + usuario.getIdNacionalidad() + " , "
+                    + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , "
+                    + " `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "' , "
+                    + "  sms_empleado.idEstado = " + usuario.getIdEstado() + " , "
+                    + "  sms_empleado.idProveedor = " + usuario.getIdProveedor() + "  "
+                    + "  WHERE sms_usuario.idUsuario = " + usuario.getIdUsuario() + " ;";
 
             st.executeUpdate(sql);
 
@@ -672,26 +680,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return user;
 
     }
-    
+
     public Usuario_TO editarEstadoConductor(Usuario_TO usuario) throws Exception {
 
         Usuario_TO user = new Usuario_TO();
 
         try {
-            
+
             String sql = "UPDATE `sms_usuario` "
-                    //                    + "     inner join `sms_rol` on sms_usuario.Usuario_Rol = sms_rol.idRol "
-                    //                    + "     inner join `sms_ciudad`  on sms_usuario.Usuario_ciudad = sms_ciudad.idCiudad  "
-                    //                    + "     inner join `sms_empleado` on sms_usuario.idUsuario = sms_empleado.empleado_idUsuario "
-                    //                    + "     inner join `sms_hojavida` on sms_hojavida.idHojaVida = sms_empleado.empleado_hojaVida "
-                    + " SET `idEstado`= '" + usuario.getIdEstado() + "' , "
-                    //                    + " `Usuario_email`= ' " + usuario.getEmail() + " ' ,`Usuario_razonSocial`='" + usuario.getRazonSocial() + "',`Usuario_nit`='" + usuario.getNit() + "' , "
-                    //                    + " `Usuario_ciudad`= " + usuario.getIdCiudad() + " ,`Usuario_password`='" + usuario.getPassword() + "', "
-                    //                    + " `Usuario_remember_token`='" + usuario.getRemember_token() + "',`Usuario_EstadoUsuario`= " + usuario.getEstadoUsuario() + " ,`Usuario_foto_nombre`='" + usuario.getFoto_nombre() + "' , "
-                    //                    + " `Usuario_foto_ruta`='" + usuario.getFoto_ruta() + "',`Usuario_Rol`='" + usuario.getRol() + "' , "
-                    //                    + " `HojaVida_nombre`= '" + usuario.getHojaVida() + "' , `HojaVida_ruta`= '" + usuario.getHojaVidaRuta() + "' , "
-                    //                    + " `idEstado`= '" + usuario.getIdEstado() + "' , `idProveedor` = '" + usuario.getIdProveedor() + "'  "
-                    + "  WHERE `idUsuario` = " + usuario.getIdUsuario() + " ;";
+                     + "     inner join `sms_empleado` on sms_usuario.idUsuario  = sms_empleado.idUsuario "
+                    + "  SET sms_empleado.idEstado = " + usuario.getIdEstado() + "  "
+                    + "  WHERE sms_usuario.idUsuario = " + usuario.getIdUsuario() + " ;";
 
             st.executeUpdate(sql);
 
@@ -707,7 +706,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
 
         return user;
-    } 
-    
+    }
 
 }

@@ -60,13 +60,12 @@ public class Usuario_TO {
      * Columna Usuario_ciudad
      */
     private int idCiudad;
-    
-        /**
+
+    /**
      *
      * Columna Usuario_Pasaporte
      */
     private String pasaporte;
-    
 
     /**
      *
@@ -119,8 +118,8 @@ public class Usuario_TO {
      * Columna id_rol
      */
     private String nombreRol;
-    
-     /**
+
+    /**
      *
      * Columna idNacionalidad
      */
@@ -141,7 +140,7 @@ public class Usuario_TO {
      * Columna hojaVida
      */
     private int idHojaVida;
-    
+
     /**
      *
      * Tabla Empleado
@@ -149,7 +148,7 @@ public class Usuario_TO {
      * Columna ESTADO
      */
     private int idEstado;
-    
+
     /**
      *
      * Tabla PROVEEDOR
@@ -203,10 +202,10 @@ public class Usuario_TO {
         this.estadoUsuario = estadoUsuario;
         this.rol = rol;
     }
-    
-      public Usuario_TO(int idUsuario,String nombre, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad,int estadoUsuario, int rol) {
-          this.idUsuario = idUsuario;
-          this.nombre = nombre;
+
+    public Usuario_TO(int idUsuario, String nombre, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad, int estadoUsuario, int rol) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
         this.email = email;
         this.idCiudad = idCiudad;
         this.pasaporte = pasaporte;
@@ -218,7 +217,7 @@ public class Usuario_TO {
 
     }
 
-    public Usuario_TO(String nombre, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad,int estadoUsuario, int rol) {
+    public Usuario_TO(String nombre, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad, int estadoUsuario, int rol) {
         this.nombre = nombre;
         this.email = email;
         this.idCiudad = idCiudad;
@@ -232,14 +231,13 @@ public class Usuario_TO {
     }
 
     //ConsultarEmpleados
-    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta) {
+    public Usuario_TO(int idUsuario, String nombre, String CC, String pasaporte, String telefono, String email, String nombreCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, int idNacionalidad, String hojaVida, int idEstado, int idProveedor, String hojaVidaRuta) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.CC = CC;
+        this.pasaporte = pasaporte;
         this.telefono = telefono;
         this.email = email;
-        this.razonSocial = razonSocial;
-        this.nit = nit;
         this.nombreCiudad = nombreCiudad;
         this.password = password;
         this.remember_token = remember_token;
@@ -247,12 +245,14 @@ public class Usuario_TO {
         this.foto_nombre = foto_nombre;
         this.foto_ruta = foto_ruta;
         this.nombreRol = nombreRol;
+        this.idNacionalidad = idNacionalidad;
         this.hojaVida = hojaVida;
         this.hojaVidaRuta = hojaVidaRuta;
+        this.idEstado = idEstado;
+        this.idProveedor = idProveedor;
     }
 
     //EditarClientes
-
     public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, int idCiudad, String pasaporte, String password, String remember_token, int estadoUsuario, int rol, int idNacionalidad) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
@@ -267,7 +267,6 @@ public class Usuario_TO {
         this.rol = rol;
         this.idNacionalidad = idNacionalidad;
     }
-
 
     //Editar Clientes 
     public Usuario_TO(int idUsuario, String nombre, String CC, String pasaporte, String telefono) {
@@ -290,28 +289,29 @@ public class Usuario_TO {
         this.password = password;
         this.remember_token = remember_token;
     }
-    
-    
 
     //Editar Empleados Conductores
-    public Usuario_TO(String nombre, String CC, String telefono, String email, String razonSocial, String nit, String nombreCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, String nombreRol, String hojaVida, String hojaVidaRuta, int idUsuario) {
+    public Usuario_TO(String nombre, String CC, String pasaporte, String telefono, String email, int idCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, int rol, int idNacionalidad, String hojaVida, int idEstado, int idProveedor, String hojaVidaRuta, int idUsuario) {
         this.nombre = nombre;
         this.CC = CC;
+        this.pasaporte = pasaporte;
         this.telefono = telefono;
         this.email = email;
-        this.razonSocial = razonSocial;
-        this.nit = nit;
-        this.nombreCiudad = nombreCiudad;
+        this.idCiudad = idCiudad;
         this.password = password;
         this.remember_token = remember_token;
         this.estadoUsuario = estadoUsuario;
         this.foto_nombre = foto_nombre;
         this.foto_ruta = foto_ruta;
-        this.nombreRol = nombreRol;
+        this.rol = rol;
+        this.idNacionalidad = idNacionalidad;
 
 //        Diferencia del metodo de Consula de Empleados al dejar el ID Usuario de ultimo
         this.hojaVida = hojaVida;
+        this.idEstado = idEstado;
+        this.idProveedor = idProveedor;
         this.hojaVidaRuta = hojaVidaRuta;
+//         chupelo
         this.idUsuario = idUsuario;
     }
 
@@ -342,13 +342,19 @@ public class Usuario_TO {
         this.email = email;
         this.password = password;
     }
-    
-    public Usuario_TO(int idUsuario, int idNacionalidad){
+
+    public Usuario_TO(int idUsuario, int idNacionalidad) {
         this.idUsuario = idUsuario;
         this.idNacionalidad = idNacionalidad;
     }
-    
-    public Usuario_TO(int idUsuario, int idCiudad, String val){
+       
+//    CONSTRUCTOR PARA DITAR ESTADO DEL CNODUCTOR
+    public Usuario_TO(int idUsuario, String val, int idEstado) {
+        this.idUsuario = idUsuario;
+        this.idEstado = idEstado;
+    }
+
+    public Usuario_TO(int idUsuario, int idCiudad, String val) {
         this.idUsuario = idUsuario;
         this.idCiudad = idCiudad;
     }
@@ -358,7 +364,6 @@ public class Usuario_TO {
         this.password = password;
         this.remember_token = remember_token;
     }
-    
 
     public int getIdUsuario() {
         return idUsuario;
@@ -439,7 +444,6 @@ public class Usuario_TO {
     public void setNombreCiudad(String nombreCiudad) {
         this.nombreCiudad = nombreCiudad;
     }
-
 
     public String getPassword() {
         return password;
@@ -545,7 +549,6 @@ public class Usuario_TO {
         this.idProveedor = idProveedor;
     }
 
-        
     public String getMensaje() {
         return mensaje;
     }
@@ -558,13 +561,9 @@ public class Usuario_TO {
 //    public String toString() {
 //        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
 //    }
-
     @Override
     public String toString() {
         return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", CC=" + CC + ", telefono=" + telefono + ", email=" + email + ", razonSocial=" + razonSocial + ", nit=" + nit + ", idCiudad=" + idCiudad + ", pasaporte=" + pasaporte + ", nombreCiudad=" + nombreCiudad + ", password=" + password + ", remember_token=" + remember_token + ", estadoUsuario=" + estadoUsuario + ", foto_nombre=" + foto_nombre + ", foto_ruta=" + foto_ruta + ", rol=" + rol + ", nombreRol=" + nombreRol + ", idNacionalidad=" + idNacionalidad + ", hojaVida=" + hojaVida + ", idHojaVida=" + idHojaVida + ", idEstado=" + idEstado + ", idProveedor=" + idProveedor + ", hojaVidaRuta=" + hojaVidaRuta + ", mensaje=" + mensaje + '}';
     }
-    
-
-   
 
 }

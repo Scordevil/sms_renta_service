@@ -27,33 +27,43 @@ public class EditarConductorImpl implements EditarConductor{
     
     public Usuario_TO editarConductor(@QueryParam("nombre") String nombre,
             @QueryParam("cc") String cc,
+            @QueryParam("pasaporte") String pasaporte,
             @QueryParam("telefono") String telefono,
             @QueryParam("email") String email,
-            @QueryParam("razonSocial") String razonSocial,
-            @QueryParam("nit") String nit,
             @QueryParam("idCiudad") int idCiudad,
-            @QueryParam("login") String login,
             @QueryParam("password") String password,
             @QueryParam("remember_token") String remember_token,
             @QueryParam("estadoUsuario") int estadoUsuario,
             @QueryParam("foto_nombre") String foto_nombre,
             @QueryParam("foto_ruta") String foto_ruta,
             @QueryParam("rol") int rol,
+            @QueryParam("idNacionalidad") int idNacionalidad,
             @QueryParam("hojaVida") String hojaVida,
+            @QueryParam("idEstado") int idEstado,
+            @QueryParam("idProveedor") int idProveedor,
             @QueryParam("hojaVida_ruta") String hojaVida_ruta,
             @QueryParam("idUsuario") int idUsuario) throws Exception {
         
         
-//       Usuario_TO conductores = new Usuario_TO(nombre, cc, telefono, email, 
+        Usuario_TO conductor = new Usuario_TO(nombre, 
+                cc, pasaporte, telefono, email, 
+                idCiudad, password, remember_token, 
+                estadoUsuario, foto_nombre, foto_ruta, 
+                rol, idNacionalidad, hojaVida, 
+                idEstado, idProveedor, hojaVida_ruta, 
+                idUsuario);
+        
+        
+//         Usuario_TO conductores = new Usuario_TO(nombre, cc, telefono, email, 
 //               razonSocial, nit, nombre, login, password, remember_token, 
 //               estadoUsuario, foto_nombre, foto_ruta, nombre, hojaVida, 
 //               hojaVida_ruta, idUsuario);
        
-       Usuario_TO conductores = new Usuario_TO();
+//       Usuario_TO conductores = new Usuario_TO();
         
         UsuarioDAOImpl user = new UsuarioDAOImpl();
         
-        return user.editarPerilConductor(conductores);
+        return user.editarPerilConductor(conductor);
        
     }
     

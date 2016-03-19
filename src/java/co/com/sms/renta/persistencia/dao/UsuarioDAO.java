@@ -22,7 +22,8 @@ public interface UsuarioDAO {
     public List<Usuario_TO> consultarAdministradores() throws Exception;
 
     public Usuario_TO consultarDatosSesionUsuario(Usuario_TO usuario) throws Exception;
-
+    
+    
     /*
      *
      *Metodos del CRUD usuario CLiente
