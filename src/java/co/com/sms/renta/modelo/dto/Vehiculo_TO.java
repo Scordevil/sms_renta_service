@@ -44,9 +44,25 @@ public class Vehiculo_TO {
 
     /**
      *
+     * DE LA TABLA SMS_CATEGORIA
+     *
+     * Columna Categoria_nombre
+     */
+    String Categoria_nombre;
+
+    /**
+     *
      * Columna idReferencia
      */
     int idReferencia;
+
+    /**
+     *
+     * DE LA TABLA SMS_referencia
+     *
+     * Columna Referencia_nombre
+     */
+    String Referencia_nombre;
 
     /**
      *
@@ -71,6 +87,14 @@ public class Vehiculo_TO {
      * Columna idCiudad
      */
     int idCiudad;
+
+    /**
+     *
+     * DE LA TABLA SMS_CIUDAD
+     *
+     * Columna Ciudad_nombre
+     */
+    String Ciudad_nombre;
 
     /**
      *
@@ -110,9 +134,25 @@ public class Vehiculo_TO {
 
     /**
      *
+     * DE LA TABLA SMS_COLOR
+     *
+     * Columna Color_nombre
+     */
+    String Color_nombre;
+
+    /**
+     *
      * Columna idEstado
      */
     int idEstado;
+
+    /**
+     *
+     * DE LA TABLA SMS_ESTADO
+     *
+     * Columna Estado_nombre
+     */
+    String Estado_nombre;
 
     /**
      *
@@ -150,6 +190,27 @@ public class Vehiculo_TO {
     public Vehiculo_TO(int idVehiculo, String val, int idEstado) {
         this.idVehiculo = idVehiculo;
         this.idEstado = idEstado;
+    }
+
+//    CONSULTA DE VEHICULOS
+    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre) {
+        this.idVehiculo = idVehiculo;
+        this.vehi_Placa = vehi_Placa;
+        this.vehi_Modelo = vehi_Modelo;
+        this.Categoria_nombre = Categoria_nombre;
+        this.Referencia_nombre = Referencia_nombre;
+        this.veh_num_personas = veh_num_personas;
+        this.veh_num_malGrande = veh_num_malGrande;
+        this.veh_num_malPequeña = veh_num_malPequeña;
+        this.Ciudad_nombre = Ciudad_nombre;
+        this.idProveedor = idProveedor;
+        this.veh_foto_nombre = veh_foto_nombre;
+        this.veh_foto_ruta = veh_foto_ruta;
+        this.veh_foto2_nombre = veh_foto2_nombre;
+        this.veh_foto2_ruta = veh_foto2_ruta;
+        this.Color_nombre = Color_nombre;
+        this.Estado_nombre = Estado_nombre;
+
     }
 
     public int getIdVehiculo() {
@@ -288,9 +349,49 @@ public class Vehiculo_TO {
         this.mensaje = mensaje;
     }
 
+    public String getCategoria_nombre() {
+        return Categoria_nombre;
+    }
+
+    public void setCategoria_nombre(String Categoria_nombre) {
+        this.Categoria_nombre = Categoria_nombre;
+    }
+
+    public String getReferencia_nombre() {
+        return Referencia_nombre;
+    }
+
+    public void setReferencia_nombre(String Referencia_nombre) {
+        this.Referencia_nombre = Referencia_nombre;
+    }
+
+    public String getCiudad_nombre() {
+        return Ciudad_nombre;
+    }
+
+    public void setCiudad_nombre(String Ciudad_nombre) {
+        this.Ciudad_nombre = Ciudad_nombre;
+    }
+
+    public String getColor_nombre() {
+        return Color_nombre;
+    }
+
+    public void setColor_nombre(String Color_nombre) {
+        this.Color_nombre = Color_nombre;
+    }
+
+    public String getEstado_nombre() {
+        return Estado_nombre;
+    }
+
+    public void setEstado_nombre(String Estado_nombre) {
+        this.Estado_nombre = Estado_nombre;
+    }
+
     @Override
     public String toString() {
-        return "Vehiculo_TO{" + "idVehiculo=" + idVehiculo + ", vehi_Placa=" + vehi_Placa + ", vehi_Modelo=" + vehi_Modelo + ", idCategoria=" + idCategoria + ", idReferencia=" + idReferencia + ", veh_num_personas=" + veh_num_personas + ", veh_num_malGrande=" + veh_num_malGrande + ", veh_num_malPeque\u00f1a=" + veh_num_malPequeña + ", idCiudad=" + idCiudad + ", idProveedor=" + idProveedor + ", veh_foto_nombre=" + veh_foto_nombre + ", veh_foto_ruta=" + veh_foto_ruta + ", veh_foto2_nombre=" + veh_foto2_nombre + ", veh_foto2_ruta=" + veh_foto2_ruta + ", idColor=" + idColor + ", idEstado=" + idEstado + ", mensaje=" + mensaje + '}';
+        return "Vehiculo_TO{" + "idVehiculo=" + idVehiculo + ", vehi_Placa=" + vehi_Placa + ", vehi_Modelo=" + vehi_Modelo + ", idCategoria=" + idCategoria + ", Categoria_nombre=" + Categoria_nombre + ", idReferencia=" + idReferencia + ", Referencia_nombre=" + Referencia_nombre + ", veh_num_personas=" + veh_num_personas + ", veh_num_malGrande=" + veh_num_malGrande + ", veh_num_malPeque\u00f1a=" + veh_num_malPequeña + ", idCiudad=" + idCiudad + ", Ciudad_nombre=" + Ciudad_nombre + ", idProveedor=" + idProveedor + ", veh_foto_nombre=" + veh_foto_nombre + ", veh_foto_ruta=" + veh_foto_ruta + ", veh_foto2_nombre=" + veh_foto2_nombre + ", veh_foto2_ruta=" + veh_foto2_ruta + ", idColor=" + idColor + ", Color_nombre=" + Color_nombre + ", idEstado=" + idEstado + ", Estado_nombre=" + Estado_nombre + ", mensaje=" + mensaje + '}';
     }
 
 }

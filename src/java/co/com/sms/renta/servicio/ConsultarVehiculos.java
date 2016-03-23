@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.sms.renta.persistencia.dao;
+package co.com.sms.renta.servicio;
 
 import co.com.sms.renta.modelo.dto.Vehiculo_TO;
 import java.util.List;
@@ -12,10 +12,8 @@ import java.util.List;
  *
  * @author SISTEMAS
  */
-public interface VehiculoDAO {
+public interface ConsultarVehiculos {
     
-    public Vehiculo_TO editarEstadoVehiculo (Vehiculo_TO vehiculo) throws Exception;
-    
-    public List<Vehiculo_TO> consultarVehiculo () throws Exception;
+    public List<Vehiculo_TO> consultarVehiculosDisponibles () throws Exception;
     
 }
