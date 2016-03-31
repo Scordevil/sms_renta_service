@@ -19,8 +19,7 @@ import javax.ws.rs.Produces;
  *
  * @author SISTEMAS
  */
-@Stateless
-@Path("/consultarVehiculosDisponibles")
+
 public class ConsultarVehiculosImpl implements ConsultarVehiculos{
 
     @GET

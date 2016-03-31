@@ -383,9 +383,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
         return user;
-
     }
 
     private Usuario_TO registrarTodosClientes(Usuario_TO usuario)
@@ -399,7 +397,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
 
         try {
-//
             String sql = "INSERT INTO `sms_usuario` (`Usuario_nombre`, `Usuario_email`, `idCiudad`,`Usuario_pasaporte`,  `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `idRol`,`idNacionalidad`) VALUES ( '"
                     + usuario.getNombre() + "', '"
                     + usuario.getEmail() + "', "
@@ -752,10 +749,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         if (registro > 0) {
 
             if (!user.getEmail().equals("")) {//valida si el EMAIL existe en la BD
-                
+
                 user = new Usuario_TO();
                 user.setMensaje("Email SI existe");
-                
 
             } else {
 

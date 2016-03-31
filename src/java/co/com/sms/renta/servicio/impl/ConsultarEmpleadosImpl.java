@@ -20,19 +20,17 @@ import javax.ws.rs.Produces;
  */
 @Stateless
 @Path("/consultarEmpleados")
-public class ConsultarEmpleadosImpl  {
-
-    
+public class ConsultarEmpleadosImpl {
 
     @GET
     @Produces({"application/json", "application/xml"})
     public List<Usuario_TO> consultarEmpleados() throws Exception {
-        
+
         List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();
-        
+
         usuarios = usuario.consultarEmpleados();
-        
+
         return usuarios;
 
     }

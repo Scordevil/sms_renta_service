@@ -24,7 +24,7 @@ public class RegistrarClientesImpl implements RegistrarCliente {
 
     @GET
     @Produces({"application/json"})
-    
+
     public Usuario_TO registrarClientes(@QueryParam("nombre") String nombre,
             @QueryParam("email") String email,
             @QueryParam("ciudad") int idCiudad,
