@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface ConsultarServicios {
     
-    public List<Servicio_TO> consultarServicios() throws Exception;
+    public List<Servicio_TO> consultarServicios(int idCategoria, int idMercado) throws Exception;
     
 }

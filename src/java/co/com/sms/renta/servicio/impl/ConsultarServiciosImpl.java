@@ -6,7 +6,6 @@
 package co.com.sms.renta.servicio.impl;
 
 import co.com.sms.renta.modelo.dto.Servicio_TO;
-import co.com.sms.renta.persistencia.dao.ServicioDAO;
 import co.com.sms.renta.persistencia.dao.impl.ServicioDAOImpl;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 /**
  *
@@ -22,17 +22,17 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("/consultarServicios")
 public class ConsultarServiciosImpl {
-    
+
     @GET
-    @Produces({"application/json", "application/xml"})
-    public List<Servicio_TO> consultarServicios() throws Exception{
-        
+    @Produces({"application/json"})
+    public List<Servicio_TO> consultarServicios(@QueryParam("idCategoria") int idCategoria, @QueryParam("idMercado") int idMercado) throws Exception {
+
         List<Servicio_TO> servicios = new ArrayList<Servicio_TO>();
         ServicioDAOImpl servicio = new ServicioDAOImpl();
-        
-        servicios = servicio.consultarServicios();
-        
+
+        servicios = servicio.consultarServicios(idCategoria, idMercado);
+
         return servicios;
     }
-    
+
 }

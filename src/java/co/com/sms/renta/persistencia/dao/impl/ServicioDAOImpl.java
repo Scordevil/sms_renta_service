@@ -28,13 +28,13 @@ public class ServicioDAOImpl implements ServicioDAO{
      */
     
     @Override
-    public List<Servicio_TO> consultarServicios() throws Exception{
+    public List<Servicio_TO> consultarServicios(int idCategoria, int idMercado) throws Exception{
         
         Statement st = ConexionSQL.conexion();
         List<Servicio_TO> servicios = new ArrayList<>();
         
         try{
-            servicios = consultarTodosServicios();
+            servicios = consultarTodosServicios(idCategoria,idMercado);
         }
         catch(Exception e){
             throw e;
@@ -43,11 +43,13 @@ public class ServicioDAOImpl implements ServicioDAO{
     }
     
     
-    private List<Servicio_TO> consultarTodosServicios() throws SQLException{
+    private List<Servicio_TO> consultarTodosServicios(int idCategoria, int idMercado) throws SQLException{
         
             //        seleccionar todos los registros
-        String sql = " Select s.idServicios, s.Servicios_nombre, s.Servicios_descripcion "
-                   + "from sms_servicios as s ";
+        String sql = " Select s.idServicio, s.Servicio_nombre, s.Servicio_descripcion "
+                   + "from sms_servicios as s, sms_categorias_servicio as c "
+                    + "where s.idCategoria_Servicio = "+idCategoria+" and c.idCategoria_Servicio = s.idCategoria_Servicio " 
+                     + " and c.idmercado = "+idMercado;
         
         ResultSet rs = st.executeQuery(sql);
         

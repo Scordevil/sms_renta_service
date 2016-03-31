@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface ServicioDAO {
     
-    public List<Servicio_TO> consultarServicios() throws Exception;
+    public List<Servicio_TO> consultarServicios(int idCategoria, int idMercado) throws Exception;
     
 }

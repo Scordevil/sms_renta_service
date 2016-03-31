@@ -18,34 +18,62 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Servicio_TO {
-    
+
     /**
      *
      * Columna idServicios
      */
     private int idServicios;
-    
+
     /**
      *
      * Columna Servicios_nombre
      */
-    private String serviciosNombre;
-    
+    private String servicioNombre;
+
     /**
      *
      * Columna Servicios_descripcion
      */
-    private String serviciosDescripcion;
+    private String servicioDescripcion;
 
-    
+    /**
+     *
+     * Columna idServicios
+     */
+    private int idCategoriaServicio;
+
+    /**
+     *
+     * Columna idServicios
+     */
+    private int servicioDuracion;
+
+    /**
+     *
+     * Columna idServicios
+     */
+    private int servicioConductor;
+
     public Servicio_TO() {
     }
 
-    public Servicio_TO(int idServicios, String serviciosNombre, String serviciosDescripcion) {
+    public Servicio_TO(int idServicios, String servicioNombre, String servicioDescripcion, int idCategoriaServicio, int servicioDuracion, int servicioConductor) {
         this.idServicios = idServicios;
-        this.serviciosNombre = serviciosNombre;
-        this.serviciosDescripcion = serviciosDescripcion;
+        this.servicioNombre = servicioNombre;
+        this.servicioDescripcion = servicioDescripcion;
+        this.idCategoriaServicio = idCategoriaServicio;
+        this.servicioDuracion = servicioDuracion;
+        this.servicioConductor = servicioConductor;
     }
+
+    public Servicio_TO(int idServicios, String servicioNombre, String servicioDescripcion) {
+        this.idServicios = idServicios;
+        this.servicioNombre = servicioNombre;
+        this.servicioDescripcion = servicioDescripcion;
+    }
+    
+    
 
     public int getIdServicios() {
         return idServicios;
@@ -55,28 +83,55 @@ public class Servicio_TO {
         this.idServicios = idServicios;
     }
 
-    public String getServiciosNombre() {
-        return serviciosNombre;
+    public String getServicioNombre() {
+        return servicioNombre;
     }
 
-    public void setServiciosNombre(String serviciosNombre) {
-        this.serviciosNombre = serviciosNombre;
+    public void setServicioNombre(String servicioNombre) {
+        this.servicioNombre = servicioNombre;
     }
 
-    public String getServiciosDescripcion() {
-        return serviciosDescripcion;
+    public String getServicioDescripcion() {
+        return servicioDescripcion;
     }
 
-    public void setServiciosDescripcion(String serviciosDescripcion) {
-        this.serviciosDescripcion = serviciosDescripcion;
+    public void setServicioDescripcion(String servicioDescripcion) {
+        this.servicioDescripcion = servicioDescripcion;
+    }
+
+    public int getIdCategoriaServicio() {
+        return idCategoriaServicio;
+    }
+
+    public void setIdCategoriaServicio(int idCategoriaServicio) {
+        this.idCategoriaServicio = idCategoriaServicio;
+    }
+
+    public int getServicioDuracion() {
+        return servicioDuracion;
+    }
+
+    public void setServicioDuracion(int servicioDuracion) {
+        this.servicioDuracion = servicioDuracion;
+    }
+
+    public int getServicioConductor() {
+        return servicioConductor;
+    }
+
+    public void setServicioConductor(int servicioConductor) {
+        this.servicioConductor = servicioConductor;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + this.idServicios;
-        hash = 67 * hash + Objects.hashCode(this.serviciosNombre);
-        hash = 67 * hash + Objects.hashCode(this.serviciosDescripcion);
+        int hash = 7;
+        hash = 29 * hash + this.idServicios;
+        hash = 29 * hash + Objects.hashCode(this.servicioNombre);
+        hash = 29 * hash + Objects.hashCode(this.servicioDescripcion);
+        hash = 29 * hash + this.idCategoriaServicio;
+        hash = 29 * hash + this.servicioDuracion;
+        hash = 29 * hash + this.servicioConductor;
         return hash;
     }
 
@@ -92,20 +147,30 @@ public class Servicio_TO {
         if (this.idServicios != other.idServicios) {
             return false;
         }
-        if (!Objects.equals(this.serviciosNombre, other.serviciosNombre)) {
+        if (!Objects.equals(this.servicioNombre, other.servicioNombre)) {
             return false;
         }
-        if (!Objects.equals(this.serviciosDescripcion, other.serviciosDescripcion)) {
+        if (!Objects.equals(this.servicioDescripcion, other.servicioDescripcion)) {
+            return false;
+        }
+        if (this.idCategoriaServicio != other.idCategoriaServicio) {
+            return false;
+        }
+        if (this.servicioDuracion != other.servicioDuracion) {
+            return false;
+        }
+        if (this.servicioConductor != other.servicioConductor) {
             return false;
         }
         return true;
     }
+    
+    
 
     @Override
     public String toString() {
-        return "Servicio_TO{" + "idServicios=" + idServicios + ", serviciosNombre=" + serviciosNombre + ", serviciosDescripcion=" + serviciosDescripcion + '}';
+        return "Servicio_TO{" + "idServicios=" + idServicios + ", servicioNombre=" + servicioNombre + ", servicioDescripcion=" + servicioDescripcion + ", idCategoriaServicio=" + idCategoriaServicio + ", servicioDuracion=" + servicioDuracion + ", servicioConductor=" + servicioConductor + '}';
     }
-    
-    
+
     
 }
