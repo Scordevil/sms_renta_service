@@ -5,6 +5,7 @@
  */
 package co.com.sms.renta.persistencia.dao;
 
+import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import co.com.sms.renta.modelo.dto.Vehiculo_TO;
 import java.util.List;
 
@@ -17,5 +18,6 @@ public interface VehiculoDAO {
     public Vehiculo_TO editarEstadoVehiculo (Vehiculo_TO vehiculo) throws Exception;
     
     public List<Vehiculo_TO> consultarVehiculo () throws Exception;
+    public List<Vehiculo_TO> consultarVehiculosDisponibles (Reservacion_TO reservacion) throws Exception;
     
 }
