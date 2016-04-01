@@ -6,6 +6,8 @@
 package co.com.sms.renta.persistencia.dao;
 
 import co.com.sms.renta.modelo.dto.Reservacion_TO;
+import co.com.sms.renta.modelo.dto.Usuario_TO;
+import java.util.List;
 
 /**
  *
@@ -14,4 +16,5 @@ import co.com.sms.renta.modelo.dto.Reservacion_TO;
 public interface ReservacionDAO {
     
     public Reservacion_TO registrarReserva (Reservacion_TO reserva) throws Exception;
+    public List<Reservacion_TO> consultarReservasClientes (Usuario_TO cliente) throws Exception;
 }

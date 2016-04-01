@@ -157,9 +157,9 @@ public class Reservacion_TO {
         this.reserva_horaInicio = reserva_horaInicio;
         this.reserva_horaLlegada = reserva_horaLlegada;
     }
-    
-//    REGISTRAR RESERVAS
 
+//    REGISTRAR RESERVAS,
+//    CONSULTAR RESERVAS DEL CLIENTE
     public Reservacion_TO(String reserva_Lugar_Llegada, String reserva_Lugar_Destino, String reserva_Notas, int idCliente, int idCiudad_inicio, int idCiudad_destino, int idEmpleado, int idVehiculo, String reserva_fechaInicio, String reserva_fechaLlegada, String reserva_horaInicio, String reserva_horaLlegada, int reservacion_Costo, int idCategoria_Servicio, int idServicio, int idEstado) {
         this.reserva_Lugar_Llegada = reserva_Lugar_Llegada;
         this.reserva_Lugar_Destino = reserva_Lugar_Destino;
@@ -178,7 +178,6 @@ public class Reservacion_TO {
         this.idServicio = idServicio;
         this.idEstado = idEstado;
     }
-    
 
     public String getMensaje() {
         return mensaje;
@@ -329,6 +328,4 @@ public class Reservacion_TO {
         return "Reservacion_TO{" + "idReservacion=" + idReservacion + ", reserva_Lugar_Llegada=" + reserva_Lugar_Llegada + ", reserva_Lugar_Destino=" + reserva_Lugar_Destino + ", reserva_Notas=" + reserva_Notas + ", idCliente=" + idCliente + ", idCiudad_inicio=" + idCiudad_inicio + ", idCiudad_destino=" + idCiudad_destino + ", idEmpleado=" + idEmpleado + ", idVehiculo=" + idVehiculo + ", reserva_fechaInicio=" + reserva_fechaInicio + ", reserva_fechaLlegada=" + reserva_fechaLlegada + ", reserva_horaInicio=" + reserva_horaInicio + ", reserva_horaLlegada=" + reserva_horaLlegada + ", reservacion_Costo=" + reservacion_Costo + ", idCategoria_Servicio=" + idCategoria_Servicio + ", idServicio=" + idServicio + ", idEstado=" + idEstado + ", mensaje=" + mensaje + '}';
     }
 
-    
-    
 }
