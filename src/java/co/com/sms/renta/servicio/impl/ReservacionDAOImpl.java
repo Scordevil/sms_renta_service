@@ -66,22 +66,84 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 
         List<Reservacion_TO> reservasClientes = new ArrayList<>();
 
-        String sql = "Select `idReservacion`,`Reservacion_lugar_llegada`, `Reservacion_lugar_destino`,`idCliente`, `idCiudad_inicio`, `idVehiculo`,  "
-                + "  `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`,  "
-                + "  `Reservacion_horaInicio`,`Reservacion_horaLlegada`,`Reservacion_Costo`,`idCategoria_Servicio`,`idServicio`,`idEstado` "
-                + " from sms_reservacion "
-                + " where idCliente = "+ cliente.getIdUsuario() +" ";
-        
-        ResultSet rs = st.executeQuery(sql);
-        
-        while (rs.next()) {
-            reservasClientes.add(new Reservacion_TO(rs.getString(1) , rs.getString(2), rs.getString(3), rs.getInt(4), 
-                    rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8), 
-                    rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), 
-                    rs.getInt(15), rs.getInt(16)));
+        try {
+            reservasClientes = todaReservaClientes(cliente);
+
+        } catch (Exception e) {
+            throw e;
         }
 
         return reservasClientes;
     }
 
+    private List<Reservacion_TO> todaReservaClientes(Usuario_TO client) throws SQLException {
+        List<Reservacion_TO> reserClie = new ArrayList<>();
+
+        String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
+                + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
+                + " `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
+                + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
+                + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
+                + " from sms_reservacion "
+                + " where idCliente = " + client.getIdUsuario() + " ";
+
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+            reserClie.add(new Reservacion_TO(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getInt(5),
+                    rs.getInt(6),
+                    rs.getInt(7),
+                    rs.getInt(8),
+                    rs.getInt(9),
+                    rs.getString(10),
+                    rs.getString(11),
+                    rs.getString(12),
+                    rs.getString(13),
+                    rs.getInt(14),
+                    rs.getInt(15),
+                    rs.getInt(16),
+                    rs.getInt(17)));
+        }
+
+        return reserClie;
+    }
+
+    @Override
+    public Reservacion_TO eliminarReserva(Usuario_TO cliente, Reservacion_TO reserva) throws Exception {
+
+        Reservacion_TO eliReser = new Reservacion_TO();
+
+        try {
+            eliReser = eliminarReseervaHecha(cliente, reserva);
+
+        } catch (Exception e) {
+            eliReser = new Reservacion_TO();
+            
+            throw e;
+        }
+        return eliReser;
+    }
+
+    private Reservacion_TO eliminarReseervaHecha(Usuario_TO idCliente ,Reservacion_TO idReserva) throws SQLException {
+
+        Reservacion_TO reser = new Reservacion_TO();
+        try {
+            String sql = "DELETE FROM sms_reservacion "
+                    + "WHERE idCliente = "+ idCliente.getIdUsuario() +" and "
+                    + " idReservacion = " + idReserva.getIdReservacion() + ";";
+
+            st.executeUpdate(sql);
+            reser.setMensaje("RESERVACION ELIMINADA CORRECATMENTE");
+
+        } catch (Exception e) {
+            reser.setMensaje("ERROR AL ELIMINAR RESERVACION");
+            throw e;
+        }
+
+        return reser;
+    }
 }

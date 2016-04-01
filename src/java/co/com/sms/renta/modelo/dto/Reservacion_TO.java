@@ -178,6 +178,36 @@ public class Reservacion_TO {
         this.idServicio = idServicio;
         this.idEstado = idEstado;
     }
+    
+//    CONSULTAR RESERVACION POR CLIENTE
+
+    public Reservacion_TO(int idReservacion, String reserva_Lugar_Llegada, String reserva_Lugar_Destino, String reserva_Notas, int idCliente, int idCiudad_inicio, int idCiudad_destino, int idEmpleado, int idVehiculo, String reserva_fechaInicio, String reserva_fechaLlegada, String reserva_horaInicio, String reserva_horaLlegada, int reservacion_Costo, int idCategoria_Servicio, int idServicio, int idEstado) {
+        this.idReservacion = idReservacion;
+        this.reserva_Lugar_Llegada = reserva_Lugar_Llegada;
+        this.reserva_Lugar_Destino = reserva_Lugar_Destino;
+        this.reserva_Notas = reserva_Notas;
+        this.idCliente = idCliente;
+        this.idCiudad_inicio = idCiudad_inicio;
+        this.idCiudad_destino = idCiudad_destino;
+        this.idEmpleado = idEmpleado;
+        this.idVehiculo = idVehiculo;
+        this.reserva_fechaInicio = reserva_fechaInicio;
+        this.reserva_fechaLlegada = reserva_fechaLlegada;
+        this.reserva_horaInicio = reserva_horaInicio;
+        this.reserva_horaLlegada = reserva_horaLlegada;
+        this.reservacion_Costo = reservacion_Costo;
+        this.idCategoria_Servicio = idCategoria_Servicio;
+        this.idServicio = idServicio;
+        this.idEstado = idEstado;
+    }
+    
+//    CONSTRUCTOR PARA ELIMINAR RESERVA
+
+    public Reservacion_TO(int idReservacion ) {
+        this.idReservacion = idReservacion;
+    }
+    
+    
 
     public String getMensaje() {
         return mensaje;

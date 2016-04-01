@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(co.com.sms.renta.servicio.impl.ConsularReservaClientesImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarAdministradoresImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarCategoriasImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.ConsultarCiudadesImpl.class);
@@ -50,6 +51,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.sms.renta.servicio.impl.EditarLocalidadClienteImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EditarNacionalidadClienteImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EditarPasswordClienteImpl.class);
+        resources.add(co.com.sms.renta.servicio.impl.EliminarReservacionImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.EmailClienteBienvImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.RegistrarClientesImpl.class);
         resources.add(co.com.sms.renta.servicio.impl.RegistrarReservasImpl.class);

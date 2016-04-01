@@ -16,5 +16,6 @@ import java.util.List;
 public interface ReservacionDAO {
     
     public Reservacion_TO registrarReserva (Reservacion_TO reserva) throws Exception;
+    public Reservacion_TO eliminarReserva (Usuario_TO cliente, Reservacion_TO reserva) throws Exception;
     public List<Reservacion_TO> consultarReservasClientes (Usuario_TO cliente) throws Exception;
 }

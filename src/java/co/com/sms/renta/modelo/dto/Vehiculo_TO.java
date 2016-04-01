@@ -156,6 +156,22 @@ public class Vehiculo_TO {
 
     /**
      *
+     * DE LA TABLA SMS_USUARIO
+     *
+     * Columna Usuario_nombre
+     */
+    String usuario_nombre;
+
+    /**
+     *
+     * DE LA TABLA SMS_USUARIO
+     *
+     * Columna idUsuario
+     */
+    int idUsuario;
+
+    /**
+     *
      * Tabla Sin tabla
      *
      * Mensaje acceder a la cuenta
@@ -193,7 +209,7 @@ public class Vehiculo_TO {
     }
 
 //    CONSULTA DE VEHICULOS
-    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre) {
+    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre, String usuario_nombre , int idUsuario) {
         this.idVehiculo = idVehiculo;
         this.vehi_Placa = vehi_Placa;
         this.vehi_Modelo = vehi_Modelo;
@@ -210,7 +226,24 @@ public class Vehiculo_TO {
         this.veh_foto2_ruta = veh_foto2_ruta;
         this.Color_nombre = Color_nombre;
         this.Estado_nombre = Estado_nombre;
+        this.usuario_nombre = usuario_nombre;
+        this.idUsuario = idUsuario;
+    }
 
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getUsuario_nombre() {
+        return usuario_nombre;
+    }
+
+    public void setUsuario_nombre(String usuario_nombre) {
+        this.usuario_nombre = usuario_nombre;
     }
 
     public int getIdVehiculo() {
