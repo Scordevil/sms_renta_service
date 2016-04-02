@@ -101,7 +101,7 @@ public class VehiculoDAOImpl implements VehiculoDAO {
         String sql = "SELECT v.idVehiculo , v.Veh_placa , v.Veh_modelo , cat.Categoria_nombre , "
                 + "                 r.Referencia_nombre , v.Veh_num_personas , v.Veh_num_malGrande , v.Veh_num_malPequeña , "
                 + "                 c.Ciudad_nombre , v.idProveedor , v.Veh_foto_nombre , v.Veh_foto_ruta , v.Veh_foto2_nombre , "
-                + "                 v.Veh_foto2_ruta , color.Color_nombre, e.Estado_nombre , u.Usuario_nombre , u.idUsuario "
+                + "                 v.Veh_foto2_ruta , color.Color_nombre, e.Estado_nombre , u.Usuario_nombre , emp.idEmpleado "
                 + "                FROM `sms_vehiculo` as v, `sms_marca` as m , `sms_ciudad` as c , `sms_color` as color , `sms_usuario` as u , `sms_empleado` as emp , "
                 + "                 `sms_proveedor` as p , `sms_categoria` as cat , `sms_referencia` as r , `sms_estado` as e , `sms_vehiculo_sms_empleado` as ve "
                 + "                 WHERE v.idCategoria = cat.idCategoria AND "

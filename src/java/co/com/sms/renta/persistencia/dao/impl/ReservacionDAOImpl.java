@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.sms.renta.servicio.impl;
+package co.com.sms.renta.persistencia.dao.impl;
 
 import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.modelo.dto.Reservacion_TO;

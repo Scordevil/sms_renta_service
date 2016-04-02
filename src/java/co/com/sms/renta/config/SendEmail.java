@@ -5,7 +5,10 @@
  */
 package co.com.sms.renta.config;
 
+import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
+import co.com.sms.renta.modelo.dto.Vehiculo_TO;
+import co.com.sms.renta.persistencia.dao.impl.UsuarioDAOImpl;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 import javax.mail.Message;
@@ -40,7 +43,7 @@ public class SendEmail {
     public SendEmail() {
     }
 
-       public void sendEmailCliente(Usuario_TO cliente) {
+    public void sendEmailClienteRegistro(Usuario_TO cliente) {
 
         init();
         try {
@@ -77,22 +80,13 @@ public class SendEmail {
         }
 
     }
-       
-       
+
 //       ENVIO DE CORREO A CLIENTE DESPUES DE RESERVA
-       /*
-       
-       public void sendEmailCliente(SmsEmpleado empleado, SmsVehiculo vehiculo, SmsReservacion reservacion, SmsUsuario Cliente) {
+    public void sendEmailClienteReserva(Vehiculo_TO vehiculo, Reservacion_TO reservacion, Usuario_TO client) throws Exception {
 
         init();
-        IUsuarioDao usuDao = new ImpUsuarioDao();
-        SmsUsuario cliente = usuDao.consultarUsuario(Cliente).get(0);
-
-        //Se formatean las fechas y horas
-        String FechaInicio = formatDate.format(reservacion.getReservacionFechaInicio());
-        String FechaLlegada = formatDate.format(reservacion.getReservacionFechaLlegada());
-        String HoraInicio = formatTime.format(reservacion.getReservacionHoraInicio());
-        String HoraLlegada = formatTime.format(reservacion.getReservacionHoraLlegada());
+        UsuarioDAOImpl usuDao = new UsuarioDAOImpl();
+        Usuario_TO cliente = usuDao.consutarListaClientes(client).get(0);
 
         try {
             MimeMessage message = new MimeMessage(session);
@@ -103,13 +97,13 @@ public class SendEmail {
             // a donde se envia
             message.addRecipient(
                     Message.RecipientType.TO,
-                    new InternetAddress("" + cliente.getUsuarioEmail()));
+                    new InternetAddress("" + cliente.getEmail()));
             message.setSubject("SMSRenta informe de su reservacion");
-            message.setText("Señor(a) " + cliente.getUsuarioNombre() + ","
+            message.setText("Señor(a) " + cliente.getNombre() + ","
                     + "\n"
-                    + "Le confirmamos su reserva para el vehículo " + vehiculo.getSmsReferencia().getSmsMarca().getMarcaNombre() + " " + vehiculo.getSmsReferencia().getReferenciaNombre() + " programada para el día " + FechaInicio + " a las " + HoraInicio + " en " + reservacion.getReservacionLugarLlegada() + " en la ciudad de " + reservacion.getSmsCiudadByIdCiudadInicio().getCiudadNombre() + " hasta el día " + FechaLlegada + ". "
-                    + "Allí lo atenderá el asesor " + empleado.getSmsUsuario().getUsuarioNombre() + ", quien estará disponible y a sus órdenes para su traslado y apoyo en su estadía. "
-                    + "El Valor de su servicio es de COP $" + reservacion.getReservacionCosto() + ", la factura será enviada a su correo electrónico en dos días.\n"
+                    + "Le confirmamos su reserva para el vehículo " + vehiculo.getMarcaNombre() + " " + vehiculo.getReferencia_nombre() + " programada para el día " + reservacion.getReserva_fechaInicio() + " a las " + reservacion.getReserva_horaInicio() + " en " + reservacion.getReserva_Lugar_Llegada() + " en la ciudad de " + reservacion.getNombre_Ciudad_inicio() + " hasta el día " + reservacion.getReserva_fechaLlegada() + ". "
+                    + "Allí lo atenderá un asesor de SMSRenta, quien le entregara su vehiculo y le indicara todo lo relacionado al dia y hora de entrega.\n"
+                    + "El Valor de su servicio es de COP $" + reservacion.getReservacion_Costo() + ", la factura será enviada a su correo electrónico en dos días.\n"
                     + "Esperamos que nuestro servicio sea de su total satisfacción y no olvide calificarlo."
                     + "Atentamente,\n"
                     + "SMS Renta");
@@ -126,6 +120,5 @@ public class SendEmail {
             return;
         }
     }
-       */
 
 }

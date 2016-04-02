@@ -169,6 +169,22 @@ public class Vehiculo_TO {
      * Columna idUsuario
      */
     int idUsuario;
+    
+    /**
+     *
+     * DE LA TABLA SMS_EMPLEADO
+     *
+     * Columna idEmpleado
+     */
+    int idEmpleado;
+
+    /**
+     *
+     * DE LA TABLA SMS_MARCA
+     *
+     * Columna Marca_nombre
+     */
+    String marcaNombre;
 
     /**
      *
@@ -182,7 +198,7 @@ public class Vehiculo_TO {
     public Vehiculo_TO() {
     }
 
-    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, int idCategoria, int idReferencia, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, int idCiudad, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, int idColor, int idEstado, String mensaje) {
+    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, int idCategoria, int idReferencia, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, int idCiudad, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, int idColor, int idEstado, String marcaNombre, String mensaje) {
         this.idVehiculo = idVehiculo;
         this.vehi_Placa = vehi_Placa;
         this.vehi_Modelo = vehi_Modelo;
@@ -199,6 +215,7 @@ public class Vehiculo_TO {
         this.veh_foto2_ruta = veh_foto2_ruta;
         this.idColor = idColor;
         this.idEstado = idEstado;
+        this.marcaNombre = marcaNombre;
         this.mensaje = mensaje;
     }
 
@@ -209,7 +226,7 @@ public class Vehiculo_TO {
     }
 
 //    CONSULTA DE VEHICULOS
-    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre, String usuario_nombre , int idUsuario) {
+    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre, String usuario_nombre, int idEmpleado) {
         this.idVehiculo = idVehiculo;
         this.vehi_Placa = vehi_Placa;
         this.vehi_Modelo = vehi_Modelo;
@@ -227,7 +244,30 @@ public class Vehiculo_TO {
         this.Color_nombre = Color_nombre;
         this.Estado_nombre = Estado_nombre;
         this.usuario_nombre = usuario_nombre;
-        this.idUsuario = idUsuario;
+        this.idEmpleado = idEmpleado;
+    }
+
+//    CONSTRUCTOR PARA ENVIO DE CORREOS AL CLIENTE QUE ERALIZO UNA RESERVACION
+    public Vehiculo_TO(String Referencia_nombre, String marcaNombre) {
+        this.Referencia_nombre = Referencia_nombre;
+        this.marcaNombre = marcaNombre;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    
+    public String getMarcaNombre() {
+        return marcaNombre;
+    }
+
+    public void setMarcaNombre(String marcaNombre) {
+        this.marcaNombre = marcaNombre;
     }
 
     public int getIdUsuario() {
@@ -424,7 +464,7 @@ public class Vehiculo_TO {
 
     @Override
     public String toString() {
-        return "Vehiculo_TO{" + "idVehiculo=" + idVehiculo + ", vehi_Placa=" + vehi_Placa + ", vehi_Modelo=" + vehi_Modelo + ", idCategoria=" + idCategoria + ", Categoria_nombre=" + Categoria_nombre + ", idReferencia=" + idReferencia + ", Referencia_nombre=" + Referencia_nombre + ", veh_num_personas=" + veh_num_personas + ", veh_num_malGrande=" + veh_num_malGrande + ", veh_num_malPeque\u00f1a=" + veh_num_malPequeña + ", idCiudad=" + idCiudad + ", Ciudad_nombre=" + Ciudad_nombre + ", idProveedor=" + idProveedor + ", veh_foto_nombre=" + veh_foto_nombre + ", veh_foto_ruta=" + veh_foto_ruta + ", veh_foto2_nombre=" + veh_foto2_nombre + ", veh_foto2_ruta=" + veh_foto2_ruta + ", idColor=" + idColor + ", Color_nombre=" + Color_nombre + ", idEstado=" + idEstado + ", Estado_nombre=" + Estado_nombre + ", mensaje=" + mensaje + '}';
+        return "Vehiculo_TO{" + "idVehiculo=" + idVehiculo + ", vehi_Placa=" + vehi_Placa + ", vehi_Modelo=" + vehi_Modelo + ", idCategoria=" + idCategoria + ", Categoria_nombre=" + Categoria_nombre + ", idReferencia=" + idReferencia + ", Referencia_nombre=" + Referencia_nombre + ", veh_num_personas=" + veh_num_personas + ", veh_num_malGrande=" + veh_num_malGrande + ", veh_num_malPeque\u00f1a=" + veh_num_malPequeña + ", idCiudad=" + idCiudad + ", Ciudad_nombre=" + Ciudad_nombre + ", idProveedor=" + idProveedor + ", veh_foto_nombre=" + veh_foto_nombre + ", veh_foto_ruta=" + veh_foto_ruta + ", veh_foto2_nombre=" + veh_foto2_nombre + ", veh_foto2_ruta=" + veh_foto2_ruta + ", idColor=" + idColor + ", Color_nombre=" + Color_nombre + ", idEstado=" + idEstado + ", Estado_nombre=" + Estado_nombre + ", usuario_nombre=" + usuario_nombre + ", idUsuario=" + idUsuario + ", marcaNombre=" + marcaNombre + ", mensaje=" + mensaje + '}';
     }
 
 }

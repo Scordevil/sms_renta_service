@@ -5,6 +5,7 @@
  */
 package co.com.sms.renta.servicio.impl;
 
+import co.com.sms.renta.persistencia.dao.impl.ReservacionDAOImpl;
 import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import co.com.sms.renta.servicio.RegistrarReservas;
 import javax.ejb.Stateless;

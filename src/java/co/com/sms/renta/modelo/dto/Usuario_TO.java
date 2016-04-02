@@ -333,6 +333,24 @@ public class Usuario_TO {
         this.nombreRol = nombreRol;
 
     }
+//      CONSULTAR CLIENTES
+
+    public Usuario_TO(int idUsuario, String nombre, String CC, String pasaporte, String telefono, String email, int idCiudad, String password, String remember_token, int estadoUsuario, String foto_nombre, String foto_ruta, int rol, int idNacionalidad) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.CC = CC;
+        this.pasaporte = pasaporte;
+        this.telefono = telefono;
+        this.email = email;
+        this.idCiudad = idCiudad;
+        this.password = password;
+        this.remember_token = remember_token;
+        this.estadoUsuario = estadoUsuario;
+        this.foto_nombre = foto_nombre;
+        this.foto_ruta = foto_ruta;
+        this.rol = rol;
+        this.idNacionalidad = idNacionalidad;
+    }
 
     public Usuario_TO(int idUsuario) {
         this.idUsuario = idUsuario;
@@ -376,6 +394,12 @@ public class Usuario_TO {
         this.idUsuario = idUsuario;
         this.password = password;
         this.remember_token = remember_token;
+    }
+        
+//    CONSTRUCTOR PARA ENVIO DE EMAIL A CLIENTE DESPUES DE ERALIZAR RESERVA
+    public Usuario_TO(String nombre, String email, int val) {
+        this.nombre = nombre;
+        this.email = email;
     }
 
     public int getIdUsuario() {

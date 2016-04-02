@@ -30,7 +30,7 @@ public class EmailClienteBienvImpl implements EmailClienteBienv{
         
         Usuario_TO user = new Usuario_TO(nombre, email, password);
         SendEmail mail = new SendEmail();
-        mail.sendEmailCliente(user);
+        mail.sendEmailClienteRegistro(user);
         
         return mail;
     }

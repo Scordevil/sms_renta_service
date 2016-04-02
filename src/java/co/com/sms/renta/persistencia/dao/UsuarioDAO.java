@@ -61,4 +61,6 @@ public interface UsuarioDAO {
      *Metodos del CRUD usuario PROVEEDOR
      *
      */
+    
+    public List<Usuario_TO> consutarListaClientes(Usuario_TO usuario)throws Exception;
 }
