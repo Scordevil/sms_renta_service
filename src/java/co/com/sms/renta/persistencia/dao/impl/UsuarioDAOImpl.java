@@ -777,9 +777,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
      * @return @throws Exception
      */
     @Override
-    public List<Usuario_TO> consutarListaClientes(Usuario_TO usuario) throws Exception {
+    public Usuario_TO consutarListaClientes(Usuario_TO usuario) throws Exception {
 
-        List<Usuario_TO> usuarios = new ArrayList<>();
+        Usuario_TO usuarios = new Usuario_TO();
 
         try {
             usuarios = todosLosUsuarios(usuario);
@@ -789,9 +789,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return usuarios;
     }
 
-    private List<Usuario_TO> todosLosUsuarios(Usuario_TO user) throws SQLException {
+    private Usuario_TO todosLosUsuarios(Usuario_TO user) throws SQLException {
 
-        List<Usuario_TO> users = new ArrayList<>();
+        Usuario_TO users = new Usuario_TO();
 
         try {
 
@@ -802,7 +802,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             
             while (rs.next()) {
                 
-                users.add( new Usuario_TO (rs.getInt(1), 
+                users = new Usuario_TO (rs.getInt(1), 
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4), 
@@ -815,7 +815,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                         rs.getString(11), 
                         rs.getString(12),
                         rs.getInt(13),
-                        rs.getInt(14)));
+                        rs.getInt(14));
             }
             
         } catch (Exception e) {

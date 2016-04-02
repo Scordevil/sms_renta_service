@@ -80,7 +80,7 @@ public class Vehiculo_TO {
      *
      * Columna Veh_num_malPequeña
      */
-    int veh_num_malPequeña;
+    int veh_num_malPequena;
 
     /**
      *
@@ -198,7 +198,7 @@ public class Vehiculo_TO {
     public Vehiculo_TO() {
     }
 
-    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, int idCategoria, int idReferencia, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, int idCiudad, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, int idColor, int idEstado, String marcaNombre, String mensaje) {
+    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, int idCategoria, int idReferencia, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequena, int idCiudad, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, int idColor, int idEstado, String marcaNombre, String mensaje) {
         this.idVehiculo = idVehiculo;
         this.vehi_Placa = vehi_Placa;
         this.vehi_Modelo = vehi_Modelo;
@@ -206,7 +206,7 @@ public class Vehiculo_TO {
         this.idReferencia = idReferencia;
         this.veh_num_personas = veh_num_personas;
         this.veh_num_malGrande = veh_num_malGrande;
-        this.veh_num_malPequeña = veh_num_malPequeña;
+        this.veh_num_malPequena = veh_num_malPequena;
         this.idCiudad = idCiudad;
         this.idProveedor = idProveedor;
         this.veh_foto_nombre = veh_foto_nombre;
@@ -226,7 +226,7 @@ public class Vehiculo_TO {
     }
 
 //    CONSULTA DE VEHICULOS
-    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequeña, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre, String usuario_nombre, int idEmpleado) {
+    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequena, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre, String usuario_nombre, int idEmpleado) {
         this.idVehiculo = idVehiculo;
         this.vehi_Placa = vehi_Placa;
         this.vehi_Modelo = vehi_Modelo;
@@ -234,7 +234,7 @@ public class Vehiculo_TO {
         this.Referencia_nombre = Referencia_nombre;
         this.veh_num_personas = veh_num_personas;
         this.veh_num_malGrande = veh_num_malGrande;
-        this.veh_num_malPequeña = veh_num_malPequeña;
+        this.veh_num_malPequena = veh_num_malPequena;
         this.Ciudad_nombre = Ciudad_nombre;
         this.idProveedor = idProveedor;
         this.veh_foto_nombre = veh_foto_nombre;
@@ -342,12 +342,12 @@ public class Vehiculo_TO {
         this.veh_num_malGrande = veh_num_malGrande;
     }
 
-    public int getVeh_num_malPequeña() {
-        return veh_num_malPequeña;
+    public int getVeh_num_malPequena() {
+        return veh_num_malPequena;
     }
 
-    public void setVeh_num_malPequeña(int veh_num_malPequeña) {
-        this.veh_num_malPequeña = veh_num_malPequeña;
+    public void setVeh_num_malPequeña(int veh_num_malPequena) {
+        this.veh_num_malPequena = veh_num_malPequena;
     }
 
     public int getIdCiudad() {

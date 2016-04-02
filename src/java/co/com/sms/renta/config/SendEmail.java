@@ -82,11 +82,11 @@ public class SendEmail {
     }
 
 //       ENVIO DE CORREO A CLIENTE DESPUES DE RESERVA
-    public void sendEmailClienteReserva(Vehiculo_TO vehiculo, Reservacion_TO reservacion, Usuario_TO client) throws Exception {
+    public void sendEmailClienteReserva(Vehiculo_TO vehiculo, Reservacion_TO reservacion, Usuario_TO client) throws Exception{
 
         init();
         UsuarioDAOImpl usuDao = new UsuarioDAOImpl();
-        Usuario_TO cliente = usuDao.consutarListaClientes(client).get(0);
+        Usuario_TO cliente = usuDao.consutarListaClientes(client);
 
         try {
             MimeMessage message = new MimeMessage(session);

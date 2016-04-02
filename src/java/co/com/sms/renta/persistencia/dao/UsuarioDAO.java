@@ -62,5 +62,5 @@ public interface UsuarioDAO {
      *
      */
     
-    public List<Usuario_TO> consutarListaClientes(Usuario_TO usuario)throws Exception;
+    public Usuario_TO consutarListaClientes(Usuario_TO usuario)throws Exception;
 }
