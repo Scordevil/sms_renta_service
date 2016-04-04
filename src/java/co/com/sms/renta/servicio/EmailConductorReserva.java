@@ -11,15 +11,17 @@ import co.com.sms.renta.config.SendEmail;
  *
  * @author SISTEMAS
  */
-public interface EmailClientelReserva {
-    
-    public SendEmail envioEmailClienteReserva (String usuarioEmail,   
-            String usuarioNombre,
+public interface EmailConductorReserva {
+    public SendEmail envioEmailConductorReserva(String usuarioEmail,   
+            String usuarioNombreCliente,
+            String usuarioNombreConductor,
+            String cC,
+            String telefonoCliente,
             String marcaNombre, 
             String referenciaNombre,
             String reserva_Lugar_Llegada,
             String reserva_Fecha_Inico, 
             String reserva_Hora_Inicio, 
             String nombre_Ciudad_Inicio, 
-            int reserva_Costo) throws Exception ;
+            int reserva_Costo) throws Exception;
 }

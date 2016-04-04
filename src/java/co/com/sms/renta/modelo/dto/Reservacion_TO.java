@@ -220,11 +220,10 @@ public class Reservacion_TO {
     }
     
 //    CONSTRUCTOR PARA ENVIO DE EMAIL A CLIENTE DESPUES DE REALIZAR RESERVACION
-    public Reservacion_TO(String reserva_Lugar_Llegada, String nombre_Ciudad_inicio, String reserva_fechaInicio, String reserva_fechaLlegada, String reserva_horaInicio, int reservacion_Costo) {
+    public Reservacion_TO(String reserva_Lugar_Llegada, String nombre_Ciudad_inicio, String reserva_fechaInicio, String reserva_horaInicio, int reservacion_Costo) {
         this.reserva_Lugar_Llegada = reserva_Lugar_Llegada;
         this.nombre_Ciudad_inicio = nombre_Ciudad_inicio;
         this.reserva_fechaInicio = reserva_fechaInicio;
-        this.reserva_fechaLlegada = reserva_fechaLlegada;
         this.reserva_horaInicio = reserva_horaInicio;
         this.reservacion_Costo = reservacion_Costo;
     }

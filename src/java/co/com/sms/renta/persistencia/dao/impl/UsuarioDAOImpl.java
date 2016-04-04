@@ -777,12 +777,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
      * @return @throws Exception
      */
     @Override
-    public Usuario_TO consutarListaClientes(Usuario_TO usuario) throws Exception {
+    public Usuario_TO consutarListaClientes(Usuario_TO cli) throws Exception {
 
         Usuario_TO usuarios = new Usuario_TO();
 
         try {
-            usuarios = todosLosUsuarios(usuario);
+            usuarios = todosLosUsuarios(cli);
         } catch (Exception e) {
             throw e;
         }
@@ -825,4 +825,52 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return users;
     }
 
+    @Override
+    public Usuario_TO consutarListaConductores(Usuario_TO usuario) throws Exception {
+        Usuario_TO usuarios = new Usuario_TO();
+
+        try {
+            usuarios = todosLosConductores(usuario);
+        } catch (Exception e) {
+            throw e;
+        }
+        return usuarios;
+    }
+
+    private Usuario_TO todosLosConductores(Usuario_TO user) throws SQLException {
+
+        Usuario_TO users = new Usuario_TO();
+
+        try {
+
+            String sql = "SELECT `idUsuario` , `Usuario_nombre`, `Usuario_CC`,`Usuario_pasaporte` , `Usuario_telefono`, `Usuario_email`, `idCiudad`,`Usuario_password` ,`Usuario_remember_token` ,`Usuario_EstadoUsuario` , `Usuario_foto_nombre`,`Usuario_foto_ruta`,`idRol` ,`idNacionalidad`  FROM `sms_usuario` WHERE `idRol` = "+ user.getRol() + " AND  "
+                    + " `idUsuario` =  " + user.getIdUsuario() + " " ;
+
+            ResultSet rs = st.executeQuery(sql);
+            
+            while (rs.next()) {
+                
+                users = new Usuario_TO (rs.getInt(1), 
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4), 
+                        rs.getString(5), 
+                        rs.getString(6), 
+                        rs.getInt(7), 
+                        rs.getString(8), 
+                        rs.getString(9), 
+                        rs.getInt(10), 
+                        rs.getString(11), 
+                        rs.getString(12),
+                        rs.getInt(13),
+                        rs.getInt(14));
+            }
+            
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return users;
+    }
+    
 }

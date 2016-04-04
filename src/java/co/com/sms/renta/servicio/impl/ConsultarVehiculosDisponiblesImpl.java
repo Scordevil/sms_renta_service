@@ -40,7 +40,7 @@ public class ConsultarVehiculosDisponiblesImpl implements ConsultarVehiculosDisp
         List<Vehiculo_TO> vehiculosDisponibles = new ArrayList<>();
         vehiculosDisponibles = vehiculos.consultarVehiculosDisponibles(reserva);
         
-        
+        System.out.println("Gustavo: -------------"+reserva_fechaInicio+"-"+reserva_fechaLlegada+"-"+reserva_horaInicio+"-"+reserva_horaLlegada);
         return vehiculosDisponibles;
     }
     

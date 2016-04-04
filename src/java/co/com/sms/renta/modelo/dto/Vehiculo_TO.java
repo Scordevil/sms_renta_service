@@ -464,7 +464,9 @@ public class Vehiculo_TO {
 
     @Override
     public String toString() {
-        return "Vehiculo_TO{" + "idVehiculo=" + idVehiculo + ", vehi_Placa=" + vehi_Placa + ", vehi_Modelo=" + vehi_Modelo + ", idCategoria=" + idCategoria + ", Categoria_nombre=" + Categoria_nombre + ", idReferencia=" + idReferencia + ", Referencia_nombre=" + Referencia_nombre + ", veh_num_personas=" + veh_num_personas + ", veh_num_malGrande=" + veh_num_malGrande + ", veh_num_malPeque\u00f1a=" + veh_num_malPequeña + ", idCiudad=" + idCiudad + ", Ciudad_nombre=" + Ciudad_nombre + ", idProveedor=" + idProveedor + ", veh_foto_nombre=" + veh_foto_nombre + ", veh_foto_ruta=" + veh_foto_ruta + ", veh_foto2_nombre=" + veh_foto2_nombre + ", veh_foto2_ruta=" + veh_foto2_ruta + ", idColor=" + idColor + ", Color_nombre=" + Color_nombre + ", idEstado=" + idEstado + ", Estado_nombre=" + Estado_nombre + ", usuario_nombre=" + usuario_nombre + ", idUsuario=" + idUsuario + ", marcaNombre=" + marcaNombre + ", mensaje=" + mensaje + '}';
+        return "Vehiculo_TO{" + "idVehiculo=" + idVehiculo + ", vehi_Placa=" + vehi_Placa + ", vehi_Modelo=" + vehi_Modelo + ", idCategoria=" + idCategoria + ", Categoria_nombre=" + Categoria_nombre + ", idReferencia=" + idReferencia + ", Referencia_nombre=" + Referencia_nombre + ", veh_num_personas=" + veh_num_personas + ", veh_num_malGrande=" + veh_num_malGrande + ", veh_num_malPequena=" + veh_num_malPequena + ", idCiudad=" + idCiudad + ", Ciudad_nombre=" + Ciudad_nombre + ", idProveedor=" + idProveedor + ", veh_foto_nombre=" + veh_foto_nombre + ", veh_foto_ruta=" + veh_foto_ruta + ", veh_foto2_nombre=" + veh_foto2_nombre + ", veh_foto2_ruta=" + veh_foto2_ruta + ", idColor=" + idColor + ", Color_nombre=" + Color_nombre + ", idEstado=" + idEstado + ", Estado_nombre=" + Estado_nombre + ", usuario_nombre=" + usuario_nombre + ", idUsuario=" + idUsuario + ", idEmpleado=" + idEmpleado + ", marcaNombre=" + marcaNombre + ", mensaje=" + mensaje + '}';
     }
+
+    
 
 }

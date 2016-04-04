@@ -402,6 +402,14 @@ public class Usuario_TO {
         this.email = email;
     }
 
+    public Usuario_TO(String nombre, String CC, String telefono , int var) {
+        this.nombre = nombre;
+        this.CC = CC;
+        this.telefono = telefono;
+    }
+    
+    
+
     public int getIdUsuario() {
         return idUsuario;
     }

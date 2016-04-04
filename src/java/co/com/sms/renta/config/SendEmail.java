@@ -23,9 +23,14 @@ import javax.mail.internet.MimeMessage;
  * @author SISTEMAS
  */
 public class SendEmail {
+    
+    
 
     private final Properties properties = new Properties();
     private Session session;
+    private Usuario_TO cliente ;
+    private Usuario_TO conductor ;
+    
 
     SimpleDateFormat formatDate;
     SimpleDateFormat formatTime;
@@ -41,7 +46,10 @@ public class SendEmail {
     }
 
     public SendEmail() {
+        this.cliente = new Usuario_TO();
+        this.conductor = new Usuario_TO();
     }
+
 
     public void sendEmailClienteRegistro(Usuario_TO cliente) {
 
@@ -82,11 +90,12 @@ public class SendEmail {
     }
 
 //       ENVIO DE CORREO A CLIENTE DESPUES DE RESERVA
-    public void sendEmailClienteReserva(Vehiculo_TO vehiculo, Reservacion_TO reservacion, Usuario_TO client) throws Exception{
+    public void sendEmailClienteReserva(Vehiculo_TO vehiculo, Reservacion_TO reservacion, Usuario_TO cli) throws Exception {
 
+        cliente = cli;
         init();
         UsuarioDAOImpl usuDao = new UsuarioDAOImpl();
-        Usuario_TO cliente = usuDao.consutarListaClientes(client);
+        Usuario_TO clienteEmail = usuDao.consutarListaClientes(cliente);
 
         try {
             MimeMessage message = new MimeMessage(session);
@@ -98,12 +107,12 @@ public class SendEmail {
             message.addRecipient(
                     Message.RecipientType.TO,
                     new InternetAddress("" + cliente.getEmail()));
-            message.setSubject("SMSRenta informe de su reservacion");
+            message.setSubject("SMSRenta informe de su Reservación");
             message.setText("Señor(a) " + cliente.getNombre() + ","
                     + "\n"
-                    + "Le confirmamos su reserva para el vehículo " + vehiculo.getMarcaNombre() + " " + vehiculo.getReferencia_nombre() + " programada para el día " + reservacion.getReserva_fechaInicio() + " a las " + reservacion.getReserva_horaInicio() + " en " + reservacion.getReserva_Lugar_Llegada() + " en la ciudad de " + reservacion.getNombre_Ciudad_inicio() + " hasta el día " + reservacion.getReserva_fechaLlegada() + ". "
-                    + "Allí lo atenderá un asesor de SMSRenta, quien le entregara su vehiculo y le indicara todo lo relacionado al dia y hora de entrega.\n"
-                    + "El Valor de su servicio es de COP $" + reservacion.getReservacion_Costo() + ", la factura será enviada a su correo electrónico en dos días.\n"
+                    + "Le confirmamos su reserva con el vehículo " + vehiculo.getMarcaNombre() + " " + vehiculo.getReferencia_nombre() + " para para el día " + reservacion.getReserva_fechaInicio() + " a las " + reservacion.getReserva_horaInicio() + " con dirección a  " + reservacion.getReserva_Lugar_Llegada() + " en la ciudad de " + reservacion.getNombre_Ciudad_inicio() + ". "
+                    + "Allí lo ubicará un asesor de SMSRenta, quien le mostrará su vehiculo reservado.\n"
+                    + "El Valor de su servicio es de COP $" + reservacion.getReservacion_Costo() + ", la factura será enviada a su correo electrónico.\n"
                     + "Esperamos que nuestro servicio sea de su total satisfacción y no olvide calificarlo."
                     + "Atentamente,\n"
                     + "SMS Renta");
@@ -120,5 +129,67 @@ public class SendEmail {
             return;
         }
     }
+    
+    
+    public void sendEmailConductorReserva(Vehiculo_TO vehiculo, Reservacion_TO reservacion, Usuario_TO cli , Usuario_TO cond) throws Exception {
 
+        cliente = cli;
+        conductor = cond;
+        
+        init();
+        UsuarioDAOImpl usuDao = new UsuarioDAOImpl();
+        Usuario_TO clienteEmail = usuDao.consutarListaClientes(cliente);
+        Usuario_TO conductorEmail = usuDao.consutarListaConductores(conductor);
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+
+            //quien envia
+            message.setFrom(new InternetAddress("smsrenta@gmail.com"));
+
+            // a donde se envia
+            message.addRecipient(
+                    Message.RecipientType.TO,
+                    new InternetAddress("" + conductor.getEmail()));
+            message.setSubject("SMSRenta informe de su Reservación");
+            message.setText("Señor(a) Conductor  " + conductor.getNombre() + ","
+                    + "\n"
+                    + "Le confirmamos que el sistema le ha asignado el vehículo " + vehiculo.getMarcaNombre() + " " + vehiculo.getReferencia_nombre() + " para para el día " + reservacion.getReserva_fechaInicio() + " a las " + reservacion.getReserva_horaInicio() + " con dirección a  " + reservacion.getReserva_Lugar_Llegada() + " en la ciudad de " + reservacion.getNombre_Ciudad_inicio() + ". "
+                    + "Allí será ubicado su vehiculo anteriormente nombrado junto con el cliente "+ cliente.getNombre()  + " , con Cc "+ cliente.getCC() +" y con numero de teléfono " + cliente.getTelefono() + " .\n"
+                    + "El Valor de la servicio es de COP $" + reservacion.getReservacion_Costo() + ", la factura será enviada al correo electrónico del cliente.\n"
+                    + "Esperamos que nuestro servicio sea de su total satisfacción."
+                    + "Atentamente,\n"
+                    + "SMS Renta");
+
+            Transport t = session.getTransport("smtp");
+            t.connect("smtp.gmail.com", (String) properties.get("mail.smtp.user"), "Smsrenta2016");
+            t.sendMessage(message, message.getAllRecipients());
+            t.close();
+        } catch (MessagingException me) {
+            me.getMessage();
+            //Aqui se deberia o mostrar un mensaje de error o en lugar
+            //de no hacer nada con la excepcion, lanzarla para que el modulo
+            //superior la capture y avise al usuario con un popup, por ejemplo.
+            return;
+        }
+    }
+    
+
+    public Usuario_TO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Usuario_TO cliente) {
+        this.cliente = cliente;
+    }
+
+    public Usuario_TO getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Usuario_TO conductor) {
+        this.conductor = conductor;
+    }
+
+    
 }

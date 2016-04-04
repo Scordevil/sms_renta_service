@@ -32,7 +32,6 @@ public class EmailClienteReservaImpl implements EmailClientelReserva{
             @QueryParam("referenciaNombre") String referenciaNombre, 
             @QueryParam("reserva_Lugar_Llegada") String reserva_Lugar_Llegada,
             @QueryParam("reserva_Fecha_Inico") String reserva_Fecha_Inico, 
-            @QueryParam("reserva_Fecha_Llegada") String reserva_Fecha_Llegada,
             @QueryParam("reserva_Hora_Inicio") String reserva_Hora_Inicio, 
             @QueryParam("nombre_Ciudad_Inicio") String nombre_Ciudad_Inicio, 
             @QueryParam("reserva_Costo") int reserva_Costo) throws Exception {
@@ -42,7 +41,6 @@ public class EmailClienteReservaImpl implements EmailClientelReserva{
         Reservacion_TO reserva = new Reservacion_TO(reserva_Lugar_Llegada, 
                 nombre_Ciudad_Inicio, 
                 reserva_Fecha_Inico, 
-                reserva_Fecha_Llegada, 
                 reserva_Hora_Inicio, 
                 reserva_Costo);
         
