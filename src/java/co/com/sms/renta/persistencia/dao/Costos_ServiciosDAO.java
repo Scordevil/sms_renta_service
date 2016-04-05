@@ -5,9 +5,8 @@
  */
 package co.com.sms.renta.persistencia.dao;
 
-import co.com.sms.renta.modelo.dto.Categoria_TO;
 import co.com.sms.renta.modelo.dto.Costos_Servicios_TO;
-import co.com.sms.renta.modelo.dto.Servicio_TO;
+import co.com.sms.renta.modelo.dto.Reservacion_TO;
 
 /**
  *
@@ -15,5 +14,5 @@ import co.com.sms.renta.modelo.dto.Servicio_TO;
  */
 public interface Costos_ServiciosDAO {
 
-    public Costos_Servicios_TO consultarCostosServicio (Categoria_TO cat, Servicio_TO servicio ) throws Exception;
+    public Costos_Servicios_TO consultarCostosServicio (Costos_Servicios_TO costosServicios, Reservacion_TO reserva )throws Exception;
 }

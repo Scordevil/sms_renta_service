@@ -66,6 +66,13 @@ public class Costos_Servicios_TO {
         this.idLugar_destino = idLugar_destino;
     }
 
+    public Costos_Servicios_TO(int idServicio, int idCategoria) {
+        this.idServicio = idServicio;
+        this.idCategoria = idCategoria;
+    }
+    
+    
+
     public int getIdCostosServicio() {
         return idCostosServicio;
     }

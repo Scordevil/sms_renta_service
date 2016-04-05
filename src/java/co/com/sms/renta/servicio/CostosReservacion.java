@@ -5,22 +5,23 @@
  */
 package co.com.sms.renta.servicio;
 
+import co.com.sms.renta.modelo.dto.Costos_Servicios_TO;
+
 /**
  *
  * @author SISTEMAS
  */
 public interface CostosReservacion {
-    
-    public int calcularCostoReserva(
-//            VARIABLES PARA RESERVACION
+
+    public Costos_Servicios_TO calcularCostoReserva(
+            //            VARIABLES PARA RESERVACION
             String reserva_FechaInicio,
             String reserva_FechaLlegada,
             String reserva_HoraInicio,
             String reserva_HoraLlegada,
-//            VARIABLES PARA CATEGORIA
+            //            VARIABLES PARA CATEGORIA
             int idCategoria,
-//            VARIABLES PARA SERVICIOS
-            int servicioDuracion,
-            String servicioNombre  ) throws Exception;
-    
+
+            int idServicio) throws Exception;
+
 }

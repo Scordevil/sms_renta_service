@@ -5,10 +5,9 @@
  */
 package co.com.sms.renta.servicio.impl;
 
-import co.com.sms.renta.modelo.dto.Categoria_TO;
+import co.com.sms.renta.modelo.dto.Costos_Servicios_TO;
 import co.com.sms.renta.modelo.dto.Reservacion_TO;
-import co.com.sms.renta.modelo.dto.Servicio_TO;
-import co.com.sms.renta.persistencia.dao.impl.ReservacionDAOImpl;
+import co.com.sms.renta.persistencia.dao.impl.Costos_ServiciosDAOImpl;
 import co.com.sms.renta.servicio.CostosReservacion;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
@@ -26,7 +25,7 @@ public class CostosReservacionImpl implements CostosReservacion {
 
     @GET
     @Produces({"application/json"})
-    public int calcularCostoReserva(
+    public Costos_Servicios_TO calcularCostoReserva(
             //  VARIABLES PARA RESERVACION
             @QueryParam("reserva_FechaInicio") String reserva_FechaInicio,
             @QueryParam("reserva_FechaLlegada") String reserva_FechaLlegada,
@@ -35,20 +34,19 @@ public class CostosReservacionImpl implements CostosReservacion {
             //  VARIABLES PARA CATEGORIA
             @QueryParam("idCategoria") int idCategoria,
             //  VARIABLES PARA SERVICIOS
-            @QueryParam("servicioDuracion") int servicioDuracion,
-            @QueryParam("servicioNombre") String servicioNombre) throws Exception {
+            @QueryParam("idServicio") int idServicio) throws Exception {
         
-        int costo = 0;
-        ReservacionDAOImpl reservaDAO = new ReservacionDAOImpl();
+       Costos_ServiciosDAOImpl CostoServicio = new Costos_ServiciosDAOImpl();
         
         
-        Reservacion_TO reser = new Reservacion_TO(reserva_FechaInicio, reserva_FechaLlegada, reserva_HoraInicio, reserva_HoraLlegada);
-        Categoria_TO cat = new Categoria_TO(idCategoria);
-        Servicio_TO serv = new Servicio_TO(servicioNombre, servicioDuracion);
+        Reservacion_TO reserva = new Reservacion_TO(reserva_FechaInicio, reserva_FechaLlegada, reserva_HoraInicio, reserva_HoraLlegada);
+        Costos_Servicios_TO costosServicios = new Costos_Servicios_TO(idServicio,idCategoria);
+        Costos_Servicios_TO costo = new Costos_Servicios_TO();
         
-        costo = reservaDAO.calcularCostoReservacion(reser, serv, cat);
-
-                
+        System.out.print("Gustavo: "+reserva+"-"+costosServicios);
+        
+        costo = CostoServicio.consultarCostosServicio(costosServicios, reserva);
+     
         return costo;
     }
 
