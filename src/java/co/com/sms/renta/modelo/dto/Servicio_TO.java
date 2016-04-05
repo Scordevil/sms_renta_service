@@ -72,8 +72,11 @@ public class Servicio_TO {
         this.servicioNombre = servicioNombre;
         this.servicioDescripcion = servicioDescripcion;
     }
-    
-    
+
+    public Servicio_TO(String servicioNombre, int servicioDuracion) {
+        this.servicioNombre = servicioNombre;
+        this.servicioDuracion = servicioDuracion;
+    }
 
     public int getIdServicios() {
         return idServicios;
@@ -164,13 +167,10 @@ public class Servicio_TO {
         }
         return true;
     }
-    
-    
 
     @Override
     public String toString() {
         return "Servicio_TO{" + "idServicios=" + idServicios + ", servicioNombre=" + servicioNombre + ", servicioDescripcion=" + servicioDescripcion + ", idCategoriaServicio=" + idCategoriaServicio + ", servicioDuracion=" + servicioDuracion + ", servicioConductor=" + servicioConductor + '}';
     }
 
-    
 }

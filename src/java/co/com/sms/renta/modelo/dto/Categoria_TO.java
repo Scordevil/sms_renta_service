@@ -18,35 +18,36 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Categoria_TO {
-    
+
     /**
      *
      * Columna idCategoria
      */
     private int idCategoria;
-    
+
     /**
      *
      * Columna Categoria_nombre
      */
     private String categoriaNombre;
-    
+
     /**
      *
      * Columna Categoria_descripcion
      */
     private String categoriaDescripcion;
 
-    
-    
     public Categoria_TO() {
     }
 
-    
     public Categoria_TO(int idCategoria, String categoriaNombre, String categoriaDescripcion) {
         this.idCategoria = idCategoria;
         this.categoriaNombre = categoriaNombre;
         this.categoriaDescripcion = categoriaDescripcion;
+    }
+
+    public Categoria_TO(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public int getIdCategoria() {
@@ -107,5 +108,5 @@ public class Categoria_TO {
     public String toString() {
         return "Categoria_TO{" + "idCategoria=" + idCategoria + ", categoriaNombre=" + categoriaNombre + ", categoriaDescripcion=" + categoriaDescripcion + '}';
     }
-       
+
 }
