@@ -12,8 +12,6 @@ import java.util.List;
  *
  * @author SISTEMAS
  */
-public interface ConsularReservaClientes {
-    
-    public List<Reservacion_TO> reservasClientes (int idUsuario) throws Exception;
-    
+public interface ConsultarReservaConductor {
+    public List<Reservacion_TO> consultarReservasCOnductores (int idEmpleado) throws Exception;
 }

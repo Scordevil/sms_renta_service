@@ -37,18 +37,48 @@ public class Categoria_TO {
      */
     private String categoriaDescripcion;
 
+    /**
+     *
+     * COLUMNA IDMERACDO DE LA TABLA SMS_MERCADO_SMS_CATEGORIA
+     *
+     * Columna idMercado
+     */
+    private int idMercado;
+
     public Categoria_TO() {
     }
 
+    public Categoria_TO(int idCategoria, String categoriaNombre, String categoriaDescripcion, int idMercado) {
+        this.idCategoria = idCategoria;
+        this.categoriaNombre = categoriaNombre;
+        this.categoriaDescripcion = categoriaDescripcion;
+        this.idMercado = idMercado;
+
+    }
+
+//    CONSULTAR TODAS LAS CATEGORIAS DE LA TABLA SMS_CATEGORIAS
     public Categoria_TO(int idCategoria, String categoriaNombre, String categoriaDescripcion) {
         this.idCategoria = idCategoria;
         this.categoriaNombre = categoriaNombre;
         this.categoriaDescripcion = categoriaDescripcion;
     }
 
+    public Categoria_TO(int idMercado , String var) {
+        this.idMercado = idMercado;
+    }
+
     public Categoria_TO(int idCategoria) {
         this.idCategoria = idCategoria;
     }
+    
+    public int getIdMercado() {
+        return idMercado;
+    }
+
+    public void setIdMercado(int idMercado) {
+        this.idMercado = idMercado;
+    }
+
 
     public int getIdCategoria() {
         return idCategoria;

@@ -167,6 +167,14 @@ public class Usuario_TO {
 
     /**
      *
+     * Tabla EMPLEADO
+     *
+     * Columna idEmpleado
+     */
+    private int idEmpleado;
+
+    /**
+     *
      * Tabla Sin tabla
      *
      * Mensaje acceder a la cuenta
@@ -395,20 +403,30 @@ public class Usuario_TO {
         this.password = password;
         this.remember_token = remember_token;
     }
-        
+
 //    CONSTRUCTOR PARA ENVIO DE EMAIL A CLIENTE DESPUES DE ERALIZAR RESERVA
     public Usuario_TO(String nombre, String email, int val) {
         this.nombre = nombre;
         this.email = email;
     }
 
-    public Usuario_TO(String nombre, String CC, String telefono , int var) {
+    public Usuario_TO(String nombre, String CC, String telefono, int var) {
         this.nombre = nombre;
         this.CC = CC;
         this.telefono = telefono;
     }
-    
-    
+
+    public Usuario_TO(int idEmpleado, long var) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
 
     public int getIdUsuario() {
         return idUsuario;

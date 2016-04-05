@@ -14,6 +14,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 /**
  *
@@ -24,13 +25,14 @@ import javax.ws.rs.Produces;
 public class ConsultarCategoriasImpl implements ConsultarCategorias{
     
      @GET
-    @Produces({"application/json", "application/xml"})
-     public List<Categoria_TO> consultarCategorias() throws Exception{
+    @Produces({"application/json"})
+     public List<Categoria_TO> consultarCategorias(@QueryParam("idMercado")int idMercado) throws Exception{
         
         List<Categoria_TO> categorias = new ArrayList<Categoria_TO>();
         CategoriaDAOImpl categoria = new CategoriaDAOImpl();
+        Categoria_TO cat = new Categoria_TO(idMercado, "");
         
-        categorias = categoria.consultarCategorias();
+        categorias = categoria.consultarCategorias(cat);
         
         return categorias;
     }

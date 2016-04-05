@@ -33,7 +33,8 @@ public class EmailConductorReservaImpl implements EmailConductorReserva{
             @QueryParam("telefonoCliente") String telefonoCliente, 
             @QueryParam("marcaNombre") String marcaNombre, 
             @QueryParam("referenciaNombre") String referenciaNombre,
-            @QueryParam("reserva_Lugar_Llegada") String reserva_Lugar_Llegada, 
+            @QueryParam("reserva_Lugar_Inicio") String reserva_Lugar_Inicio, 
+            @QueryParam("reserva_Lugar_Destino") String reserva_Lugar_Destino, 
             @QueryParam("reserva_Fecha_Inico") String reserva_Fecha_Inico, 
             @QueryParam("reserva_Hora_Inicio") String reserva_Hora_Inicio, 
             @QueryParam("nombre_Ciudad_Inicio") String nombre_Ciudad_Inicio, 
@@ -46,8 +47,8 @@ public class EmailConductorReservaImpl implements EmailConductorReserva{
 //        cliente
         Usuario_TO cliente = new Usuario_TO(usuarioNombreCliente, cC, telefonoCliente, 0);
 //        reserva
-        Reservacion_TO reser = new Reservacion_TO(reserva_Lugar_Llegada, nombre_Ciudad_Inicio, 
-                reserva_Fecha_Inico, reserva_Hora_Inicio, reserva_Costo);
+        Reservacion_TO reser = new Reservacion_TO(reserva_Lugar_Inicio, reserva_Lugar_Destino,
+                nombre_Ciudad_Inicio, reserva_Fecha_Inico, reserva_Hora_Inicio, reserva_Costo);
         
         SendEmail emailReservaConductor = new SendEmail();
         emailReservaConductor.sendEmailConductorReserva(veh, reser, cliente, conductor);

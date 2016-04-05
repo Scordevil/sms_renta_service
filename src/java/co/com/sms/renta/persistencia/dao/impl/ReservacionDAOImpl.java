@@ -55,10 +55,10 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 
         try {
             String sql = "INSERT INTO `sms_reservacion` ( `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
-                    + "`idCliente`, `idCiudad_inicio`, `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`,  "
+                    + "`idCliente`, `idCiudad_inicio`, `idCiudad_destino`, `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`,  "
                     + "`Reservacion_horaInicio`,`Reservacion_horaLlegada`,`Reservacion_Costo`,`idCategoria_Servicio`,`idServicio`,`idEstado`) "
-                    + " VALUES ('" + reservas.getReserva_Lugar_Llegada() + "', '" + reservas.getReserva_Lugar_Destino() + "' , " + reservas.getIdCliente() + " , "
-                    + reservas.getIdCiudad_inicio() + " , " + reservas.getIdVehiculo() + " , '" + reservas.getReserva_fechaInicio() + "' , "
+                    + " VALUES ('" + reservas.getReserva_Lugar_Inicio() + "', '" + reservas.getReserva_Lugar_Destino() + "' , " + reservas.getIdCliente() + " , "
+                    + reservas.getIdCiudad_inicio() + " , " + reservas.getIdCiudad_destino() + " , " + reservas.getIdEmpleado() + "  , " + reservas.getIdVehiculo() + " , '" + reservas.getReserva_fechaInicio() + "' , "
                     + " '" + reservas.getReserva_fechaLlegada() + "',  '" + reservas.getReserva_horaInicio() + "', '" + reservas.getReserva_horaLlegada() + "', "
                     + reservas.getReservacion_Costo() + " , " + reservas.getIdCategoria_Servicio() + " , " + reservas.getIdServicio() + " , " + reservas.getIdEstado() + " )";
 
@@ -363,4 +363,56 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         return costo;
 
     }
+
+    @Override
+    public List<Reservacion_TO> consultarReservasConductor(Usuario_TO conductor) throws Exception {
+
+        List<Reservacion_TO> reservasClientes = new ArrayList<>();
+
+        try {
+            reservasClientes = todaReservaCOnductor(conductor);
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return reservasClientes;
+    }
+
+    private List<Reservacion_TO> todaReservaCOnductor(Usuario_TO cond) throws SQLException {
+        List<Reservacion_TO> reserClie = new ArrayList<>();
+
+        String sql = " SELECT `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
+                + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
+                + " `idEmpleado` ,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
+                + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
+                + " `idCategoria_Servicio`, `idServicio` , `idEstado` "
+                + " FROM `sms_reservacion` "
+                + " WHERE `idEmpleado` = " + cond.getIdEmpleado() + " ";
+
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+            reserClie.add(new Reservacion_TO(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getInt(5),
+                    rs.getInt(6),
+                    rs.getInt(7),
+                    rs.getInt(8),
+                    rs.getInt(9),
+                    rs.getString(10),
+                    rs.getString(11),
+                    rs.getString(12),
+                    rs.getString(13),
+                    rs.getInt(14),
+                    rs.getInt(15),
+                    rs.getInt(16),
+                    rs.getInt(17)));
+        }
+
+        return reserClie;
+    }
+
 }

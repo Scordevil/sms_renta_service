@@ -27,14 +27,14 @@ public class CategoriaDAOImpl implements CategoriaDAO {
      * @return @throws Exception
      */
     @Override
-    public List<Categoria_TO> consultarCategorias() throws Exception {
+    public List<Categoria_TO> consultarCategorias(Categoria_TO cat) throws Exception {
 
         Statement st = ConexionSQL.conexion();
         List<Categoria_TO> categorias = new ArrayList<>();
 
         try {
 
-            categorias = consultarTodasCategorias();
+            categorias = consultarTodasCategorias(cat);
         } catch (Exception e) {
             throw e;
         }
@@ -42,12 +42,14 @@ public class CategoriaDAOImpl implements CategoriaDAO {
         return categorias;
     }
 
-    private List<Categoria_TO> consultarTodasCategorias() throws SQLException {
+    private List<Categoria_TO> consultarTodasCategorias(Categoria_TO cat) throws SQLException {
 
         
         //Seleccionar datos de la tabla sms_categoria
         String sql = "Select c.idCategoria, c.Categoria_nombre, c.Categoria_descripcion "
-                    +"from sms_categoria as c ";
+                    +"from sms_categoria as c , `sms_mercado_sms_categoria` as mc"
+                + " WHERE mc.idCategoria = c.idCategoria AND "
+                + " mc.idMercado = " + cat.getIdMercado() + "  ";
         
         ResultSet rs = st.executeQuery(sql);
         

@@ -8,7 +8,7 @@ package co.com.sms.renta.servicio.impl;
 import co.com.sms.renta.persistencia.dao.impl.ReservacionDAOImpl;
 import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
-import co.com.sms.renta.servicio.ConsularReservaClientes;
+import co.com.sms.renta.servicio.ConsultarReservaClientes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -23,7 +23,7 @@ import javax.ws.rs.QueryParam;
  */
 @Stateless
 @Path("/consultarReservacionClientes")
-public class ConsularReservaClientesImpl implements ConsularReservaClientes{
+public class ConsultarReservaClientesImpl implements ConsultarReservaClientes{
 
     @GET
     @Produces({"application/json"})

@@ -5,15 +5,15 @@
  */
 package co.com.sms.renta.servicio;
 
-import co.com.sms.renta.modelo.dto.Categoria_TO;
+import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import java.util.List;
 
 /**
  *
  * @author SISTEMAS
  */
-public interface ConsultarCategorias {
+public interface ConsultarReservaClientes {
     
-    public List<Categoria_TO> consultarCategorias(int idMercado) throws Exception;
+    public List<Reservacion_TO> reservasClientes (int idUsuario) throws Exception;
     
 }

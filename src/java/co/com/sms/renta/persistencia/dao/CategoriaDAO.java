@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface CategoriaDAO {
     
-    public List<Categoria_TO> consultarCategorias() throws Exception;
+    public List<Categoria_TO> consultarCategorias(Categoria_TO cat) throws Exception;
     
 }
