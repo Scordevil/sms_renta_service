@@ -110,7 +110,7 @@ public class SendEmail {
             message.setSubject("SMSRenta informe de su Reservación");
             message.setText("Señor(a) " + cliente.getNombre() + ","
                     + "\n"
-                    + "Le confirmamos su reserva con el vehículo " + vehiculo.getMarcaNombre() + " " + vehiculo.getReferencia_nombre() + " para para el día " + reservacion.getReserva_fechaInicio() + " a las " + reservacion.getReserva_horaInicio() + " con salia en "+ reservacion.getReserva_Lugar_Inicio() +" y en dirección a  " + reservacion.getReserva_Lugar_Destino() + " en la ciudad de " + reservacion.getNombre_Ciudad_inicio() + ". "
+                    + "Le confirmamos su reserva con el vehículo " + vehiculo.getMarcaNombre() + " " + vehiculo.getReferencia_nombre() + " para el día " + reservacion.getReserva_fechaInicio() + " a las " + reservacion.getReserva_horaInicio() + " con salida en "+ reservacion.getReserva_Lugar_Inicio() +" y en dirección a  " + reservacion.getReserva_Lugar_Destino() + " en la ciudad de " + reservacion.getNombre_Ciudad_inicio() + ". "
                     + "Allí lo ubicará un asesor de SMSRenta, quien le mostrará su vehiculo reservado.\n"
                     + "El Valor de su servicio es de COP $" + reservacion.getReservacion_Costo() + ", la factura será enviada a su correo electrónico.\n"
                     + "Esperamos que nuestro servicio sea de su total satisfacción y no olvide calificarlo."
