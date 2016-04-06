@@ -40,7 +40,7 @@ public class Costos_Servicios_TO {
      *
      * Columna CostoServicio_precio
      */
-    private int CostoServicio_precio;
+    private int costoServicio_precio;
 
     /**
      *
@@ -57,11 +57,11 @@ public class Costos_Servicios_TO {
     public Costos_Servicios_TO() {
     }
 
-    public Costos_Servicios_TO(int idCostosServicio, int idServicio, int idCategoria, int CostoServicio_precio, int idLugar_inicio, int idLugar_destino) {
+    public Costos_Servicios_TO(int idCostosServicio, int idServicio, int idCategoria, int costoServicio_precio, int idLugar_inicio, int idLugar_destino) {
         this.idCostosServicio = idCostosServicio;
         this.idServicio = idServicio;
         this.idCategoria = idCategoria;
-        this.CostoServicio_precio = CostoServicio_precio;
+        this.costoServicio_precio = costoServicio_precio;
         this.idLugar_inicio = idLugar_inicio;
         this.idLugar_destino = idLugar_destino;
     }
@@ -98,11 +98,11 @@ public class Costos_Servicios_TO {
     }
 
     public int getCostoServicio_precio() {
-        return CostoServicio_precio;
+        return costoServicio_precio;
     }
 
-    public void setCostoServicio_precio(int CostoServicio_precio) {
-        this.CostoServicio_precio = CostoServicio_precio;
+    public void setCostoServicio_precio(int costoServicio_precio) {
+        this.costoServicio_precio = costoServicio_precio;
     }
 
     public int getIdLugar_inicio() {
@@ -123,7 +123,7 @@ public class Costos_Servicios_TO {
 
     @Override
     public String toString() {
-        return "Costos_Servicios_TO{" + "idCostosServicio=" + idCostosServicio + ", idServicio=" + idServicio + ", idCategoria=" + idCategoria + ", CostoServicio_precio=" + CostoServicio_precio + ", idLugar_inicio=" + idLugar_inicio + ", idLugar_destino=" + idLugar_destino + '}';
+        return "Costos_Servicios_TO{" + "idCostosServicio=" + idCostosServicio + ", idServicio=" + idServicio + ", idCategoria=" + idCategoria + ", costoServicio_precio=" + costoServicio_precio + ", idLugar_inicio=" + idLugar_inicio + ", idLugar_destino=" + idLugar_destino + '}';
     }
 
 }
