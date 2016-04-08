@@ -5,9 +5,7 @@
  */
 package co.com.sms.renta.persistencia.dao;
 
-import co.com.sms.renta.modelo.dto.Categoria_TO;
 import co.com.sms.renta.modelo.dto.Reservacion_TO;
-import co.com.sms.renta.modelo.dto.Servicio_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import java.util.List;
 
@@ -21,5 +19,6 @@ public interface ReservacionDAO {
     public Reservacion_TO eliminarReserva (Usuario_TO cliente, Reservacion_TO reserva) throws Exception;
     public List<Reservacion_TO> consultarReservasClientes (Usuario_TO cliente) throws Exception;
     public List<Reservacion_TO> consultarReservasConductor (Usuario_TO conductor) throws Exception;
+    public Reservacion_TO consultarReservas (int idCliente, int idReservacion) throws Exception;
  
 }

@@ -12,15 +12,10 @@ import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import co.com.sms.renta.modelo.dto.Servicio_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.ReservacionDAO;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -205,6 +200,58 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     rs.getInt(15),
                     rs.getInt(16),
                     rs.getInt(17)));
+        }
+
+        return reserClie;
+    }
+    
+    @Override
+    public Reservacion_TO consultarReservas(int idUsuario, int idReserva) throws Exception {
+
+        Reservacion_TO reserva = new Reservacion_TO();
+
+        try {
+            reserva = Reserva(idUsuario,idReserva);
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return reserva;
+    }
+
+    private Reservacion_TO Reserva(int idUsuario, int idReserva) throws SQLException {
+        
+        Reservacion_TO reserClie = new Reservacion_TO();
+        String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
+                + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
+                + " `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
+                + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
+                + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
+                + " from sms_reservacion "
+                + " where idCliente = " + idUsuario + " and "
+                + " idReservacion = "+ idReserva +" ";
+
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+            reserClie = new Reservacion_TO(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getInt(5),
+                    rs.getInt(6),
+                    rs.getInt(7),
+                    rs.getInt(8),
+                    rs.getInt(9),
+                    rs.getString(10),
+                    rs.getString(11),
+                    rs.getString(12),
+                    rs.getString(13),
+                    rs.getInt(14),
+                    rs.getInt(15),
+                    rs.getInt(16),
+                    rs.getInt(17));
         }
 
         return reserClie;
