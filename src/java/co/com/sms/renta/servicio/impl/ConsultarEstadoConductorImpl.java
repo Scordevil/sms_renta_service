@@ -32,6 +32,9 @@ public class ConsultarEstadoConductorImpl implements ConsultarEstadoConductor{
         UsuarioDAOImpl userDAO = new UsuarioDAOImpl();
         
         estadoFinal = userDAO.consultarEstdoUsuario(conductor);
+        /*
+        
+        */
         
         return estadoFinal;
     }
