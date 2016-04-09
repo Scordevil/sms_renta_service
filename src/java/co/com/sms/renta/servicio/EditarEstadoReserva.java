@@ -12,5 +12,5 @@ import co.com.sms.renta.modelo.dto.Reservacion_TO;
  * @author SISTEMAS
  */
 public interface EditarEstadoReserva {
-    public Reservacion_TO editarEstadoReserva(int idEstado , int idUsuario)throws Exception;
+    public Reservacion_TO editarEstadoDeReserva(int idCliente, int idReservacion, int idEstado)throws Exception;
 }

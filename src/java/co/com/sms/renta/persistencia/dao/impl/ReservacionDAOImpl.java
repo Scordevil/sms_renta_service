@@ -258,40 +258,37 @@ public class ReservacionDAOImpl implements ReservacionDAO {
     }
 
     @Override
-    public Reservacion_TO editarEstadoReserva(Reservacion_TO reserva, Usuario_TO conductor) throws Exception {
+    public Reservacion_TO editarEstadoReserva(int idCliente, int idReservacion, int idEstado) throws Exception {
 
-        Reservacion_TO reser = new Reservacion_TO();
-        reser = reserva;
-
-        Usuario_TO cond = new Usuario_TO();
-        cond = conductor;
-
+//        Reservacion_TO reser = new Reservacion_TO();
+//        reser = reserva;
+//        Usuario_TO cond = new Usuario_TO();
+//        cond = conductor;
         Reservacion_TO reservaFinal = new Reservacion_TO();
 
-        try {
-            reservaFinal = todosEstadosEditados(reser, cond);
-        } catch (Exception e) {
-            throw e;
-        }
+        reservaFinal = todosEstadosEditados(idCliente,idReservacion , idEstado);
+
         return reservaFinal;
     }
 
-    private Reservacion_TO todosEstadosEditados(Reservacion_TO reser, Usuario_TO cond) throws SQLException {
+    
+    private Reservacion_TO todosEstadosEditados(int idCliente, int idReservacion , int idEstado) throws SQLException {
 
+         Reservacion_TO reserva = new Reservacion_TO();
         try {
-            String mensaje = new String();
+           
             String sql = "UPDATE `sms_reservacion` "
-                    + " SET `idEstado`= " + reser.getIdEstado() + " WHERE `idCliente` = " + cond.getIdUsuario() + " ";
+                    + " SET `idEstado` = "+ idEstado +"  WHERE `idReservacion` = " + idReservacion + " AND `idCliente` = "+ idCliente +"  ; ";
 
             st.executeUpdate(sql);
-            mensaje = "Actualizacion realizada con exito";
+            reserva.setMensaje("edicion exitosa");
         } catch (Exception e) {
-            String mensaje = new String();
-            mensaje = "Error en la Actualizacion";
+           
+            reserva.setMensaje("error en edicion");
             throw e;
         }
 
-        return null;
+        return reserva;
     }
 
 }

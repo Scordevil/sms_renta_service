@@ -20,6 +20,6 @@ public interface ReservacionDAO {
     public List<Reservacion_TO> consultarReservasClientes (Usuario_TO cliente) throws Exception;
     public List<Reservacion_TO> consultarReservasConductor (Usuario_TO conductor) throws Exception;
     public Reservacion_TO consultarReservas (int idCliente, int idReservacion) throws Exception;
-    public Reservacion_TO editarEstadoReserva (Reservacion_TO reserva , Usuario_TO conductor) throws Exception;
+    public Reservacion_TO editarEstadoReserva ( int idCliente, int idReservacion, int idEstado) throws Exception;
  
 }

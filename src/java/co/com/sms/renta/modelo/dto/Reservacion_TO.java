@@ -229,7 +229,11 @@ public class Reservacion_TO {
         this.reservacion_Costo = reservacion_Costo;
     }
 
-    
+//    CONSTUCT PARA SERVICIO DE EDICION DE ESTADO EN LA RESERVA
+    public Reservacion_TO(int idReservacion, int idEstado) {
+        this.idReservacion = idReservacion;
+        this.idEstado = idEstado;
+    }
     
     public String getNombre_Ciudad_inicio() {
         return nombre_Ciudad_inicio;
