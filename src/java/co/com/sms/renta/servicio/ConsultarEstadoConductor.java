@@ -13,4 +13,9 @@ import co.com.sms.renta.modelo.dto.Estado_TO;
  */
 public interface ConsultarEstadoConductor {
     public Estado_TO consultarEstadoDelConductor( int idUsuario )throws Exception;
+    
+    
+    
+    
+    
 }
