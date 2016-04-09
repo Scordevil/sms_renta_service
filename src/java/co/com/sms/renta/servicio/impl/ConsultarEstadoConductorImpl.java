@@ -33,7 +33,7 @@ public class ConsultarEstadoConductorImpl implements ConsultarEstadoConductor{
         
         estadoFinal = userDAO.consultarEstdoUsuario(conductor);
         /*
-        
+        jfghghdfh
         */
         
         return estadoFinal;
