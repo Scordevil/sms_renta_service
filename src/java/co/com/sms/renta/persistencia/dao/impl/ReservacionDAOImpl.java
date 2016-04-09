@@ -204,14 +204,14 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 
         return reserClie;
     }
-    
+
     @Override
     public Reservacion_TO consultarReservas(int idUsuario, int idReserva) throws Exception {
 
         Reservacion_TO reserva = new Reservacion_TO();
 
         try {
-            reserva = Reserva(idUsuario,idReserva);
+            reserva = Reserva(idUsuario, idReserva);
 
         } catch (Exception e) {
             throw e;
@@ -221,7 +221,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
     }
 
     private Reservacion_TO Reserva(int idUsuario, int idReserva) throws SQLException {
-        
+
         Reservacion_TO reserClie = new Reservacion_TO();
         String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
                 + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
@@ -230,7 +230,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                 + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
                 + " from sms_reservacion "
                 + " where idCliente = " + idUsuario + " and "
-                + " idReservacion = "+ idReserva +" ";
+                + " idReservacion = " + idReserva + " ";
 
         ResultSet rs = st.executeQuery(sql);
 
@@ -255,6 +255,43 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         }
 
         return reserClie;
+    }
+
+    @Override
+    public Reservacion_TO editarEstadoReserva(Reservacion_TO reserva, Usuario_TO conductor) throws Exception {
+
+        Reservacion_TO reser = new Reservacion_TO();
+        reser = reserva;
+
+        Usuario_TO cond = new Usuario_TO();
+        cond = conductor;
+
+        Reservacion_TO reservaFinal = new Reservacion_TO();
+
+        try {
+            reservaFinal = todosEstadosEditados(reser, cond);
+        } catch (Exception e) {
+            throw e;
+        }
+        return reservaFinal;
+    }
+
+    private Reservacion_TO todosEstadosEditados(Reservacion_TO reser, Usuario_TO cond) throws SQLException {
+
+        try {
+            String mensaje = new String();
+            String sql = "UPDATE `sms_reservacion` "
+                    + " SET `idEstado`= " + reser.getIdEstado() + " WHERE `idCliente` = " + cond.getIdUsuario() + " ";
+
+            st.executeUpdate(sql);
+            mensaje = "Actualizacion realizada con exito";
+        } catch (Exception e) {
+            String mensaje = new String();
+            mensaje = "Error en la Actualizacion";
+            throw e;
+        }
+
+        return null;
     }
 
 }

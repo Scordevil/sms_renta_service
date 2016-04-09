@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.sms.renta.persistencia.dao;
+package co.com.sms.renta.servicio;
 
 import co.com.sms.renta.modelo.dto.Estado_TO;
 import java.util.List;
@@ -12,7 +12,6 @@ import java.util.List;
  *
  * @author SISTEMAS
  */
-public interface EstadoDAO {
-    public List<Estado_TO> consultarEstados()throws Exception;
-    public List<Estado_TO> consultarEstadosRestantes()throws Exception;
+public interface ConsultarEstadosReservas {
+    public List<Estado_TO> consultarEstadosReservas() throws Exception;
 }

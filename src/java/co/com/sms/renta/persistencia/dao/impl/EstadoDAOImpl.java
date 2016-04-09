@@ -55,4 +55,37 @@ public class EstadoDAOImpl implements EstadoDAO {
         return estadoLista;
     }
 
+    @Override
+    public List<Estado_TO> consultarEstadosRestantes() throws Exception {
+        List<Estado_TO> estados2 = new ArrayList<>();
+        try {
+            estados2 = todosLosEstados2();
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return estados2;
+    }
+    
+    private List<Estado_TO> todosLosEstados2() throws Exception {
+
+        List<Estado_TO> estadoLista = new ArrayList<>();
+        try {
+            String sql = "SELECT `idEstado`, `Estado_nombre`, `Estado_descripcion` "
+                    + " FROM `sms_estado` WHERE `idEstado` IN (4,5,6)";
+
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                estadoLista.add(new Estado_TO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return estadoLista;
+    }
+
 }
