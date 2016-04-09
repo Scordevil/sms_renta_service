@@ -678,6 +678,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     }
 
+    @Override
     public Usuario_TO editarEstadoConductor(Usuario_TO usuario) throws Exception {
 
         Usuario_TO user = new Usuario_TO();
@@ -692,12 +693,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             st.executeUpdate(sql);
 
             // LLAMA AL MÉTODO
-            user.setMensaje("Usuario registrado correctamente");
+            user.setMensaje("Usuario Editado correctamente");
 
         } catch (Exception e) {
 
             user = new Usuario_TO();
-            user.setMensaje("Usuario no registrado");
+            user.setMensaje("Usuario no Editado");
             throw e;
 
         }
