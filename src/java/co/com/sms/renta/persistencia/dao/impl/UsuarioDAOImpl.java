@@ -7,6 +7,7 @@ package co.com.sms.renta.persistencia.dao.impl;
 
 import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.config.Config;
+import co.com.sms.renta.modelo.dto.Estado_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.UsuarioDAO;
 import java.sql.ResultSet;
@@ -796,29 +797,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         try {
 
-            String sql = "SELECT `idUsuario` , `Usuario_nombre`, `Usuario_CC`,`Usuario_pasaporte` , `Usuario_telefono`, `Usuario_email`, `idCiudad`,`Usuario_password` ,`Usuario_remember_token` ,`Usuario_EstadoUsuario` , `Usuario_foto_nombre`,`Usuario_foto_ruta`,`idRol` ,`idNacionalidad`  FROM `sms_usuario` WHERE `idRol` = "+ user.getRol() + " AND  "
-                    + " `idUsuario` =  " + user.getIdUsuario() + " " ;
+            String sql = "SELECT `idUsuario` , `Usuario_nombre`, `Usuario_CC`,`Usuario_pasaporte` , `Usuario_telefono`, `Usuario_email`, `idCiudad`,`Usuario_password` ,`Usuario_remember_token` ,`Usuario_EstadoUsuario` , `Usuario_foto_nombre`,`Usuario_foto_ruta`,`idRol` ,`idNacionalidad`  FROM `sms_usuario` WHERE `idRol` = " + user.getRol() + " AND  "
+                    + " `idUsuario` =  " + user.getIdUsuario() + " ";
 
             ResultSet rs = st.executeQuery(sql);
-            
+
             while (rs.next()) {
-                
-                users = new Usuario_TO (rs.getInt(1), 
+
+                users = new Usuario_TO(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getString(4), 
-                        rs.getString(5), 
-                        rs.getString(6), 
-                        rs.getInt(7), 
-                        rs.getString(8), 
-                        rs.getString(9), 
-                        rs.getInt(10), 
-                        rs.getString(11), 
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getInt(10),
+                        rs.getString(11),
                         rs.getString(12),
                         rs.getInt(13),
                         rs.getInt(14));
             }
-            
+
         } catch (Exception e) {
             throw e;
         }
@@ -844,34 +845,70 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         try {
 
-            String sql = "SELECT `idUsuario` , `Usuario_nombre`, `Usuario_CC`,`Usuario_pasaporte` , `Usuario_telefono`, `Usuario_email`, `idCiudad`,`Usuario_password` ,`Usuario_remember_token` ,`Usuario_EstadoUsuario` , `Usuario_foto_nombre`,`Usuario_foto_ruta`,`idRol` ,`idNacionalidad`  FROM `sms_usuario` WHERE `idRol` = "+ user.getRol() + " AND  "
-                    + " `idUsuario` =  " + user.getIdUsuario() + " " ;
+            String sql = "SELECT `idUsuario` , `Usuario_nombre`, `Usuario_CC`,`Usuario_pasaporte` , `Usuario_telefono`, `Usuario_email`, `idCiudad`,`Usuario_password` ,`Usuario_remember_token` ,`Usuario_EstadoUsuario` , `Usuario_foto_nombre`,`Usuario_foto_ruta`,`idRol` ,`idNacionalidad`  FROM `sms_usuario` WHERE `idRol` = " + user.getRol() + " AND  "
+                    + " `idUsuario` =  " + user.getIdUsuario() + " ";
 
             ResultSet rs = st.executeQuery(sql);
-            
+
             while (rs.next()) {
-                
-                users = new Usuario_TO (rs.getInt(1), 
+
+                users = new Usuario_TO(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getString(4), 
-                        rs.getString(5), 
-                        rs.getString(6), 
-                        rs.getInt(7), 
-                        rs.getString(8), 
-                        rs.getString(9), 
-                        rs.getInt(10), 
-                        rs.getString(11), 
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getInt(10),
+                        rs.getString(11),
                         rs.getString(12),
                         rs.getInt(13),
                         rs.getInt(14));
             }
-            
+
         } catch (Exception e) {
             throw e;
         }
 
         return users;
     }
-    
+
+    @Override
+    public Estado_TO consultarEstdoUsuario(Usuario_TO usuario) throws Exception {
+
+        Estado_TO est = new Estado_TO();
+
+        try {
+
+            est = consultarTodoEstadoUsuario(usuario);
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return est;
+    }
+
+    private Estado_TO consultarTodoEstadoUsuario(Usuario_TO usuario) throws Exception {
+
+        Estado_TO estado = new Estado_TO();
+        try {
+            String sql = " SELECT `idEstado`, `Estado_nombre` FROM `sms_estado` as e , `sms_usuario` as u "
+                    + "  WHERE u.Usuario_EstadoUsuario = e.`idEstado`AND "
+                    + "  u.idUsuario = " + usuario.getIdUsuario() + " ";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                estado = new Estado_TO(rs.getInt(1), rs.getString(2));
+
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return estado;
+    }
+
 }

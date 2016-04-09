@@ -45,6 +45,13 @@ public class Estado_TO {
         this.estado_descripcion = estado_descripcion;
     }
 
+    public Estado_TO(int idEstado, String estado_nombre) {
+        this.idEstado = idEstado;
+        this.estado_nombre = estado_nombre;
+    }
+    
+    
+
     public int getIdEstado() {
         return idEstado;
     }
@@ -68,6 +75,8 @@ public class Estado_TO {
     public void setEstado_descripcion(String estado_descripcion) {
         this.estado_descripcion = estado_descripcion;
     }
+    
+    
 
     @Override
     public String toString() {

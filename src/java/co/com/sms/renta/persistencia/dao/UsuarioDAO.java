@@ -5,6 +5,7 @@
  */
 package co.com.sms.renta.persistencia.dao;
 
+import co.com.sms.renta.modelo.dto.Estado_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import java.util.List;
 
@@ -64,4 +65,5 @@ public interface UsuarioDAO {
     
     public Usuario_TO consutarListaClientes(Usuario_TO usuario)throws Exception;
     public Usuario_TO consutarListaConductores(Usuario_TO usuario)throws Exception;
+    public Estado_TO consultarEstdoUsuario(Usuario_TO usuario) throws Exception;
 }
