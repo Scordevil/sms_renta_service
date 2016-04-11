@@ -6,6 +6,7 @@
 package co.com.sms.renta.persistencia.dao;
 
 import co.com.sms.renta.modelo.dto.Estado_TO;
+import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import java.util.List;
 
 /**
@@ -15,4 +16,7 @@ import java.util.List;
 public interface EstadoDAO {
     public List<Estado_TO> consultarEstados()throws Exception;
     public List<Estado_TO> consultarEstadosRestantes()throws Exception;
+    
+    public Estado_TO consultarDatosEstadoReserva(Reservacion_TO idReserva) throws Exception;
+    
 }

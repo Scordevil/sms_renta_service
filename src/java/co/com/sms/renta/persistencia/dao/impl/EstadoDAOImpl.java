@@ -7,8 +7,10 @@ package co.com.sms.renta.persistencia.dao.impl;
 
 import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.modelo.dto.Estado_TO;
+import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import co.com.sms.renta.persistencia.dao.EstadoDAO;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +88,32 @@ public class EstadoDAOImpl implements EstadoDAO {
         }
 
         return estadoLista;
+    }
+
+    @Override
+    public Estado_TO consultarDatosEstadoReserva(Reservacion_TO idReserva) throws Exception {
+        
+        Estado_TO estado = new Estado_TO();
+        estado = todosLosDatosEstadoReserva(idReserva);
+        return estado;
+    }
+    
+    private Estado_TO todosLosDatosEstadoReserva(Reservacion_TO reserva) throws SQLException {
+
+        Estado_TO est = new Estado_TO();
+        
+        String sql = "SELECT e.idEstado , e.Estado_nombre , e.Estado_descripcion "
+                + " FROM `sms_estado` as e , `sms_reservacion` as r "
+                + " WHERE e.idEstado = r.idEstado AND "
+                + " r.idReservacion = "+ reserva.getIdReservacion() +"  ";
+        ResultSet rs = st.executeQuery(sql);
+        
+        while (rs.next()) {
+            est = new Estado_TO(rs.getInt(1), rs.getString(2), rs.getString(3));
+            
+        }
+        
+        return est;
     }
 
 }

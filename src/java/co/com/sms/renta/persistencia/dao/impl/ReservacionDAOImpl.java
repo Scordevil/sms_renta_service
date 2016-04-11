@@ -266,29 +266,30 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 //        cond = conductor;
         Reservacion_TO reservaFinal = new Reservacion_TO();
 
-        reservaFinal = todosEstadosEditados(idCliente,idReservacion , idEstado);
+        reservaFinal = todosEstadosEditados(idCliente, idReservacion, idEstado);
 
         return reservaFinal;
     }
 
-    
-    private Reservacion_TO todosEstadosEditados(int idCliente, int idReservacion , int idEstado) throws SQLException {
+    private Reservacion_TO todosEstadosEditados(int idCliente, int idReservacion, int idEstado) throws SQLException {
 
-         Reservacion_TO reserva = new Reservacion_TO();
+        Reservacion_TO reserva = new Reservacion_TO();
         try {
-           
+
             String sql = "UPDATE `sms_reservacion` "
-                    + " SET `idEstado` = "+ idEstado +"  WHERE `idReservacion` = " + idReservacion + " AND `idCliente` = "+ idCliente +"  ; ";
+                    + " SET `idEstado` = " + idEstado + "  WHERE `idReservacion` = " + idReservacion + " AND `idCliente` = " + idCliente + "  ; ";
 
             st.executeUpdate(sql);
             reserva.setMensaje("edicion exitosa");
         } catch (Exception e) {
-           
+
             reserva.setMensaje("error en edicion");
             throw e;
         }
 
         return reserva;
     }
+
+    
 
 }
