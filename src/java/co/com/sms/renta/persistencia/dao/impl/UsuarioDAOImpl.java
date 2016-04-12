@@ -911,4 +911,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return estado;
     }
 
+    @Override
+    public Usuario_TO consultarIdEmpleado(Usuario_TO idEmpleado) throws Exception {
+
+        Usuario_TO cond = new Usuario_TO();
+        cond = todosLosIdEmpleados(idEmpleado);
+
+        return cond;
+
+    }
+
+    private Usuario_TO todosLosIdEmpleados(Usuario_TO idEmpleado) throws SQLException {
+        
+        
+        String sql = "SELECT idUsuario FROM `sms_empleado` "
+                + "  WHERE idEmpleado = "+ idEmpleado.getIdEmpleado() +" ";
+        ResultSet rs = st.executeQuery(sql);
+
+        Usuario_TO user_conduc = new Usuario_TO();
+
+        while (rs.next()) {
+            user_conduc = new Usuario_TO(rs.getInt(1));
+
+        }
+        return user_conduc;
+    }
 }

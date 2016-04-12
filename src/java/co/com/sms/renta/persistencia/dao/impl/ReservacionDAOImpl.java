@@ -84,36 +84,43 @@ public class ReservacionDAOImpl implements ReservacionDAO {
     }
 
     private List<Reservacion_TO> todaReservaClientes(Usuario_TO client) throws SQLException {
-        List<Reservacion_TO> reserClie = new ArrayList<>();
 
-        String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
-                + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
-                + " `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
-                + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
-                + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
-                + " from sms_reservacion "
-                + " where idCliente = " + client.getIdUsuario() + " ";
+            List<Reservacion_TO> reserClie = new ArrayList<>();
+        try {
 
-        ResultSet rs = st.executeQuery(sql);
+            String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
+                    + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
+                    + " `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
+                    + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
+                    + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
+                    + " from sms_reservacion "
+                    + " where idCliente = " + client.getIdUsuario() + " ";
 
-        while (rs.next()) {
-            reserClie.add(new Reservacion_TO(rs.getInt(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getInt(5),
-                    rs.getInt(6),
-                    rs.getInt(7),
-                    rs.getInt(8),
-                    rs.getInt(9),
-                    rs.getString(10),
-                    rs.getString(11),
-                    rs.getString(12),
-                    rs.getString(13),
-                    rs.getInt(14),
-                    rs.getInt(15),
-                    rs.getInt(16),
-                    rs.getInt(17)));
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                reserClie.add(new Reservacion_TO(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
+                        rs.getString(13),
+                        rs.getInt(14),
+                        rs.getInt(15),
+                        rs.getInt(16),
+                        rs.getInt(17)));
+            }
+
+        } catch (Exception e) {
+            reserClie = new ArrayList<>();
+            throw e;
         }
 
         return reserClie;
@@ -289,7 +296,5 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 
         return reserva;
     }
-
-    
 
 }
