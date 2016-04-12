@@ -49,7 +49,8 @@ public class ServicioDAOImpl implements ServicioDAO{
         String sql = " Select s.idServicio, s.Servicio_nombre, s.Servicio_descripcion "
                    + "from sms_servicios as s, sms_categorias_servicio as c "
                     + "where s.idCategoria_Servicio = "+idCategoria+" and c.idCategoria_Servicio = s.idCategoria_Servicio " 
-                     + " and c.idmercado = "+idMercado;
+                     + " and s.idmercado = "+idMercado;
+        
         
         ResultSet rs = st.executeQuery(sql);
         
