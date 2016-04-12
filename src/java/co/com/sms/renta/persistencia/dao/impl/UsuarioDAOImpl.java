@@ -894,8 +894,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         Estado_TO estado = new Estado_TO();
         try {
-            String sql = " SELECT `idEstado`, `Estado_nombre` FROM `sms_estado` as e , `sms_usuario` as u "
-                    + "  WHERE u.Usuario_EstadoUsuario = e.`idEstado`AND "
+            String sql = " SELECT `idEstado`, `Estado_nombre` FROM `sms_estado` as e , `sms_empleado` as u "
+                    + "  WHERE u.idEstado = e.`idEstado`AND "
                     + "  u.idUsuario = " + usuario.getIdUsuario() + " ";
             ResultSet rs = st.executeQuery(sql);
 
