@@ -10,13 +10,22 @@ import co.com.sms.renta.persistencia.dao.impl.EstadoDAOImpl;
 import co.com.sms.renta.servicio.ConsultarEstadosReservas;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 /**
  *
  * @author SISTEMAS
  */
+
+@Stateless
+@Path("/consultarEstadosReservas")
 public class ConsultarEstadosReservasImpl implements ConsultarEstadosReservas{
 
+    @GET
+    @Produces({"application/json"})
     @Override
     public List<Estado_TO> consultarEstadosReservas() throws Exception {
         

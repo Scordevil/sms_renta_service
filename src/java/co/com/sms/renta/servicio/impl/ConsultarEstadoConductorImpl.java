@@ -25,16 +25,15 @@ public class ConsultarEstadoConductorImpl implements ConsultarEstadoConductor{
 
     @GET
     @Produces({"application/json"})
+    @Override
     public Estado_TO consultarEstadoDelConductor(@QueryParam("idUsuario")int idUsuario) throws Exception {
+        
         
         Usuario_TO conductor = new Usuario_TO(idUsuario);
         Estado_TO estadoFinal = new Estado_TO();
         UsuarioDAOImpl userDAO = new UsuarioDAOImpl();
         
         estadoFinal = userDAO.consultarEstdoUsuario(conductor);
-        /*
-        jfghghdfh
-        */
         
         return estadoFinal;
     }

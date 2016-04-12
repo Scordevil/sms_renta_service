@@ -23,8 +23,8 @@ import javax.ws.rs.QueryParam;
 public class EditarEstadoConductorImpl implements EditarEstadoConductor {
 
     @GET
-    @Produces({"application/xml", "application/json"})
-
+    @Produces({"application/json"})
+    @Override
     public Usuario_TO editarEstadoConductor(@QueryParam("idEstado") int idEstado,
             @QueryParam("idUsuario") int idUsuario) throws Exception {
 
