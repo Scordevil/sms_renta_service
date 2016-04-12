@@ -94,7 +94,8 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
                     + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
                     + " from sms_reservacion "
-                    + " where idCliente = " + client.getIdUsuario() + " ";
+                    + " where idCliente = " + client.getIdUsuario() + " and "
+                    + " `idEstado` <> 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
 
             ResultSet rs = st.executeQuery(sql);
 
@@ -237,8 +238,8 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                 + " `idCategoria_Servicio`, `idServicio`, `idEstado` "
                 + " from sms_reservacion "
                 + " where idCliente = " + idUsuario + " and "
-                + " idReservacion = " + idReserva + " AND "
-                + " `idEstado` <> 6  ";// VALIDACION DE RESERVACIONES TERMINADAS
+                + " idReservacion = " + idReserva + "  ";
+               
 
         ResultSet rs = st.executeQuery(sql);
 

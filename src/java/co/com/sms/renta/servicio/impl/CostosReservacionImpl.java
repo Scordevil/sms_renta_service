@@ -42,9 +42,7 @@ public class CostosReservacionImpl implements CostosReservacion {
         Reservacion_TO reserva = new Reservacion_TO(reserva_FechaInicio, reserva_FechaLlegada, reserva_HoraInicio, reserva_HoraLlegada);
         Costos_Servicios_TO costosServicios = new Costos_Servicios_TO(idServicio,idCategoria);
         Costos_Servicios_TO costo = new Costos_Servicios_TO();
-        
-        System.out.print("Gustavo: "+reserva+"-"+costosServicios);
-        
+                
         costo = CostoServicio.consultarCostosServicio(costosServicios, reserva);
      
         return costo;
