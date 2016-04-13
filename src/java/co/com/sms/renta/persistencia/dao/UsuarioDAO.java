@@ -69,4 +69,6 @@ public interface UsuarioDAO {
     public Estado_TO consultarEstdoUsuario(Usuario_TO usuario) throws Exception;
     
     public Usuario_TO consultarIdEmpleado(Usuario_TO idEmpleado) throws Exception;
+    
+    public Usuario_TO consultarIdCliente(Usuario_TO idUsuario) throws Exception;
 }
