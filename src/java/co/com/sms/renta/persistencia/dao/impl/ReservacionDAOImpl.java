@@ -272,6 +272,59 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 
         return reserClie;
     }
+    
+     @Override
+    public Reservacion_TO consultarReservasEmpleado(int idEmpleado, int idReserva) throws Exception {
+
+        Reservacion_TO reserva = new Reservacion_TO();
+
+        try {
+            reserva = ReservaEmpleado(idEmpleado, idReserva);
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return reserva;
+    }
+
+    private Reservacion_TO ReservaEmpleado(int idEmpleado, int idReserva) throws SQLException {
+
+        Reservacion_TO reserClie = new Reservacion_TO();
+        String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
+                + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
+                + " `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
+                + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
+                + " `idCategoria_Servicio`, `idServicio`, `idEstado` "
+                + " from sms_reservacion "
+                + " where idempleado = " + idEmpleado + " and "
+                + " idReservacion = " + idReserva + "  ";
+               
+
+        ResultSet rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+            reserClie = new Reservacion_TO(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getInt(5),
+                    rs.getInt(6),
+                    rs.getInt(7),
+                    rs.getInt(8),
+                    rs.getInt(9),
+                    rs.getString(10),
+                    rs.getString(11),
+                    rs.getString(12),
+                    rs.getString(13),
+                    rs.getInt(14),
+                    rs.getInt(15),
+                    rs.getInt(16),
+                    rs.getInt(17));
+        }
+
+        return reserClie;
+    }
 
     @Override
     public Reservacion_TO editarEstadoReserva(int idCliente, int idReservacion, int idEstado) throws Exception {
