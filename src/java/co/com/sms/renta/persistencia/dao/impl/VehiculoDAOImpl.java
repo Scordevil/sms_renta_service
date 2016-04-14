@@ -47,7 +47,7 @@ public class VehiculoDAOImpl implements VehiculoDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return veh;
     }
 
@@ -92,6 +92,7 @@ public class VehiculoDAOImpl implements VehiculoDAO {
 //                    rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12),
 //                    rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
 //        }
+        ConexionSQL.CerrarConexion();
         return vehiculos;
     }
 
@@ -133,7 +134,7 @@ public class VehiculoDAOImpl implements VehiculoDAO {
                     rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18)));
 
         }
-
+        ConexionSQL.CerrarConexion();
         return vehiculos;
     }
 }

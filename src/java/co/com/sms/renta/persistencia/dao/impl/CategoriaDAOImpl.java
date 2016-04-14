@@ -59,7 +59,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
             
             categorias.add(new Categoria_TO(rs.getInt(1), rs.getString(2), rs.getString(3)));
         }
-        
+        ConexionSQL.CerrarConexion();
         return categorias   ;
 
     }

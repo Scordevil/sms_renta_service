@@ -57,5 +57,13 @@ public class ConexionSQL {
         return ST;
 
     }
+    
+        public static Connection CerrarConexion() throws SQLException {
+
+        cn.close();
+        cn = null;
+        return cn;
+
+    }
 
 }

@@ -62,7 +62,7 @@ public class LugarDAOImpl implements LugarDAO {
                                      rs.getInt(4)));
             
         }
-        
+        ConexionSQL.CerrarConexion();
         return lugares;
     }
 

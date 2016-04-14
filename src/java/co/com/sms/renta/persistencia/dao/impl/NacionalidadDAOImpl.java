@@ -58,7 +58,7 @@ public class NacionalidadDAOImpl implements NacionalidadDAO {
             nacionalidades.add(new Nacionalidad_TO(rs.getInt(1), rs.getString(2)));
 
         }
-
+        ConexionSQL.CerrarConexion();
         return nacionalidades;
     }
 

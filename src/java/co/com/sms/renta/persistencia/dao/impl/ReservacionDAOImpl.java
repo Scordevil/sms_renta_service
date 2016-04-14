@@ -65,6 +65,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
             resera.setMensaje("Reserva no registrada");
             throw e;
         }
+        ConexionSQL.CerrarConexion();
         return reser;
     }
 
@@ -123,7 +124,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
             reserClie = new ArrayList<>();
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return reserClie;
     }
 
@@ -158,7 +159,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
             reser.setMensaje("ERROR AL ELIMINAR RESERVACION");
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return reser;
     }
 
@@ -217,6 +218,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
             reserClie = new ArrayList<>();
             throw e;
         }
+        ConexionSQL.CerrarConexion();
         return reserClie;
     }
 
@@ -269,7 +271,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     rs.getInt(16),
                     rs.getInt(17));
         }
-
+        ConexionSQL.CerrarConexion();
         return reserClie;
     }
     
@@ -322,7 +324,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     rs.getInt(16),
                     rs.getInt(17));
         }
-
+        ConexionSQL.CerrarConexion();
         return reserClie;
     }
 
@@ -355,7 +357,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
             reserva.setMensaje("error en edicion");
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return reserva;
     }
 

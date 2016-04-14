@@ -62,14 +62,9 @@ public class CiudadDAOImpl implements CiudadDAO{
             ciudades.add(new Ciudad_TO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
 
         }
-
+        ConexionSQL.CerrarConexion();
         return ciudades;
     }
-    
-    
-    
-    
-    
     
     
 }

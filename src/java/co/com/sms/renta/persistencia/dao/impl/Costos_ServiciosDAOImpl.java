@@ -62,7 +62,7 @@ public class Costos_ServiciosDAOImpl implements Costos_ServiciosDAO {
         }
                
         costoTotal = calcularCostoReservacion(reserva,costo);
-
+        ConexionSQL.CerrarConexion();
         return costoTotal;
     }
     

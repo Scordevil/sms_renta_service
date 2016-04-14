@@ -60,7 +60,7 @@ public class ServicioDAOImpl implements ServicioDAO{
             
             servicios.add(new Servicio_TO(rs.getInt(1), rs.getString(2), rs.getString(3)));
         }
-        
+        ConexionSQL.CerrarConexion();
         return servicios;
     }
     

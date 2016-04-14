@@ -37,6 +37,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         try {
 
             usuarios = consultarTodosEmpleados();
+            
+            
 
         } catch (Exception e) {
 
@@ -71,7 +73,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getInt(14),
                     rs.getString(15), rs.getInt(16), rs.getInt(17), rs.getString(18)));
         }
-
+        
+        ConexionSQL.CerrarConexion();
         return usuarios;
     }
 
@@ -121,7 +124,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 //                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
 //                    rs.getString(15)));
         }
-
+        ConexionSQL.CerrarConexion();
         return usuarios;
     }
 
@@ -168,7 +171,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getInt(12));
 
         }
-
+        ConexionSQL.CerrarConexion();
         return usuario;
     }
 
@@ -218,7 +221,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 //                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
 //                    rs.getString(15)));
         }
-
+        ConexionSQL.CerrarConexion();
         return usuarios;
     }
 
@@ -267,7 +270,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 //                    rs.getString(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14),
 //                    rs.getString(15)));
         }
-
+        ConexionSQL.CerrarConexion();
         return usuarios;
     }
 
@@ -359,6 +362,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             user = new Usuario_TO();
             user.setMensaje("Usuario no existe");
         }
+        
+        ConexionSQL.CerrarConexion();
         return user;
 
     }
@@ -418,7 +423,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return user;
 
     }
@@ -466,7 +471,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return user;
 
     }
@@ -488,7 +493,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         } catch (Exception e) {
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return user;
     }
 
@@ -511,7 +516,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return usuario;
     }
 
@@ -556,7 +561,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return usuario;
     }
 
@@ -608,7 +613,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return user;
 
     }
@@ -674,7 +679,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return user;
 
     }
@@ -703,7 +708,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             throw e;
 
         }
-
+        ConexionSQL.CerrarConexion();
         return user;
     }
 
@@ -770,6 +775,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             user = new Usuario_TO();
             user.setMensaje("Email no existe");
         }
+        ConexionSQL.CerrarConexion();
         return user;
 
     }
@@ -823,7 +829,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         } catch (Exception e) {
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return users;
     }
 
@@ -871,7 +877,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         } catch (Exception e) {
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return users;
     }
 
@@ -907,7 +913,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         } catch (Exception e) {
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return estado;
     }
 
@@ -934,6 +940,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             user_conduc = new Usuario_TO(rs.getInt(1));
 
         }
+        ConexionSQL.CerrarConexion();
         return user_conduc;
     }
     
@@ -960,6 +967,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             user_conduc = new Usuario_TO(rs.getInt(1), 0L);
 
         }
+        ConexionSQL.CerrarConexion();
         return user_conduc;
     }
 }

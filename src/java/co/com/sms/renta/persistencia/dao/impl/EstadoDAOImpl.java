@@ -53,7 +53,7 @@ public class EstadoDAOImpl implements EstadoDAO {
         } catch (Exception e) {
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return estadoLista;
     }
 
@@ -86,7 +86,7 @@ public class EstadoDAOImpl implements EstadoDAO {
         } catch (Exception e) {
             throw e;
         }
-
+        ConexionSQL.CerrarConexion();
         return estadoLista;
     }
 
@@ -112,7 +112,7 @@ public class EstadoDAOImpl implements EstadoDAO {
             est = new Estado_TO(rs.getInt(1), rs.getString(2), rs.getString(3));
             
         }
-        
+        ConexionSQL.CerrarConexion();
         return est;
     }
 
