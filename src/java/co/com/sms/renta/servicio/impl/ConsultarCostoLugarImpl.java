@@ -9,7 +9,9 @@ import co.com.sms.renta.modelo.dto.Costos_Servicios_TO;
 import co.com.sms.renta.persistencia.dao.impl.Costos_ServiciosDAOImpl;
 import co.com.sms.renta.servicio.ConsultarCostoLugar;
 import javax.ejb.Stateless;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 /**
@@ -20,6 +22,8 @@ import javax.ws.rs.QueryParam;
 @Path("/consultarCostoLugar")
 public class ConsultarCostoLugarImpl implements ConsultarCostoLugar {
 
+    @GET
+    @Produces({"application/json"})
     @Override
     public Costos_Servicios_TO ConsultarCostoLugar(@QueryParam("idServicio") int idServicio,
             @QueryParam("idCategoria") int idCategoria,
