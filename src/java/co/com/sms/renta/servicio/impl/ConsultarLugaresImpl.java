@@ -27,14 +27,15 @@ import javax.ws.rs.QueryParam;
 public class ConsultarLugaresImpl implements ConsultarLugares{
     
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<Lugar_TO> consultarLugares(@QueryParam("idCiudad") int idCiudad ) throws Exception{
         
         List<Lugar_TO> lugares = new ArrayList<Lugar_TO>();
-        LugarDAOImpl lugar = new LugarDAOImpl();
-     //   Ciudad_TO ciudad = new Ciudad_TO(idCiudad);
+        LugarDAOImpl lugarDAO = new LugarDAOImpl();
+
+        Ciudad_TO ciudad = new Ciudad_TO(idCiudad);
         
-      //  lugares = lugar.consultarLugar(ciudad);
+        lugares = lugarDAO.consultarLugar(ciudad);
         
         return lugares;
          

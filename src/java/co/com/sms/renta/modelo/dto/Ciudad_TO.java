@@ -53,6 +53,11 @@ public class Ciudad_TO {
         this.idDepartamento = idDepartamento;
     }
 
+    public Ciudad_TO(int idCiudad) {
+        this.idCiudad = idCiudad;
+    }
+
+    
 
     public int getIdCiudad() {
         return idCiudad;

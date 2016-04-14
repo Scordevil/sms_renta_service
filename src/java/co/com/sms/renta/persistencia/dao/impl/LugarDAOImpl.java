@@ -31,7 +31,6 @@ public class LugarDAOImpl implements LugarDAO {
     @Override
     public List<Lugar_TO> consultarLugar(Ciudad_TO ciudad) throws Exception {
 
-        Statement st = ConexionSQL.conexion();
         List<Lugar_TO> lugares = new ArrayList<>();
 
         try {
@@ -48,19 +47,19 @@ public class LugarDAOImpl implements LugarDAO {
 
         // Sentencia para colocar e objeto que lee la BD
         String sql = "Select l.idlugar, l.Lugar_nombre, l.Lugar_direccion, "
-                + " l.Lugar_ciudad from sms_lugares as l, sms_ciudad as c "
-                + "where l.Lugar_ciudad = "+ ciudad.getIdCiudad();
+                + " l.Lugar_ciudad , l.Lugar_numlocalidad from sms_lugares as l, sms_ciudad as c "
+                + "where l.Lugar_ciudad = " + ciudad.getIdCiudad();
 
         ResultSet rs = st.executeQuery(sql);
          // Llama al metodo
-        
+
         final List<Lugar_TO> lugares = new ArrayList<Lugar_TO>();
-        
+
         while (rs.next()) {
-            
+
             lugares.add(new Lugar_TO(rs.getInt(1), rs.getString(2), rs.getString(3),
-                                     rs.getInt(4)));
-            
+                    rs.getInt(4), rs.getInt(5)));
+
         }
         ConexionSQL.CerrarConexion();
         return lugares;

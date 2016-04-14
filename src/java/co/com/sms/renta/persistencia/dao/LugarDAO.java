@@ -16,5 +16,6 @@ import java.util.List;
 public interface LugarDAO {
     
     public List<Lugar_TO> consultarLugar(Ciudad_TO ciudad) throws Exception;
+
     
 }

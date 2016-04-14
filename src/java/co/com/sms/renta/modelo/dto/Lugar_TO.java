@@ -18,35 +18,39 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Lugar_TO {
-    
+
     /**
      *
      * Columna idLugar
      */
     private int idLugar;
-    
+
     /**
      *
      * Columna Lugar_nombre
      */
     private String lugarNombre;
-    
+
     /**
      *
      * Columna Lugar_direccion
      */
     private String lugarDireccion;
-    
+
     /**
      *
      * Tabla sms_ciudad
-     * 
+     *
      * Columna idCiudad
      */
     private int idCiudad;
 
-    
-    
+    /**
+     *
+     * Columna Lugar_numlocalidad
+     */
+    private int lugarNumLocalidad;
+
     public Lugar_TO() {
     }
 
@@ -56,8 +60,14 @@ public class Lugar_TO {
         this.lugarDireccion = lugarDireccion;
         this.idCiudad = idCiudad;
     }
-    
-    
+
+    public Lugar_TO(int idLugar, String lugarNombre, String lugarDireccion, int idCiudad, int lugarNumLocalidad) {
+        this.idLugar = idLugar;
+        this.lugarNombre = lugarNombre;
+        this.lugarDireccion = lugarDireccion;
+        this.idCiudad = idCiudad;
+        this.lugarNumLocalidad = lugarNumLocalidad;
+    }
 
     public int getIdLugar() {
         return idLugar;
@@ -89,6 +99,14 @@ public class Lugar_TO {
 
     public void setIdCiudad(int idCiudad) {
         this.idCiudad = idCiudad;
+    }
+
+    public int getLugarNumLocalidad() {
+        return lugarNumLocalidad;
+    }
+
+    public void setLugarNumLocalidad(int lugarNumLocalidad) {
+        this.lugarNumLocalidad = lugarNumLocalidad;
     }
 
     @Override
@@ -127,8 +145,7 @@ public class Lugar_TO {
 
     @Override
     public String toString() {
-        return "Lugar_TO{" + "idLugar=" + idLugar + ", lugarNombre=" + lugarNombre + ", lugarDireccion=" + lugarDireccion + ", idCiudad=" + idCiudad + '}';
+        return "Lugar_TO{" + "idLugar=" + idLugar + ", lugarNombre=" + lugarNombre + ", lugarDireccion=" + lugarDireccion + ", idCiudad=" + idCiudad + ", lugarNumLocalidad=" + lugarNumLocalidad + '}';
     }
-       
-    
+
 }
