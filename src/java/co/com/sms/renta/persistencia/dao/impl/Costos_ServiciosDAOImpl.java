@@ -43,33 +43,32 @@ public class Costos_ServiciosDAOImpl implements Costos_ServiciosDAO {
 
         Costos_Servicios_TO costo = new Costos_Servicios_TO();
         Costos_Servicios_TO costoTotal = new Costos_Servicios_TO();
-        
+
         try {
-            
-            
+
             String sql = "SELECT idCostosServicio, idServicio, idCategoria,CostoServicio_precio,idLugar_inicio,idLugar_destino FROM `sms_costosservicios` "
-                    + "where idServicio = "+costosServicios.getIdServicio()+" and idCategoria = "+costosServicios.getIdCategoria();
+                    + "where idServicio = " + costosServicios.getIdServicio() + " and idCategoria = " + costosServicios.getIdCategoria();
 
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
                 costo = new Costos_Servicios_TO(rs.getInt(1), rs.getInt(2),
-                        rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)); 
+                        rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
 
             }
-              } catch (Exception e) {
+        } catch (Exception e) {
             throw e;
         }
-               
-        costoTotal = calcularCostoReservacion(reserva,costo);
+
+        costoTotal = calcularCostoReservacion(reserva, costo);
         ConexionSQL.CerrarConexion();
         return costoTotal;
     }
-    
+
     public Costos_Servicios_TO calcularCostoReservacion(Reservacion_TO reserva, Costos_Servicios_TO costosServicios) throws Exception {
 
-        System.out.print("Gustavo"+costosServicios.getCostoServicio_precio());
-        
+        System.out.print("Gustavo" + costosServicios.getCostoServicio_precio());
+
         Costos_Servicios_TO costos = new Costos_Servicios_TO();
         /*
          1. instanciar la clase simpleFormat.
@@ -138,38 +137,38 @@ public class Costos_ServiciosDAOImpl implements Costos_ServiciosDAO {
         calHoraLlegada.setTime(hEntrega);
 
 //        if (servicioModelo.getServicioDuracion() == 0) {
-            milis1 = calFechaInicio.getTimeInMillis();
-            milis2 = calFechaLlegada.getTimeInMillis();
+        milis1 = calFechaInicio.getTimeInMillis();
+        milis2 = calFechaLlegada.getTimeInMillis();
 
-            // calcular la diferencia en dias
-            diff = milis2 - milis1;
-            diffDays = diff / (24 * 60 * 60 * 1000);
+        // calcular la diferencia en dias
+        diff = milis2 - milis1;
+        diffDays = diff / (24 * 60 * 60 * 1000);
 
-            milis1 = calHoraInicio.getTimeInMillis();
-            milis2 = calHoraLlegada.getTimeInMillis();
+        milis1 = calHoraInicio.getTimeInMillis();
+        milis2 = calHoraLlegada.getTimeInMillis();
 
-            diff = milis1 - milis2;
-            diffHourDifferentDay = (diffDays * 24) - (diff / (60 * 60 * 1000));
+        diff = milis1 - milis2;
+        diffHourDifferentDay = (diffDays * 24) - (diff / (60 * 60 * 1000));
 
-            // calcular la diferencia en minutos
-            diff = milis2 - milis1;
-            diffMinutes = diff / (60 * 1000);
+        // calcular la diferencia en minutos
+        diff = milis2 - milis1;
+        diffMinutes = diff / (60 * 1000);
 
-            diffDays = diffHourDifferentDay / 24;
+        diffDays = diffHourDifferentDay / 24;
 
-            diffHours = diffHourDifferentDay - (diffDays * 24);
+        diffHours = diffHourDifferentDay - (diffDays * 24);
 
-            // calcular la diferencia en horas
-            if (costosServicios.getIdServicio() == 10) { //30 minutos
+        // calcular la diferencia en horas
+        if (costosServicios.getIdServicio() == 10) { //30 minutos
 //                reservaView.getSmsServicios().getServicioNombre().equalsIgnoreCase("30 minutos")
-                System.out.print("------------1---------"+reserva.getIdServicio());
-                costo = (((int) diffMinutes) / 30) * costosServicios.getCostoServicio_precio();
-            } else if (reserva.getIdServicio() == 11) { //60 minutos
-                System.out.print("-----------2----------"+reserva.getIdServicio());
-                costo = ((int) diffHours) * costosServicios.getCostoServicio_precio();
-            }
-            
-            costosServicios.setCostoServicio_precio(costo);
+            System.out.print("------------1---------" + reserva.getIdServicio());
+            costo = (((int) diffMinutes) / 30) * costosServicios.getCostoServicio_precio();
+        } else if (reserva.getIdServicio() == 11) { //60 minutos
+            System.out.print("-----------2----------" + reserva.getIdServicio());
+            costo = ((int) diffHours) * costosServicios.getCostoServicio_precio();
+        }
+
+        costosServicios.setCostoServicio_precio(costo);
 
 //        } else if (servicioModelo.getServicioDuracion() < 7 && servicioModelo.getServicioDuracion() >= 1) {//Renta por dias
 //
@@ -264,13 +263,31 @@ public class Costos_ServiciosDAOImpl implements Costos_ServiciosDAO {
 //            } else if ((int) diffDays > 29) {
 //                costo = costo + (costosServicios.getCostoServicio_precio());
 //            }
-
- //       }
-            
-         
-            
+        //       }
         return costosServicios;
 
     }
-    
+
+    @Override
+    public Costos_Servicios_TO consultarCostoLugar(Costos_Servicios_TO costoLugar) throws Exception {
+        Costos_Servicios_TO costoL = new Costos_Servicios_TO();
+        costoL = todosLosCostosLugares(costoLugar);
+        return costoL;
+    }
+
+    private Costos_Servicios_TO todosLosCostosLugares(Costos_Servicios_TO costoLugar) throws SQLException {
+        String sql = "SELECT `idCostosServicio` , `idServicio` , `idCategoria` , "
+                + " `CostoServicio_precio` , `idLugar_inicio` , `idLugar_destino` "
+                + " FROM `sms_costosservicios` WHERE `idLugar_inicio` = " + costoLugar.getIdLugar_inicio() + " AND "
+                + " `idLugar_destino` = " + costoLugar.getIdLugar_destino() + " AND "
+                + " `idServicio` = " + costoLugar.getIdServicio() + " AND "
+                + " `idCategoria` = " + costoLugar.getIdCategoria() + " ";
+        ResultSet rs = st.executeQuery(sql);
+        Costos_Servicios_TO cost = new Costos_Servicios_TO();
+        while (rs.next()) {
+            cost = new Costos_Servicios_TO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
+        }
+        return cost;
+    }
+
 }
