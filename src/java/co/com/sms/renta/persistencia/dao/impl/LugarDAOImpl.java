@@ -47,8 +47,8 @@ public class LugarDAOImpl implements LugarDAO {
 
         // Sentencia para colocar e objeto que lee la BD
         String sql = "Select l.idlugar, l.Lugar_nombre, l.Lugar_direccion, "
-                + " l.Lugar_ciudad , l.Lugar_numlocalidad from sms_lugares as l, sms_ciudad as c "
-                + "where l.Lugar_ciudad = " + ciudad.getIdCiudad();
+                + " l.idCiudad , l.Lugar_numlocalidad from sms_lugares as l, sms_ciudad as c "
+                + "where l.idCiudad = " + ciudad.getIdCiudad();
 
         ResultSet rs = st.executeQuery(sql);
          // Llama al metodo
