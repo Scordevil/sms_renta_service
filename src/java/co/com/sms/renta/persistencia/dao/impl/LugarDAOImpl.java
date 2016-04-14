@@ -8,6 +8,7 @@ package co.com.sms.renta.persistencia.dao.impl;
 import co.com.sms.renta.conexion.ConexionSQL;
 import co.com.sms.renta.modelo.dto.Ciudad_TO;
 import co.com.sms.renta.modelo.dto.Lugar_TO;
+import co.com.sms.renta.modelo.dto.Vehiculo_TO;
 import co.com.sms.renta.persistencia.dao.LugarDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,20 +46,30 @@ public class LugarDAOImpl implements LugarDAO {
 
     private List<Lugar_TO> consultarTodosLugares(Ciudad_TO ciudad) throws SQLException {
 
+        List<Lugar_TO> lugares = new ArrayList<Lugar_TO>();
+                try {
         // Sentencia para colocar e objeto que lee la BD
         String sql = "Select l.idlugar, l.Lugar_nombre, l.Lugar_direccion, "
                 + " l.idCiudad , l.idLocalidad from sms_lugares as l, sms_ciudad as c "
-                + "where l.idCiudad = " + ciudad.getIdCiudad();
+                + "where l.idCiudad = c.idCiudad and l.idCiudad = " + ciudad.getIdCiudad() +" "
+                + " order by l.Lugar_nombre asc";
 
         ResultSet rs = st.executeQuery(sql);
          // Llama al metodo
 
-        final List<Lugar_TO> lugares = new ArrayList<Lugar_TO>();
+      
 
         while (rs.next()) {
 
             lugares.add(new Lugar_TO(rs.getInt(1), rs.getString(2), rs.getString(3),
                     rs.getInt(4), rs.getInt(5)));
+
+        }
+        
+         } catch (Exception e) {
+
+            lugares = new ArrayList<Lugar_TO>();
+               throw e;
 
         }
         ConexionSQL.CerrarConexion();
