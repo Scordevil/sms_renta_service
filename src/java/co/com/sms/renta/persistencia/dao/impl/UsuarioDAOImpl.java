@@ -367,6 +367,57 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         return user;
 
     }
+    
+      /**
+     *
+     * @return @throws Exception
+     */
+    @Override
+    public Usuario_TO consultarEmailExistente(Usuario_TO usuario) throws Exception {
+
+        Statement st = ConexionSQL.conexion();
+        Usuario_TO user = new Usuario_TO();
+
+        try {
+
+            user = consultarDatosEmail(usuario);
+
+        } catch (Exception e) {
+
+            throw e;
+
+        }
+
+        return user;
+    }
+
+    private Usuario_TO consultarDatosEmail(Usuario_TO usuario) throws SQLException {
+
+        Usuario_TO user = new Usuario_TO();
+      
+        // // //Seleccionar todos los registros
+        String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_email,  "
+                + " u.idCiudad, u.Usuario_pasaporte, u.Usuario_password, "
+                + "u.Usuario_remember_token,u.idNacionalidad, u.Usuario_EstadoUsuario,  "
+                + "u.idRol  "
+                + "from sms_usuario as u  "
+                + "where "
+                + "u.`Usuario_email` = '" + usuario.getEmail() + "';";
+
+        ResultSet rs = st.executeQuery(sql);
+        // LLAMA AL MÉTODO
+        if (rs != null){
+         while (rs.next()) {
+            user = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
+
+                }
+        }else{
+              user = new Usuario_TO();
+        }
+        ConexionSQL.CerrarConexion();
+        return user;
+
+    }
 
     /**
      *

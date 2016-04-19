@@ -23,6 +23,8 @@ public interface UsuarioDAO {
     public List<Usuario_TO> consultarAdministradores() throws Exception;
 
     public Usuario_TO consultarDatosSesionUsuario(Usuario_TO usuario) throws Exception;
+    
+    public Usuario_TO consultarEmailExistente(Usuario_TO usuario) throws Exception;
 
 //    METODO DE CONSULTA DE NOMBRE DE USUARIO MEDIANTE EL EMAIL REGISTRADO
     public Usuario_TO consulEmailUsuario(Usuario_TO usuario) throws Exception;
