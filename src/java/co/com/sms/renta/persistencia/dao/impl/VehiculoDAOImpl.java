@@ -102,7 +102,7 @@ public class VehiculoDAOImpl implements VehiculoDAO {
         String sql = "SELECT v.idVehiculo , v.Veh_placa , v.Veh_modelo , cat.Categoria_nombre , "
                 + "                 r.Referencia_nombre , v.Veh_num_personas , v.Veh_num_malGrande , v.Veh_num_malPequeña , "
                 + "                 c.Ciudad_nombre , v.idProveedor , v.Veh_foto_nombre , v.Veh_foto_ruta , v.Veh_foto2_nombre , "
-                + "                 v.Veh_foto2_ruta , color.Color_nombre, e.Estado_nombre , u.Usuario_nombre , emp.idEmpleado "
+                + "                 v.Veh_foto2_ruta , color.Color_nombre, e.Estado_nombre , u.Usuario_nombre , emp.idEmpleado, v.idCategoria "
                 + "                FROM `sms_vehiculo` as v, `sms_marca` as m , `sms_ciudad` as c , `sms_color` as color , `sms_usuario` as u , `sms_empleado` as emp , "
                 + "                 `sms_proveedor` as p , `sms_categoria` as cat , `sms_referencia` as r , `sms_estado` as e , `sms_vehiculo_sms_empleado` as ve "
                 + "                 WHERE v.idCategoria = cat.idCategoria AND "
@@ -131,7 +131,7 @@ public class VehiculoDAOImpl implements VehiculoDAO {
             vehiculos.add(new Vehiculo_TO(rs.getInt(1),
                     rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
                     rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12),
-                    rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18)));
+                    rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18), rs.getInt(19)));
 
         }
         ConexionSQL.CerrarConexion();
