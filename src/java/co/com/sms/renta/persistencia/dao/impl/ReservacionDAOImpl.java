@@ -194,7 +194,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         List<Reservacion_TO> reservasClientes = new ArrayList<>();
 
         try {
-            reservasClientes = todaReservaCOnductorHist(conductor);
+            reservasClientes = todaReservaConductorHist(conductor);
 
         } catch (Exception e) {
             throw e;
@@ -203,7 +203,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         return reservasClientes;
     }
     
-    private List<Reservacion_TO> todaReservaCOnductorHist(Usuario_TO conductor) throws SQLException{
+    private List<Reservacion_TO> todaReservaConductorHist(Usuario_TO conductor) throws SQLException{
         List<Reservacion_TO> reserCond = new ArrayList<>();
         
         try {
