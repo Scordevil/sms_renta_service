@@ -8,8 +8,7 @@ package co.com.sms.renta.servicio.impl;
 import co.com.sms.renta.modelo.dto.Reservacion_TO;
 import co.com.sms.renta.modelo.dto.Usuario_TO;
 import co.com.sms.renta.persistencia.dao.impl.ReservacionDAOImpl;
-import co.com.sms.renta.servicio.ConsultarReservaConductor;
-import co.com.sms.renta.servicio.ConsultarReservaConductorHist;
+import co.com.sms.renta.servicio.ConsultarReservaClientesHist;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,21 +21,22 @@ import javax.ws.rs.QueryParam;
  *
  * @author SISTEMAS
  */
+
 @Stateless
-@Path("/consultarReservacionConductorHist")
-public class ConsultarReservaConductorHistImpl implements ConsultarReservaConductorHist {
+@Path("/consultarReservacionClientesHist")
+public class ConsultarReservaClientesHistImpl implements ConsultarReservaClientesHist{
 
     @GET
     @Produces({"application/json"})
     @Override
-    public List<Reservacion_TO> consultarReservasConductoresHist(@QueryParam("idEmpleado") int idEmpleado) throws Exception {
-
-        Usuario_TO empleado = new Usuario_TO(idEmpleado , 0L);
-        List<Reservacion_TO> reservaLista = new ArrayList<>();
+    public List<Reservacion_TO> reservasClientesHist(@QueryParam("idUsuario") int idUsuario) throws Exception {
+        
+        List<Reservacion_TO> reserCle = new ArrayList<>();
+        Usuario_TO idCliente = new Usuario_TO(idUsuario);
         ReservacionDAOImpl reservaDAO = new ReservacionDAOImpl();
-
-        reservaLista = reservaDAO.consultarReservasConductorHist(empleado);
-        return reservaLista;
+        
+        reserCle = reservaDAO.consultarReservasClientesHist(idCliente);
+                
+        return reserCle;
     }
-
 }
