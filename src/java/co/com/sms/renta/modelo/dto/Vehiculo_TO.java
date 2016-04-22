@@ -226,7 +226,7 @@ public class Vehiculo_TO {
     }
 
 //    CONSULTA DE VEHICULOS
-    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequena, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre, String usuario_nombre, int idEmpleado) {
+    public Vehiculo_TO(int idVehiculo, String vehi_Placa, String vehi_Modelo, String Categoria_nombre, String Referencia_nombre, int veh_num_personas, int veh_num_malGrande, int veh_num_malPequena, String Ciudad_nombre, int idProveedor, String veh_foto_nombre, String veh_foto_ruta, String veh_foto2_nombre, String veh_foto2_ruta, String Color_nombre, String Estado_nombre, String usuario_nombre, int idEmpleado, int idCategoria) {
         this.idVehiculo = idVehiculo;
         this.vehi_Placa = vehi_Placa;
         this.vehi_Modelo = vehi_Modelo;
@@ -245,6 +245,7 @@ public class Vehiculo_TO {
         this.Estado_nombre = Estado_nombre;
         this.usuario_nombre = usuario_nombre;
         this.idEmpleado = idEmpleado;
+        this.idCategoria = idCategoria;
     }
 
 //    CONSTRUCTOR PARA ENVIO DE CORREOS AL CLIENTE QUE ERALIZO UNA RESERVACION

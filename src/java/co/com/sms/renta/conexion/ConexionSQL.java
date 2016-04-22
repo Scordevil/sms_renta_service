@@ -35,6 +35,8 @@ public class ConexionSQL {
                 Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, ex);
             }
             // RUTA DE LA BASE DE DATOS
+          //  149.56.93.6
+          //  String url = "jdbc:mysql://149.56.93.6:3306/smsrenta_actualizada";
             String url = "jdbc:mysql://localhost:3306/smsrenta_actualizada";
             // CONECCION A LA BASE DE DATOS
             cn = DriverManager.getConnection(url, "root", clave);

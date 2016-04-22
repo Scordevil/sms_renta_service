@@ -444,7 +444,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
     }
 
     @Override
-    public Reservacion_TO editarEstadoReserva(int idCliente, int idReservacion, int idEstado) throws Exception {
+    public Reservacion_TO editarEstadoReserva( int idReservacion, int idEstado) throws Exception {
 
 //        Reservacion_TO reser = new Reservacion_TO();
 //        reser = reserva;
@@ -452,18 +452,18 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 //        cond = conductor;
         Reservacion_TO reservaFinal = new Reservacion_TO();
 
-        reservaFinal = todosEstadosEditados(idCliente, idReservacion, idEstado);
+        reservaFinal = todosEstadosEditados( idReservacion, idEstado);
 
         return reservaFinal;
     }
 
-    private Reservacion_TO todosEstadosEditados(int idCliente, int idReservacion, int idEstado) throws SQLException {
+    private Reservacion_TO todosEstadosEditados( int idReservacion, int idEstado) throws SQLException {
 
         Reservacion_TO reserva = new Reservacion_TO();
         try {
 
             String sql = "UPDATE `sms_reservacion` "
-                    + " SET `idEstado` = " + idEstado + "  WHERE `idReservacion` = " + idReservacion + " AND `idCliente` = " + idCliente + "  ; ";
+                    + " SET `idEstado` = " + idEstado + "  WHERE `idReservacion` = " + idReservacion + "   ; ";
 
             st.executeUpdate(sql);
             reserva.setMensaje("edicion exitosa");

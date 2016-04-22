@@ -26,7 +26,6 @@ public class EditarEstadoReservaImpl implements EditarEstadoReserva {
     @Produces({"application/json"})
     @Override
     public Reservacion_TO editarEstadoDeReserva(
-            @QueryParam("idUsuario") int idUsuario,
             @QueryParam("idReservacion") int idReservacion,  
             @QueryParam("idEstado") int idEstado)  throws Exception {
 
@@ -34,7 +33,7 @@ public class EditarEstadoReservaImpl implements EditarEstadoReserva {
 
 
         ReservacionDAOImpl reservacionDAO = new ReservacionDAOImpl();
-        reservaFinal = reservacionDAO.editarEstadoReserva(idUsuario, idReservacion, idEstado);
+        reservaFinal = reservacionDAO.editarEstadoReserva(idReservacion, idEstado);
 
         return reservaFinal;
     }

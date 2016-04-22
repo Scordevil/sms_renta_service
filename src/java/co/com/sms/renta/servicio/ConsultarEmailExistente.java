@@ -5,12 +5,14 @@
  */
 package co.com.sms.renta.servicio;
 
-import co.com.sms.renta.modelo.dto.Reservacion_TO;
+import co.com.sms.renta.modelo.dto.Usuario_TO;
 
 /**
  *
- * @author SISTEMAS
+ * @author VaioDevelopment
  */
-public interface EditarEstadoReserva {
-    public Reservacion_TO editarEstadoDeReserva(int idReservacion, int idEstado)throws Exception;
+public interface ConsultarEmailExistente {
+    
+     public Usuario_TO consultarEmailExistente(String email) throws Exception;
+    
 }
