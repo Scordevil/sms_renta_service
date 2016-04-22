@@ -155,7 +155,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
                     + " from sms_reservacion "
                     + " where idCliente = " + cliente.getIdUsuario() + " and "
-                    + " `idEstado` == 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
+                    + " `idEstado` = 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
 
             ResultSet rs = st.executeQuery(sql);
 
@@ -214,7 +214,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
                     + " from sms_reservacion "
                     + " where idEmpleado = " + conductor.getIdEmpleado() + " and "
-                    + " `idEstado` == 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
+                    + " `idEstado` = 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
             
             ResultSet rs = st.executeQuery(sql);
             
@@ -338,7 +338,8 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         ConexionSQL.CerrarConexion();
         return reserClie;
     }
-
+    
+   
     @Override
     public Reservacion_TO consultarReservas(int idUsuario, int idReserva) throws Exception {
 
@@ -390,6 +391,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         ConexionSQL.CerrarConexion();
         return reserClie;
     }
+    
 
     @Override
     public Reservacion_TO consultarReservasEmpleado(int idEmpleado, int idReserva) throws Exception {
