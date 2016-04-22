@@ -86,7 +86,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 
     private List<Reservacion_TO> todaReservaClientes(Usuario_TO client) throws SQLException {
 
-            List<Reservacion_TO> reserClie = new ArrayList<>();
+        List<Reservacion_TO> reserClie = new ArrayList<>();
         try {
 
             String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
@@ -126,6 +126,123 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         }
         ConexionSQL.CerrarConexion();
         return reserClie;
+    }
+
+    @Override
+    public List<Reservacion_TO> consultarReservasClientesHist(Usuario_TO cliente) throws Exception {
+
+        List<Reservacion_TO> reservasClientes = new ArrayList<>();
+
+        try {
+            reservasClientes = todaReservaClientesHist(cliente);
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return reservasClientes;
+
+    }
+
+    private List<Reservacion_TO> todaReservaClientesHist(Usuario_TO cliente) throws SQLException {
+        List<Reservacion_TO> reserClien = new ArrayList<>();
+
+        try {
+            String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
+                    + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
+                    + " `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
+                    + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
+                    + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
+                    + " from sms_reservacion "
+                    + " where idCliente = " + cliente.getIdUsuario() + " and "
+                    + " `idEstado` == 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
+
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                reserClien.add(new Reservacion_TO(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
+                        rs.getString(13),
+                        rs.getInt(14),
+                        rs.getInt(15),
+                        rs.getInt(16),
+                        rs.getInt(17)));
+
+            }
+
+        } catch (Exception e) {
+            reserClien = new ArrayList<>();
+            throw e;
+        }
+        ConexionSQL.CerrarConexion();
+        return reserClien;
+
+    }
+
+    @Override
+    public List<Reservacion_TO> consultarReservasConductorHist(Usuario_TO conductor) throws Exception {
+        List<Reservacion_TO> reservasClientes = new ArrayList<>();
+
+        try {
+            reservasClientes = todaReservaCOnductorHist(conductor);
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return reservasClientes;
+    }
+    
+    private List<Reservacion_TO> todaReservaCOnductorHist(Usuario_TO conductor) throws SQLException{
+        List<Reservacion_TO> reserCond = new ArrayList<>();
+        
+        try {
+            String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
+                    + " `Reservacion_notas`, `idCliente`, `idCiudad_inicio`, `idCiudad_destino`, "
+                    + " `idEmpleado`,  `idVehiculo`, `Reservacion_fechaInicio`, `Reservacion_fechaLlegada`, "
+                    + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
+                    + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
+                    + " from sms_reservacion "
+                    + " where idEmpleado = " + conductor.getIdEmpleado() + " and "
+                    + " `idEstado` == 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
+            
+            ResultSet rs = st.executeQuery(sql);
+            
+            while (rs.next()) {
+                reserCond.add(new Reservacion_TO(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
+                        rs.getString(13),
+                        rs.getInt(14),
+                        rs.getInt(15),
+                        rs.getInt(16),
+                        rs.getInt(17)));
+            }
+        } catch (Exception e) {
+            reserCond = new ArrayList<>();
+            throw e;
+        }ConexionSQL.CerrarConexion();
+        return reserCond;
+        
     }
 
     @Override
@@ -180,7 +297,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
 
     private List<Reservacion_TO> todaReservaCOnductor(Usuario_TO cond) throws SQLException {
 
-                    List<Reservacion_TO> reserClie = new ArrayList<>();
+        List<Reservacion_TO> reserClie = new ArrayList<>();
         try {
 
             String sql = " Select `idReservacion`, `Reservacion_lugar_llegada`, `Reservacion_lugar_destino`, "
@@ -189,7 +306,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     + " `Reservacion_horaInicio`, `Reservacion_horaLlegada`, `Reservacion_Costo`, "
                     + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
                     + " from sms_reservacion "
-                    + " where idEmpleado = " + cond.getIdEmpleado()+ " and "
+                    + " where idEmpleado = " + cond.getIdEmpleado() + " and "
                     + " `idEstado` <> 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
 
             ResultSet rs = st.executeQuery(sql);
@@ -248,7 +365,6 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                 + " from sms_reservacion "
                 + " where idCliente = " + idUsuario + " and "
                 + " idReservacion = " + idReserva + "  ";
-               
 
         ResultSet rs = st.executeQuery(sql);
 
@@ -274,8 +390,8 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         ConexionSQL.CerrarConexion();
         return reserClie;
     }
-    
-     @Override
+
+    @Override
     public Reservacion_TO consultarReservasEmpleado(int idEmpleado, int idReserva) throws Exception {
 
         Reservacion_TO reserva = new Reservacion_TO();
@@ -301,7 +417,6 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                 + " from sms_reservacion "
                 + " where idempleado = " + idEmpleado + " and "
                 + " idReservacion = " + idReserva + "  ";
-               
 
         ResultSet rs = st.executeQuery(sql);
 

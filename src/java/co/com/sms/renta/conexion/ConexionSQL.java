@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class ConexionSQL {
 
-    static String clave = "";
+    static String clave = "manager";
     static Statement ST = null;
     static Connection cn = null;
 
@@ -42,9 +42,8 @@ public class ConexionSQL {
             Statement st = cn.createStatement();
 
             ST = st;
-            
-             System.out.print("-------------------consulta BD:"+ST);
-            
+
+            System.out.print("-------------------consulta BD:" + ST);
 
         } catch (ClassNotFoundException ex) {
             System.out.print("Error en el Driver");
@@ -57,8 +56,8 @@ public class ConexionSQL {
         return ST;
 
     }
-    
-        public static Connection CerrarConexion() throws SQLException {
+
+    public static Connection CerrarConexion() throws SQLException {
 
         cn.close();
         cn = null;
