@@ -156,10 +156,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         // // //Seleccionar todos los registros
         String sql = "SELECT u.idUsuario, u.Usuario_nombre,u.Usuario_CC, u.Usuario_telefono, u.Usuario_email,  "
                 + " u.idCiudad, u.Usuario_pasaporte, u.Usuario_password, "
-                + "u.Usuario_remember_token, u.Usuario_EstadoUsuario, u.idRol , u.idNacionalidad  "
-                + "from sms_usuario as u  "
+                + "u.Usuario_remember_token, u.Usuario_EstadoUsuario, u.idRol , u.idNacionalidad  , c.Ciudad_nombre, n.Nacionalidad_nombre "
+                + "from sms_usuario as u , sms_ciudad as c, sms_nacionalidad as n "
                 + "where "
-                + "u.`idUsuario` = '" + cliente.getIdUsuario() + "';";
+                + "u.`idUsuario` = '" + cliente.getIdUsuario() + "'"
+                + " and c.idCiudad = u.idCiudad " 
+                + " and  n.idNacionalidad = u.idNacionalidad " ;
 
         ResultSet rs = st.executeQuery(sql);
         // LLAMA AL MÉTODO
@@ -168,7 +170,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         while (rs.next()) {
 
-            usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getInt(12));
+            usuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getInt(12), rs.getString(13), rs.getString(14));
 
         }
         ConexionSQL.CerrarConexion();

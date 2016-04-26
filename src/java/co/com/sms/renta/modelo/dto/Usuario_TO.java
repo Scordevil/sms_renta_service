@@ -124,6 +124,12 @@ public class Usuario_TO {
      * Columna idNacionalidad
      */
     private int idNacionalidad;
+    
+        /**
+     *
+     * Columna nombreNacionalidad
+     */
+    private String nombreNacionalidad;
 
     /**
      *
@@ -275,6 +281,24 @@ public class Usuario_TO {
         this.rol = rol;
         this.idNacionalidad = idNacionalidad;
     }
+    
+        //ConsultarClientes
+    public Usuario_TO(int idUsuario, String nombre, String CC, String telefono, String email, int idCiudad, String pasaporte, String password, String remember_token, int estadoUsuario, int rol, int idNacionalidad, String nombreCiudad, String nombreNacionalidad ) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.CC = CC;
+        this.telefono = telefono;
+        this.email = email;
+        this.idCiudad = idCiudad;
+        this.pasaporte = pasaporte;
+        this.password = password;
+        this.remember_token = remember_token;
+        this.estadoUsuario = estadoUsuario;
+        this.rol = rol;
+        this.idNacionalidad = idNacionalidad;
+        this.nombreCiudad = nombreCiudad;
+        this.nombreNacionalidad = nombreNacionalidad;
+    }
 
     //Editar Clientes 
     public Usuario_TO(int idUsuario, String nombre, String CC, String pasaporte, String telefono) {
@@ -419,6 +443,16 @@ public class Usuario_TO {
     public Usuario_TO(int idEmpleado, long var) {
         this.idEmpleado = idEmpleado;
     }
+
+    public String getNombreNacionalidad() {
+        return nombreNacionalidad;
+    }
+
+    public void setNombreNacionalidad(String nombreNacionalidad) {
+        this.nombreNacionalidad = nombreNacionalidad;
+    }
+    
+    
 
     public int getIdEmpleado() {
         return idEmpleado;
