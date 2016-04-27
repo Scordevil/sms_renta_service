@@ -267,7 +267,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         try {
 
             String sql = "UPDATE `sms_reservacion` "
-                    + " SET `idEstado` = 7  WHERE `idReservacion` = " + idReserva + "   ; ";
+                    + " SET `idEstado` = 7  WHERE `idReservacion` = " + idReserva.getIdReservacion() + "   ; ";
 
             st.executeUpdate(sql);
             reserva.setMensaje("RESERVACION ELIMINADA CORRECTAMENTE");
