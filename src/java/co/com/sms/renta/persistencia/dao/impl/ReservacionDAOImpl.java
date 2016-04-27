@@ -96,7 +96,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
                     + " from sms_reservacion "
                     + " where idCliente = " + client.getIdUsuario() + " and "
-                    + " `idEstado` <> 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
+                    + " `idEstado` <> 6 and  `idEstado` <> 7";// VALIDACION DE RESERVACIONES TERMINADAS ";
 
             ResultSet rs = st.executeQuery(sql);
 
@@ -251,7 +251,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         Reservacion_TO eliReser = new Reservacion_TO();
 
         try {
-            eliReser = eliminarReseervaHecha(cliente, reserva);
+            eliReser = eliminarLaReserva(cliente, reserva);
 
         } catch (Exception e) {
             eliReser = new Reservacion_TO();
@@ -261,23 +261,23 @@ public class ReservacionDAOImpl implements ReservacionDAO {
         return eliReser;
     }
 
-    private Reservacion_TO eliminarReseervaHecha(Usuario_TO idCliente, Reservacion_TO idReserva) throws SQLException {
+    private Reservacion_TO eliminarLaReserva(Usuario_TO idCliente, Reservacion_TO idReserva) throws SQLException {
 
-        Reservacion_TO reser = new Reservacion_TO();
+        Reservacion_TO reserva = new Reservacion_TO();
         try {
-            String sql = "DELETE FROM sms_reservacion "
-                    + "WHERE idCliente = " + idCliente.getIdUsuario() + " and "
-                    + " idReservacion = " + idReserva.getIdReservacion() + ";";
+
+            String sql = "UPDATE `sms_reservacion` "
+                    + " SET `idEstado` = 7  WHERE `idReservacion` = " + idReserva + "   ; ";
 
             st.executeUpdate(sql);
-            reser.setMensaje("RESERVACION ELIMINADA CORRECATMENTE");
+            reserva.setMensaje("RESERVACION ELIMINADA CORRECTAMENTE");
 
         } catch (Exception e) {
-            reser.setMensaje("ERROR AL ELIMINAR RESERVACION");
+            reserva.setMensaje("ERROR AL ELIMINAR RESERVACION");
             throw e;
         }
         ConexionSQL.CerrarConexion();
-        return reser;
+        return reserva;
     }
 
     @Override
@@ -307,7 +307,7 @@ public class ReservacionDAOImpl implements ReservacionDAO {
                     + " `idCategoria_Servicio`, `idServicio`,`idEstado` "
                     + " from sms_reservacion "
                     + " where idEmpleado = " + cond.getIdEmpleado() + " and "
-                    + " `idEstado` <> 6 ";// VALIDACION DE RESERVACIONES TERMINADAS ";
+                    + " `idEstado` <> 6 and  `idEstado` <> 7";// VALIDACION DE RESERVACIONES TERMINADAS ";
 
             ResultSet rs = st.executeQuery(sql);
 
