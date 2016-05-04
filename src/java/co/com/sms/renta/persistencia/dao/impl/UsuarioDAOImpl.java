@@ -63,7 +63,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + " h.idHojaVida = e.idhojaVida";
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
 
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
@@ -114,7 +114,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "r.Rol_nombre = 'Cliente'";
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
 
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
@@ -164,7 +164,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + " and  n.idNacionalidad = u.idNacionalidad " ;
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
 
         Usuario_TO usuario = new Usuario_TO();
 
@@ -213,7 +213,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "r.idRol = p.Proveedor_idUsuario";
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
 
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
@@ -262,7 +262,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "r.Rol_nombre = 'Administrador Secundario'";
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
 
         final List<Usuario_TO> usuarios = new ArrayList<Usuario_TO>();
         while (rs.next()) {
@@ -317,7 +317,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "u.`Usuario_email` = '" + usuario.getEmail() + "';";
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
 
         while (rs.next()) {
             user = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
@@ -407,7 +407,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "u.`Usuario_email` = '" + usuario.getEmail() + "';";
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
         if (rs != null){
          while (rs.next()) {
             user = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
@@ -425,6 +425,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
      *
      * METODOS PARA REGISTRAR CLIENTES
      *
+     * @param usuario
      * @return @throws Exception
      */
     @Override
@@ -447,6 +448,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     private Usuario_TO registrarTodosClientes(Usuario_TO usuario)
             throws SQLException {
+        
+        System.out.println("prueba: "+usuario);
 
         Usuario_TO user = new Usuario_TO();
 
@@ -456,8 +459,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         usuario.setPassword(md5.getMD5(usuario.getPassword()));
 
         try {
-            String sql = "INSERT INTO `sms_usuario` (`Usuario_nombre`, `Usuario_email`, `idCiudad`,`Usuario_pasaporte`,  `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `idRol`,`idNacionalidad`) VALUES ( '"
+            String sql = "INSERT INTO `sms_usuario` (`Usuario_nombre`, `Usuario_CC`,`Usuario_email`, `idCiudad`,`Usuario_pasaporte`,  `Usuario_password`, `Usuario_remember_token`, `Usuario_EstadoUsuario`, `idRol`,`idNacionalidad`) VALUES ( '"
                     + usuario.getNombre() + "', '"
+                    + usuario.getCC()+ "', '"
                     + usuario.getEmail() + "', "
                     + usuario.getIdCiudad() + ", '"
                     + usuario.getPasaporte() + "', '"
@@ -465,9 +469,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     + usuario.getRemember_token() + "'," + 1 + "," + 3 + ",  "
                     + usuario.getIdNacionalidad() + ");";
 
+            
+            System.out.println("sql: "+sql);
+            
             st.execute(sql);
 
-            // LLAMA AL MÉTODO
+            // LLAMA AL MÃ‰TODO
             user.setMensaje("Usuario registrado correctamente");
 
         } catch (Exception e) {
@@ -515,7 +522,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
             st.executeUpdate(sql.toString());
 
-            // LLAMA AL MÉTODO
+            // LLAMA AL MÃ‰TODO
             user.setMensaje("Usuario editado correctamente");
 
         } catch (Exception e) {
@@ -560,7 +567,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
             st.execute(sql);
 
-            // LLAMA AL MÉTODO
+            // LLAMA AL MÃ‰TODO
             usuario.setMensaje("Usuario editado correctamente");
 
         } catch (Exception e) {
@@ -605,7 +612,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
             st.execute(sql);
 
-            // LLAMA AL MÉTODO
+            // LLAMA AL MÃ‰TODO
             usuario.setMensaje("Usuario editado correctamente");
 
         } catch (Exception e) {
@@ -657,7 +664,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
             st.executeUpdate(sql.toString());
 
-            // LLAMA AL MÉTODO
+            // LLAMA AL MÃ‰TODO
             user.setMensaje("Usuario editado correctamente");
 
         } catch (Exception e) {
@@ -723,7 +730,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
             st.executeUpdate(sql);
 
-            // LLAMA AL MÉTODO
+            // LLAMA AL MÃ‰TODO
             user.setMensaje("Usuario registrado correctamente");
 
         } catch (Exception e) {
@@ -751,7 +758,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
             st.executeUpdate(sql);
 
-            // LLAMA AL MÉTODO
+            // LLAMA AL MÃ‰TODO
             user.setMensaje("Usuario Editado correctamente");
 
         } catch (Exception e) {
@@ -800,7 +807,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 + "u.`idUsuario` = '" + usuario.getIdUsuario() + "' ; ";
 
         ResultSet rs = st.executeQuery(sql);
-        // LLAMA AL MÉTODO
+        // LLAMA AL MÃ‰TODO
 
         while (rs.next()) {
             user = new Usuario_TO(rs.getString(1), rs.getInt(2));

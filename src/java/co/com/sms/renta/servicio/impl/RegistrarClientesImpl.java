@@ -25,7 +25,9 @@ public class RegistrarClientesImpl implements RegistrarCliente {
     @GET
     @Produces({"application/json"})
 
+    @Override
     public Usuario_TO registrarClientes(@QueryParam("nombre") String nombre,
+            @QueryParam("cc") String cc,
             @QueryParam("email") String email,
             @QueryParam("ciudad") int idCiudad,
             @QueryParam("pasaporte") String pasaporte,
@@ -36,7 +38,7 @@ public class RegistrarClientesImpl implements RegistrarCliente {
             @QueryParam("rol") int rol) throws Exception {
 
         // instancia del Cliente con onstructor especifico para ingresar datos del cliente
-        Usuario_TO cliente = new Usuario_TO(nombre, email,idCiudad,pasaporte,
+        Usuario_TO cliente = new Usuario_TO(nombre, cc, email,idCiudad,pasaporte,
                  password, remember_token,idNacionalidad, estadoUsuario, rol);
 
         UsuarioDAOImpl usuario = new UsuarioDAOImpl();

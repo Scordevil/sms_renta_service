@@ -231,8 +231,9 @@ public class Usuario_TO {
 
     }
 
-    public Usuario_TO(String nombre, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad, int estadoUsuario, int rol) {
+    public Usuario_TO(String nombre,String CC, String email, int idCiudad, String pasaporte, String password, String remember_token, int idNacionalidad, int estadoUsuario, int rol) {
         this.nombre = nombre;
+        this.CC = CC;
         this.email = email;
         this.idCiudad = idCiudad;
         this.pasaporte = pasaporte;
