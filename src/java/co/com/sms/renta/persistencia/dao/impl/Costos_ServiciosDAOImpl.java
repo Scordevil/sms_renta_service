@@ -15,8 +15,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -286,6 +288,27 @@ public class Costos_ServiciosDAOImpl implements Costos_ServiciosDAO {
         Costos_Servicios_TO cost = new Costos_Servicios_TO();
         while (rs.next()) {
             cost = new Costos_Servicios_TO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
+        }
+        return cost;
+    }
+    
+    
+    @Override
+    public List<Costos_Servicios_TO> consultarCostosTurismo() throws Exception {
+        List<Costos_Servicios_TO> costoL = new ArrayList<>();
+        costoL = todosLosCostosTuristmo();
+        return costoL;
+    }
+
+    private List<Costos_Servicios_TO> todosLosCostosTuristmo() throws SQLException {
+        String sql = "SELECT `idCostosServicio` , `idServicio` , `idCategoria` , "
+                + " `CostoServicio_precio` , `idLugar_inicio` , `idLugar_destino` "
+                + " FROM `sms_costosservicios` WHERE "
+                + " `idServicio` in (14,16) ;";
+        ResultSet rs = st.executeQuery(sql);
+        List<Costos_Servicios_TO> cost = new ArrayList<>();
+        while (rs.next()) {
+            cost.add(new Costos_Servicios_TO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
         }
         return cost;
     }
